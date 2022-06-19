@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppLibrary
+namespace AppLibrary.DataAccess
 {
-    public class Class1
+    public class SqlConnector:IDataConnection   
     {
+
     }
 }
