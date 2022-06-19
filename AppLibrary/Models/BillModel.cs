@@ -13,7 +13,11 @@ namespace AppLibrary.Models
         /// </summary>
         public int ID { get; set; }
         /// <summary>
-        /// Represents the transaction number by the cashier
+        /// Represents the source of payment
+        /// </summary>
+        VisitModel VisitModel { get; set; }
+        /// <summary>
+        /// Represents the transaction number
         /// </summary>
         public int InvoiceNumber { get; set; }
         /// <summary>

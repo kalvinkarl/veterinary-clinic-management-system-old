@@ -13,9 +13,9 @@ namespace AppLibrary.Models
         /// </summary>
         public string ID { get; set; }
         /// <summary>
-        /// Represents the month,day and year of the visit
+        /// Represents the pet
         /// </summary>
-        public DateTime Date { get; set; }
+        public PetModel Pet { get; set; }
         /// <summary>
         /// Represents the weight of the pet
         /// </summary>
@@ -25,24 +25,24 @@ namespace AppLibrary.Models
         /// </summary>
         public int Temperature { get; set; }
         /// <summary>
-        /// Represents the Complaint or Diagnosis of the start
+        /// Represents the Complaint or Diagnosis of the pet
         /// </summary>
-        public List<ComplaintDiagnosisModel> ComplaintDiagnosis { get; set; } = new List<ComplaintDiagnosisModel>();
+        public string ComplaintDiagnosis { get; set; }
         /// <summary>
         /// Represents the treatment procedure
         /// </summary>
-        public List<TreatmentModel> Treatment { get; set; } = new List<TreatmentModel>();
+        public string Treatment { get; set; }
         /// <summary>
         /// Represents the visit notes
         /// </summary>
-        public List<VisitNoteModel> VisitNotes { get; set; } = new List<VisitNoteModel>();
+        public string Notes { get; set; }
+        /// <summary>
+        /// Represents the month,day and year of the visit
+        /// </summary>
+        public DateTime Date { get; set; }
         /// <summary>
         /// Represents the date of next visit
         /// </summary>
         public DateTime NextVisit { get; set; }
-        /// <summary>
-        /// Represents the bills costumer must pay
-        /// </summary>
-        public List<BillModel> Billings { get; set; } = new List<BillModel>();
     }
 }

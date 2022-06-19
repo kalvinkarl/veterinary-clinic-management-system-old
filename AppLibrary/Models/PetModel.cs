@@ -19,7 +19,7 @@ namespace AppLibrary.Models
         /// <summary>
         /// Represents the pet name
         /// </summary>
-        public string PetName { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// Represents the type of the pet
         /// </summary>
@@ -44,9 +44,5 @@ namespace AppLibrary.Models
         /// Represents the notes for the pet
         /// </summary>
         public string Notes { get; set; }
-        /// <summary>
-        /// Represents the list of visits
-        /// </summary>
-        public List<VisitModel> Visits { get; set; } = new List<VisitModel>();
     }
 }
