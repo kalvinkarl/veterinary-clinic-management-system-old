@@ -106,6 +106,7 @@
             this.saveButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.saveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // consultButton
             // 
@@ -359,11 +360,12 @@
             this.Controls.Add(this.petLayoutPanel);
             this.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(544, 371);
             this.Name = "PetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PetForm";
+            this.Load += new System.EventHandler(this.PetForm_Load);
             this.petLayoutButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.age)).EndInit();
             this.petLayoutPanel.ResumeLayout(false);

@@ -59,14 +59,16 @@
             // 
             this.deleteToolStripMenuItem.Enabled = false;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // addPetToolStripMenuItem
             // 
             this.addPetToolStripMenuItem.Name = "addPetToolStripMenuItem";
-            this.addPetToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.addPetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addPetToolStripMenuItem.Text = "New";
+            this.addPetToolStripMenuItem.Click += new System.EventHandler(this.addPetToolStripMenuItem_Click);
             // 
             // petList
             // 
@@ -81,6 +83,8 @@
             this.petList.Name = "petList";
             this.petList.Size = new System.Drawing.Size(509, 141);
             this.petList.TabIndex = 5;
+            this.petList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.petList_MouseClick);
+            this.petList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.petList_MouseDown);
             // 
             // firstNameLabel
             // 
@@ -139,6 +143,7 @@
             this.firstName.Name = "firstName";
             this.firstName.Size = new System.Drawing.Size(509, 29);
             this.firstName.TabIndex = 8;
+            this.firstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Control_KeyDown);
             // 
             // petContextMenu
             // 
@@ -147,14 +152,15 @@
             this.editPetToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.petContextMenu.Name = "petContextMenu";
-            this.petContextMenu.Size = new System.Drawing.Size(108, 70);
+            this.petContextMenu.Size = new System.Drawing.Size(181, 92);
             // 
             // editPetToolStripMenuItem
             // 
             this.editPetToolStripMenuItem.Enabled = false;
             this.editPetToolStripMenuItem.Name = "editPetToolStripMenuItem";
-            this.editPetToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editPetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editPetToolStripMenuItem.Text = "Edit";
+            this.editPetToolStripMenuItem.Click += new System.EventHandler(this.editPetToolStripMenuItem_Click);
             // 
             // clientUpload
             // 
@@ -168,6 +174,7 @@
             this.clientUpload.Size = new System.Drawing.Size(33, 32);
             this.clientUpload.TabIndex = 9;
             this.clientUpload.TabStop = false;
+            this.clientUpload.Click += new System.EventHandler(this.clientUpload_Click);
             // 
             // clientPicture
             // 
@@ -190,6 +197,7 @@
             this.lastName.Name = "lastName";
             this.lastName.Size = new System.Drawing.Size(509, 29);
             this.lastName.TabIndex = 8;
+            this.lastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Control_KeyDown);
             // 
             // address
             // 
@@ -198,6 +206,7 @@
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(509, 29);
             this.address.TabIndex = 8;
+            this.address.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Control_KeyDown);
             // 
             // cellphone
             // 
@@ -206,6 +215,7 @@
             this.cellphone.Name = "cellphone";
             this.cellphone.Size = new System.Drawing.Size(509, 29);
             this.cellphone.TabIndex = 8;
+            this.cellphone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Control_KeyDown);
             // 
             // saveButton
             // 
