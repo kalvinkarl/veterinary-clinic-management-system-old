@@ -55,11 +55,5 @@
     <Compile Include="Models\VisitModel.cs" />
     <Compile Include="Models\VisitNoteModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AppUI\AppUI.csproj">
-      <Project>{3d9e46e3-088f-4236-969f-39265e77aebb}</Project>
-      <Name>AppUI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

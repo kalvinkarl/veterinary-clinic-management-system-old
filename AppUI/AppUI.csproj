@@ -46,16 +46,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LandingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LandingForm.Designer.cs">
       <DependentUpon>LandingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PetForm.Designer.cs">
+      <DependentUpon>PetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TemplateForm.Designer.cs">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisitForm.Designer.cs">
+      <DependentUpon>VisitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisitsAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisitsAddForm.Designer.cs">
+      <DependentUpon>VisitsAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisitsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisitsForm.Designer.cs">
+      <DependentUpon>VisitsForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LandingForm.resx">
       <DependentUpon>LandingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PetForm.resx">
+      <DependentUpon>PetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +116,20 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TemplateForm.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitForm.resx">
+      <DependentUpon>VisitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitsAddForm.resx">
+      <DependentUpon>VisitsAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisitsForm.resx">
+      <DependentUpon>VisitsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +142,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppLibrary\AppLibrary.csproj">
+      <Project>{d06d53f7-42e8-471b-9f69-aff7dee80785}</Project>
+      <Name>AppLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddVisit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bills.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewVisitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -117,20 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AddVisit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddVisit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Bills" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bills.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NewVisitor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NewVisitor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Reports" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Reports.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <metadata name="Column5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="visitContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAutJREFUeF7t2kvoTGEcxvFRcpeFnRSKhVhY2LiXBdlIsSBkQZSFRCJySyFEkoWy
+        wMJCLiWXyAJZSIqF5J6l3LKQW7l8n8UppmdOc877zt97pvPUp6Y557zn95szM+faqFOnTp06dXosvTEN
+        y7EZB3EIGzEDmt6VmYSz+ITfOV5jMbomw3ABrtk8O1H5jIW2qGuwHTswE/1QuWjLv4VrrCiNswqVSS9c
+        h2smxHZUIvPhGgj1E1ORfG7CNRDDDSSdUXCFx/ILw5FslsAVHtMKJJujcEXHdBjJ5jxc0TFdQrK5BVd0
+        TLeRbO7AFR2T1pFszsAVHZNOqpLNFriiY0r6iHAiXNExTUbSeQxXeAxPoHONZDMdP+CKj+E7kj4fOAlX
+        eEwnkGxOwxUdk9aRbNbBFR3TWiSbkfgGV3gMXzECSWcZ3sM1EEJjLkUlMhuuiRCzUJn0x0e4Rsr4gMpd
+        Hd4E10wZG1C59MUzuIaKeIo+qGQm4DNcY+34Ap1fVDrzoN2XazCPmp+LrogOXlyTeZI+4CmalXBN5tEy
+        XZP6A4BrMk/XfABDcQ6uyTxaRstWOgPxCq7BdryExqhs9sI1VsQeVC5joNtkupnpmipCYxzBaCSd8diG
+        h3CNZN7gfgua5pbJPMBWjMN/j67OTsF+PIcr2HkBd2yv9zTNLePoPGMfdJm8R68UD4ae6ytSbLM1aI7e
+        c/O2QxtAZ4yD0LHoU16NGFd73mEIsui13nPzFqEx9EBV9G+Etvo1uJWWtRtZ9NrNU9ZlRPs2aD98D25F
+        IR4hi167eULcxQAERzci3ApC6c8zywG4eUIdR1D0ALMbOAbdRsvSyfVoT1U6ehzFDRpKf6R/Pxmu1524
+        lC4XUSr6E+nUjU7dQ2zOKbh5Q6mHUucTc+AGjEFPkzZnAdy8MZS6p7AebrBQunWm3Wpz9I0rc+2wHaUu
+        r8XeN2euoFWuwi0TahcKZxGOdYB+Wq2iaW6ZUAtRp06dOnXq/JNG4w9dEAaemJt3bgAAAABJRU5ErkJg
+        gg==
+</value>
   </data>
 </root>
