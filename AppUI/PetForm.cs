@@ -23,9 +23,34 @@ namespace AppUI
         }
         private bool ValidateForm()
         {
-            if(name.Text == string.Empty)
+            if (name.Text == String.Empty)
             {
-                MessageBox.Show("invalid");
+                MessageBox.Show("Invalid name");
+                return false;
+            }
+            else if (species.Text == String.Empty)
+            {
+                MessageBox.Show("Invalid species");
+                return false;
+            }
+            else if (breed.Text == String.Empty)
+            {
+                MessageBox.Show("Invalid breed");
+                return false;
+            }
+            else if (colorMarking.Text == String.Empty)
+            {
+                MessageBox.Show("Invalid color marking");
+                return false;
+            }
+            else if (age.Value <= 0)
+            {
+                MessageBox.Show("Invalid age");
+                return false;
+            }
+            else if (male.Checked == false && female.Checked == false)
+            {
+                MessageBox.Show("please select gender");
                 return false;
             }
             return true;
@@ -95,15 +120,7 @@ namespace AppUI
                 Visit = new VisitModel();
                 Visit = visit.Visit;
                 Bill = visit.Bill;
-                MessageBox.Show($"{Visit.Weight} {Visit.Temperature}");
-                MessageBox.Show("Meron");
             }
-            else
-            {
-                MessageBox.Show("wala");
-            }
-            //TODO - IF Visit is done,save and close else, not close.
-            //this.Close();
         }
     }
 }
