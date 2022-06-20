@@ -37,36 +37,39 @@
             this.appTime = new System.Windows.Forms.Label();
             this.appHour = new System.Windows.Forms.NumericUpDown();
             this.appGroup = new System.Windows.Forms.GroupBox();
+            this.ampm = new System.Windows.Forms.Button();
             this.appBack = new System.Windows.Forms.Button();
             this.appDate = new System.Windows.Forms.DateTimePicker();
             this.appDateLabel = new System.Windows.Forms.Label();
             this.noteLabel = new System.Windows.Forms.Label();
-            this.temperatureUnit = new System.Windows.Forms.ComboBox();
+            this.tempUnit = new System.Windows.Forms.ComboBox();
             this.weightUnit = new System.Windows.Forms.ComboBox();
             this.treatLabel = new System.Windows.Forms.Label();
-            this.complaintDiagnosis = new System.Windows.Forms.ListBox();
-            this.treatments = new System.Windows.Forms.ListBox();
-            this.notes = new System.Windows.Forms.ListBox();
-            this.treat = new System.Windows.Forms.Label();
             this.appOpen = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
+            this.laterButton = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.comDiag = new System.Windows.Forms.Label();
             this.paymentButton = new System.Windows.Forms.Button();
-            this.note = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.weight = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.complaintDiagnosis = new System.Windows.Forms.RichTextBox();
+            this.treatment = new System.Windows.Forms.RichTextBox();
+            this.notes = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.DateTimePicker();
-            this.temp = new System.Windows.Forms.TextBox();
             this.weightLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.visitTitle = new System.Windows.Forms.Label();
+            this.weight = new System.Windows.Forms.NumericUpDown();
+            this.temp = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.appMinute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appHour)).BeginInit();
             this.appGroup.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.temp)).BeginInit();
             this.SuspendLayout();
             // 
             // tempLabel
@@ -81,7 +84,7 @@
             // appColTimeLabel
             // 
             this.appColTimeLabel.AutoSize = true;
-            this.appColTimeLabel.Location = new System.Drawing.Point(122, 65);
+            this.appColTimeLabel.Location = new System.Drawing.Point(104, 76);
             this.appColTimeLabel.Name = "appColTimeLabel";
             this.appColTimeLabel.Size = new System.Drawing.Size(12, 19);
             this.appColTimeLabel.TabIndex = 14;
@@ -89,20 +92,19 @@
             // 
             // appMinute
             // 
-            this.appMinute.Location = new System.Drawing.Point(134, 73);
+            this.appMinute.Location = new System.Drawing.Point(118, 73);
             this.appMinute.Maximum = new decimal(new int[] {
-            60,
+            59,
             0,
             0,
             0});
             this.appMinute.Name = "appMinute";
-            this.appMinute.Size = new System.Drawing.Size(63, 29);
+            this.appMinute.Size = new System.Drawing.Size(43, 29);
             this.appMinute.TabIndex = 13;
             // 
             // comDiagLabel
             // 
             this.comDiagLabel.AutoSize = true;
-            this.tablePanel.SetColumnSpan(this.comDiagLabel, 3);
             this.comDiagLabel.Location = new System.Drawing.Point(3, 0);
             this.comDiagLabel.Name = "comDiagLabel";
             this.comDiagLabel.Size = new System.Drawing.Size(158, 19);
@@ -120,19 +122,31 @@
             // 
             // appHour
             // 
+            this.appHour.InterceptArrowKeys = false;
             this.appHour.Location = new System.Drawing.Point(57, 73);
             this.appHour.Maximum = new decimal(new int[] {
             12,
             0,
             0,
             0});
+            this.appHour.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.appHour.Name = "appHour";
-            this.appHour.Size = new System.Drawing.Size(63, 29);
+            this.appHour.Size = new System.Drawing.Size(45, 29);
             this.appHour.TabIndex = 12;
+            this.appHour.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // appGroup
             // 
             this.appGroup.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.appGroup.Controls.Add(this.ampm);
             this.appGroup.Controls.Add(this.appBack);
             this.appGroup.Controls.Add(this.appDate);
             this.appGroup.Controls.Add(this.appTime);
@@ -148,6 +162,19 @@
             this.appGroup.Text = "Appointment:";
             this.appGroup.Visible = false;
             // 
+            // ampm
+            // 
+            this.ampm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(179)))));
+            this.ampm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ampm.Location = new System.Drawing.Point(167, 73);
+            this.ampm.Name = "ampm";
+            this.ampm.Size = new System.Drawing.Size(66, 29);
+            this.ampm.TabIndex = 36;
+            this.ampm.Text = "AM";
+            this.ampm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ampm.UseVisualStyleBackColor = true;
+            this.ampm.Click += new System.EventHandler(this.ampm_Click);
+            // 
             // appBack
             // 
             this.appBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(180)))), ((int)(((byte)(187)))));
@@ -159,6 +186,7 @@
             this.appBack.TabIndex = 20;
             this.appBack.Text = "Back";
             this.appBack.UseVisualStyleBackColor = false;
+            this.appBack.Click += new System.EventHandler(this.appOpenClose_Click);
             // 
             // appDate
             // 
@@ -187,28 +215,28 @@
             this.noteLabel.TabIndex = 0;
             this.noteLabel.Text = "Notes:";
             // 
-            // temperatureUnit
+            // tempUnit
             // 
-            this.temperatureUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.temperatureUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.temperatureUnit.FormattingEnabled = true;
-            this.temperatureUnit.Items.AddRange(new object[] {
+            this.tempUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tempUnit.FormattingEnabled = true;
+            this.tempUnit.Items.AddRange(new object[] {
             "°C",
             "°F"});
-            this.temperatureUnit.Location = new System.Drawing.Point(187, 138);
-            this.temperatureUnit.Name = "temperatureUnit";
-            this.temperatureUnit.Size = new System.Drawing.Size(40, 27);
-            this.temperatureUnit.TabIndex = 33;
+            this.tempUnit.Location = new System.Drawing.Point(187, 137);
+            this.tempUnit.Name = "tempUnit";
+            this.tempUnit.Size = new System.Drawing.Size(40, 27);
+            this.tempUnit.TabIndex = 33;
             // 
             // weightUnit
             // 
             this.weightUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.weightUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.weightUnit.FormattingEnabled = true;
             this.weightUnit.Items.AddRange(new object[] {
             "kg",
+            "hg",
+            "dag",
             "g"});
-            this.weightUnit.Location = new System.Drawing.Point(187, 103);
+            this.weightUnit.Location = new System.Drawing.Point(187, 104);
             this.weightUnit.Name = "weightUnit";
             this.weightUnit.Size = new System.Drawing.Size(40, 27);
             this.weightUnit.TabIndex = 32;
@@ -216,61 +244,11 @@
             // treatLabel
             // 
             this.treatLabel.AutoSize = true;
-            this.tablePanel.SetColumnSpan(this.treatLabel, 2);
             this.treatLabel.Location = new System.Drawing.Point(3, 182);
             this.treatLabel.Name = "treatLabel";
             this.treatLabel.Size = new System.Drawing.Size(83, 19);
             this.treatLabel.TabIndex = 0;
             this.treatLabel.Text = "Treatment:";
-            // 
-            // complaintDiagnosis
-            // 
-            this.tablePanel.SetColumnSpan(this.complaintDiagnosis, 4);
-            this.complaintDiagnosis.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.complaintDiagnosis.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.complaintDiagnosis.FormattingEnabled = true;
-            this.complaintDiagnosis.IntegralHeight = false;
-            this.complaintDiagnosis.Location = new System.Drawing.Point(3, 23);
-            this.complaintDiagnosis.Name = "complaintDiagnosis";
-            this.complaintDiagnosis.Size = new System.Drawing.Size(677, 156);
-            this.complaintDiagnosis.TabIndex = 2;
-            // 
-            // treatments
-            // 
-            this.tablePanel.SetColumnSpan(this.treatments, 4);
-            this.treatments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treatments.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.treatments.FormattingEnabled = true;
-            this.treatments.IntegralHeight = false;
-            this.treatments.ItemHeight = 19;
-            this.treatments.Location = new System.Drawing.Point(3, 205);
-            this.treatments.Name = "treatments";
-            this.treatments.Size = new System.Drawing.Size(677, 156);
-            this.treatments.TabIndex = 3;
-            // 
-            // notes
-            // 
-            this.tablePanel.SetColumnSpan(this.notes, 4);
-            this.notes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.notes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.notes.FormattingEnabled = true;
-            this.notes.IntegralHeight = false;
-            this.notes.ItemHeight = 19;
-            this.notes.Location = new System.Drawing.Point(3, 387);
-            this.notes.Name = "notes";
-            this.notes.Size = new System.Drawing.Size(677, 156);
-            this.notes.TabIndex = 4;
-            // 
-            // treat
-            // 
-            this.treat.AutoSize = true;
-            this.treat.BackColor = System.Drawing.Color.Transparent;
-            this.tablePanel.SetColumnSpan(this.treat, 2);
-            this.treat.Location = new System.Drawing.Point(92, 182);
-            this.treat.Name = "treat";
-            this.treat.Size = new System.Drawing.Size(95, 19);
-            this.treat.TabIndex = 23;
-            this.treat.Text = "<Add New>";
             // 
             // appOpen
             // 
@@ -285,38 +263,30 @@
             this.appOpen.TabIndex = 34;
             this.appOpen.Text = "If next appointment needed";
             this.appOpen.UseVisualStyleBackColor = false;
+            this.appOpen.Click += new System.EventHandler(this.appOpenClose_Click);
             // 
-            // saveButton
+            // laterButton
             // 
-            this.saveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(148)))));
-            this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveButton.FlatAppearance.BorderSize = 0;
-            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
-            this.saveButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.saveButton.Location = new System.Drawing.Point(3, 338);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(101, 329);
-            this.saveButton.TabIndex = 21;
-            this.saveButton.Text = "Pay Later";
-            this.saveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.saveButton.UseVisualStyleBackColor = false;
+            this.laterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(148)))));
+            this.laterButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.laterButton.FlatAppearance.BorderSize = 0;
+            this.laterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.laterButton.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.laterButton.Image = ((System.Drawing.Image)(resources.GetObject("laterButton.Image")));
+            this.laterButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.laterButton.Location = new System.Drawing.Point(3, 338);
+            this.laterButton.Name = "laterButton";
+            this.laterButton.Size = new System.Drawing.Size(101, 329);
+            this.laterButton.TabIndex = 21;
+            this.laterButton.Text = "Pay Later";
+            this.laterButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.laterButton.UseVisualStyleBackColor = false;
+            this.laterButton.Click += new System.EventHandler(this.laterButton_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // comDiag
-            // 
-            this.comDiag.AutoSize = true;
-            this.comDiag.BackColor = System.Drawing.Color.Transparent;
-            this.comDiag.Location = new System.Drawing.Point(167, 0);
-            this.comDiag.Name = "comDiag";
-            this.comDiag.Size = new System.Drawing.Size(95, 19);
-            this.comDiag.TabIndex = 23;
-            this.comDiag.Text = "<Add New>";
             // 
             // paymentButton
             // 
@@ -334,17 +304,7 @@
             this.paymentButton.Text = "Payment";
             this.paymentButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.paymentButton.UseVisualStyleBackColor = false;
-            // 
-            // note
-            // 
-            this.note.AutoSize = true;
-            this.note.BackColor = System.Drawing.Color.Transparent;
-            this.tablePanel.SetColumnSpan(this.note, 3);
-            this.note.Location = new System.Drawing.Point(62, 364);
-            this.note.Name = "note";
-            this.note.Size = new System.Drawing.Size(95, 19);
-            this.note.TabIndex = 23;
-            this.note.Text = "<Add New>";
+            this.paymentButton.Click += new System.EventHandler(this.paymentButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -353,7 +313,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.paymentButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.saveButton, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.laterButton, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(698, 64);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -367,20 +327,18 @@
             this.tablePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tablePanel.ColumnCount = 4;
+            this.tablePanel.ColumnCount = 2;
             this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tablePanel.Controls.Add(this.label1, 1, 0);
             this.tablePanel.Controls.Add(this.comDiagLabel, 0, 0);
             this.tablePanel.Controls.Add(this.noteLabel, 0, 4);
             this.tablePanel.Controls.Add(this.treatLabel, 0, 2);
             this.tablePanel.Controls.Add(this.complaintDiagnosis, 0, 1);
-            this.tablePanel.Controls.Add(this.treatments, 0, 3);
+            this.tablePanel.Controls.Add(this.treatment, 0, 3);
             this.tablePanel.Controls.Add(this.notes, 0, 5);
-            this.tablePanel.Controls.Add(this.treat, 2, 2);
-            this.tablePanel.Controls.Add(this.comDiag, 3, 0);
-            this.tablePanel.Controls.Add(this.note, 1, 4);
+            this.tablePanel.Controls.Add(this.label2, 1, 2);
+            this.tablePanel.Controls.Add(this.label3, 1, 4);
             this.tablePanel.Location = new System.Drawing.Point(12, 188);
             this.tablePanel.Name = "tablePanel";
             this.tablePanel.RowCount = 6;
@@ -390,16 +348,68 @@
             this.tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tablePanel.Size = new System.Drawing.Size(683, 546);
             this.tablePanel.TabIndex = 28;
             // 
-            // weight
+            // label1
             // 
-            this.weight.Location = new System.Drawing.Point(113, 102);
-            this.weight.Name = "weight";
-            this.weight.Size = new System.Drawing.Size(73, 29);
-            this.weight.TabIndex = 26;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(523, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 19);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "<🧷Add attachment>";
+            // 
+            // complaintDiagnosis
+            // 
+            this.tablePanel.SetColumnSpan(this.complaintDiagnosis, 2);
+            this.complaintDiagnosis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.complaintDiagnosis.Location = new System.Drawing.Point(3, 23);
+            this.complaintDiagnosis.Name = "complaintDiagnosis";
+            this.complaintDiagnosis.Size = new System.Drawing.Size(677, 156);
+            this.complaintDiagnosis.TabIndex = 24;
+            this.complaintDiagnosis.Text = "";
+            // 
+            // treatment
+            // 
+            this.tablePanel.SetColumnSpan(this.treatment, 2);
+            this.treatment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treatment.Location = new System.Drawing.Point(3, 205);
+            this.treatment.Name = "treatment";
+            this.treatment.Size = new System.Drawing.Size(677, 156);
+            this.treatment.TabIndex = 25;
+            this.treatment.Text = "";
+            // 
+            // notes
+            // 
+            this.tablePanel.SetColumnSpan(this.notes, 2);
+            this.notes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.notes.Location = new System.Drawing.Point(3, 387);
+            this.notes.Name = "notes";
+            this.notes.Size = new System.Drawing.Size(677, 156);
+            this.notes.TabIndex = 26;
+            this.notes.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(523, 182);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(157, 19);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "<🧷Add attachment>";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(523, 364);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 19);
+            this.label3.TabIndex = 36;
+            this.label3.Text = "<🧷Add attachment>";
             // 
             // date
             // 
@@ -408,13 +418,6 @@
             this.date.Size = new System.Drawing.Size(250, 29);
             this.date.TabIndex = 27;
             this.date.Value = new System.DateTime(2022, 3, 20, 16, 35, 12, 0);
-            // 
-            // temp
-            // 
-            this.temp.Location = new System.Drawing.Point(113, 137);
-            this.temp.Name = "temp";
-            this.temp.Size = new System.Drawing.Size(73, 29);
-            this.temp.TabIndex = 30;
             // 
             // weightLabel
             // 
@@ -448,31 +451,58 @@
             this.visitTitle.Text = "VISIT";
             this.visitTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // weight
+            // 
+            this.weight.DecimalPlaces = 2;
+            this.weight.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.weight.Location = new System.Drawing.Point(113, 103);
+            this.weight.Name = "weight";
+            this.weight.Size = new System.Drawing.Size(71, 29);
+            this.weight.TabIndex = 36;
+            // 
+            // temp
+            // 
+            this.temp.DecimalPlaces = 2;
+            this.temp.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.temp.Location = new System.Drawing.Point(113, 136);
+            this.temp.Name = "temp";
+            this.temp.Size = new System.Drawing.Size(71, 29);
+            this.temp.TabIndex = 36;
+            // 
             // VisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(813, 747);
+            this.Controls.Add(this.temp);
+            this.Controls.Add(this.weight);
             this.Controls.Add(this.tempLabel);
             this.Controls.Add(this.appGroup);
-            this.Controls.Add(this.temperatureUnit);
+            this.Controls.Add(this.tempUnit);
             this.Controls.Add(this.weightUnit);
             this.Controls.Add(this.appOpen);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tablePanel);
-            this.Controls.Add(this.weight);
             this.Controls.Add(this.date);
-            this.Controls.Add(this.temp);
             this.Controls.Add(this.weightLabel);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.visitTitle);
             this.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(825, 370);
             this.Name = "VisitForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VisitForm";
+            this.Load += new System.EventHandler(this.VisitForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.appMinute)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appHour)).EndInit();
             this.appGroup.ResumeLayout(false);
@@ -480,6 +510,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tablePanel.ResumeLayout(false);
             this.tablePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.temp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,30 +526,31 @@
         private System.Windows.Forms.TableLayoutPanel tablePanel;
         private System.Windows.Forms.Label noteLabel;
         private System.Windows.Forms.Label treatLabel;
-        private System.Windows.Forms.ListBox complaintDiagnosis;
-        private System.Windows.Forms.ListBox treatments;
-        private System.Windows.Forms.ListBox notes;
-        private System.Windows.Forms.Label treat;
-        private System.Windows.Forms.Label comDiag;
-        private System.Windows.Forms.Label note;
         private System.Windows.Forms.Label appTime;
         private System.Windows.Forms.NumericUpDown appHour;
         private System.Windows.Forms.GroupBox appGroup;
         private System.Windows.Forms.Button appBack;
         private System.Windows.Forms.DateTimePicker appDate;
         private System.Windows.Forms.Label appDateLabel;
-        private System.Windows.Forms.ComboBox temperatureUnit;
+        private System.Windows.Forms.ComboBox tempUnit;
         private System.Windows.Forms.ComboBox weightUnit;
         private System.Windows.Forms.Button appOpen;
-        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button laterButton;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button paymentButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox weight;
         private System.Windows.Forms.DateTimePicker date;
-        private System.Windows.Forms.TextBox temp;
         private System.Windows.Forms.Label weightLabel;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label visitTitle;
+        private System.Windows.Forms.RichTextBox complaintDiagnosis;
+        private System.Windows.Forms.RichTextBox treatment;
+        private System.Windows.Forms.RichTextBox notes;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button ampm;
+        private System.Windows.Forms.NumericUpDown weight;
+        private System.Windows.Forms.NumericUpDown temp;
     }
 }

@@ -15,7 +15,7 @@ namespace AppLibrary.Models
         /// <summary>
         /// Represents the source of payment
         /// </summary>
-        VisitModel VisitModel { get; set; }
+        public VisitModel Visit { get; set; } = new VisitModel();
         /// <summary>
         /// Represents the transaction number
         /// </summary>
@@ -28,10 +28,6 @@ namespace AppLibrary.Models
         /// Represents the amount of how much the costumer payed
         /// </summary>
         public Decimal PaidAmount { get; set; }
-        /// <summary>
-        /// Represents the amount of the change
-        /// </summary>
-        public Decimal Change { get; set; }
         /// <summary>
         /// Represents the date of the transaction
         /// </summary>

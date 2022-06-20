@@ -16,10 +16,17 @@ namespace AppLibrary.DataAccess
         /// <returns>Client model</returns>
         ClientModel CreateClient(ClientModel client);
         /// <summary>
+        /// Edit existing client record and save it to database
+        /// </summary>
+        /// <param name="client">Client information</param>
+        /// <returns>Client model</returns>
+        ClientModel UpdateClient(ClientModel client);
+        /// <summary>
         /// Make new pet record and save it to database
         /// </summary>
         /// <param name="pet">Pet information</param>
         /// <returns>Pet model</returns>
         PetModel CreatePet(PetModel pet);
+
     }
 }

@@ -14,10 +14,25 @@ namespace AppUI
 {
     public partial class PetForm : Form
     {
-        public PetModel Pet { get; set; } = new PetModel();
+        public BillModel Bill { get; set; } = new BillModel();
+        public VisitModel Visit { get; set; }
+        public PetModel Pet { get; set; }
         public PetForm()
         {
             InitializeComponent();
+        }
+        private void Save()
+        {
+            Pet = new PetModel();
+            Pet.Name = name.Text;
+            Pet.Species = species.Text;
+            Pet.Breed = breed.Text;
+            Pet.ColorMarking = colorMarking.Text;
+            Pet.Age = int.Parse(age.Text);
+            Pet.Sex = getSex();
+            Pet.Notes = notes.Text;
+            ClientForm form = (ClientForm)this.Owner;
+            form.Pets.Add(Pet);
         }
         private string getSex()
         {
@@ -32,38 +47,53 @@ namespace AppUI
             }
             return sex;
         }
-
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            PetModel pet = new PetModel();
-            pet.Name = name.Text;
-            pet.Species = species.Text;
-            pet.Breed = breed.Text;
-            pet.ColorMarking = colorMarking.Text;
-            pet.Age = int.Parse(age.Text);
-            pet.Sex = getSex();
-            pet.Notes = notes.Text;
-            ClientForm form = (ClientForm)this.Owner;
-            form.Pets.Add(pet);
-            this.Close();
-        }
-
         private void PetForm_Load(object sender, EventArgs e)
         {
-            name.Text = Pet.Name;
-            species.Text = Pet.Species;
-            breed.Text = Pet.Breed;
-            colorMarking.Text = Pet.ColorMarking;
-            age.Text = Pet.Age.ToString();
-            if (Pet.Sex == "Male")
+            if(Pet != null)
             {
-                male.Checked = true;
+                name.Text = Pet.Name;
+                species.Text = Pet.Species;
+                breed.Text = Pet.Breed;
+                colorMarking.Text = Pet.ColorMarking;
+                age.Text = Pet.Age.ToString();
+                if (Pet.Sex == "Male")
+                {
+                    male.Checked = true;
+                }
+                else
+                {
+                    female.Checked = true;
+                }
+                notes.Text = Pet.Notes;
+            }
+        }
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            Save();
+            this.Close();
+        }
+        private void consultButton_Click(object sender, EventArgs e)
+        {
+            VisitForm visit = new VisitForm();
+            if(Visit != null)
+            {
+                visit.Visit = Visit;
+            }
+            visit.ShowDialog(this);
+            if(visit.Visit != null)
+            {
+                Visit = new VisitModel();
+                Visit = visit.Visit;
+                Bill = visit.Bill;
+                MessageBox.Show($"{Visit.Weight} {Visit.Temperature}");
+                MessageBox.Show("Meron");
             }
             else
             {
-                female.Checked = true;
+                MessageBox.Show("wala");
             }
-            notes.Text = Pet.Notes;
+            //TODO - IF Visit is done,save and close else, not close.
+            //this.Close();
         }
     }
 }

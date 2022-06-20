@@ -59,14 +59,14 @@
             // 
             this.deleteToolStripMenuItem.Enabled = false;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // addPetToolStripMenuItem
             // 
             this.addPetToolStripMenuItem.Name = "addPetToolStripMenuItem";
-            this.addPetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addPetToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.addPetToolStripMenuItem.Text = "New";
             this.addPetToolStripMenuItem.Click += new System.EventHandler(this.addPetToolStripMenuItem_Click);
             // 
@@ -152,13 +152,13 @@
             this.editPetToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.petContextMenu.Name = "petContextMenu";
-            this.petContextMenu.Size = new System.Drawing.Size(181, 92);
+            this.petContextMenu.Size = new System.Drawing.Size(108, 70);
             // 
             // editPetToolStripMenuItem
             // 
             this.editPetToolStripMenuItem.Enabled = false;
             this.editPetToolStripMenuItem.Name = "editPetToolStripMenuItem";
-            this.editPetToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editPetToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editPetToolStripMenuItem.Text = "Edit";
             this.editPetToolStripMenuItem.Click += new System.EventHandler(this.editPetToolStripMenuItem_Click);
             // 
@@ -178,15 +178,15 @@
             // 
             // clientPicture
             // 
-            this.clientPicture.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("clientPicture.BackgroundImage")));
-            this.clientPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.clientPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.clientPicture.ErrorImage = null;
+            this.clientPicture.Image = ((System.Drawing.Image)(resources.GetObject("clientPicture.Image")));
             this.clientPicture.ImageLocation = "";
             this.clientPicture.InitialImage = null;
             this.clientPicture.Location = new System.Drawing.Point(12, 84);
             this.clientPicture.Name = "clientPicture";
             this.clientPicture.Size = new System.Drawing.Size(128, 128);
-            this.clientPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.clientPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.clientPicture.TabIndex = 8;
             this.clientPicture.TabStop = false;
             // 
@@ -234,6 +234,7 @@
             this.saveButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.saveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // clientTitle
             // 
@@ -294,6 +295,7 @@
             this.Name = "ClientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Client\'s Information";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClientForm_FormClosing);
             this.petContextMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.clientUpload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientPicture)).EndInit();

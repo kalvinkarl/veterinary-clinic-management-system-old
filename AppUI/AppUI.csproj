@@ -84,12 +84,6 @@
     <Compile Include="VisitForm.Designer.cs">
       <DependentUpon>VisitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VisitsAddForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VisitsAddForm.Designer.cs">
-      <DependentUpon>VisitsAddForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="VisitsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,9 +117,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VisitsAddForm.resx">
-      <DependentUpon>VisitsAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VisitsForm.resx">
       <DependentUpon>VisitsForm.cs</DependentUpon>

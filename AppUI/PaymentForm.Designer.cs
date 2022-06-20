@@ -41,21 +41,21 @@
             this.petSex = new System.Windows.Forms.Label();
             this.div3 = new System.Windows.Forms.Label();
             this.petName = new System.Windows.Forms.Label();
-            this.change = new System.Windows.Forms.TextBox();
+            this.balance = new System.Windows.Forms.TextBox();
             this.petData5 = new System.Windows.Forms.Label();
             this.petData4 = new System.Windows.Forms.Label();
             this.petData2 = new System.Windows.Forms.Label();
             this.petData1 = new System.Windows.Forms.Label();
             this.petData3 = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnDone = new System.Windows.Forms.Button();
             this.printBills = new System.Drawing.Printing.PrintDocument();
             this.previewBills = new System.Windows.Forms.PrintPreviewDialog();
-            this.oldBal = new System.Windows.Forms.TextBox();
+            this.oldBalance = new System.Windows.Forms.TextBox();
             this.paid = new System.Windows.Forms.TextBox();
             this.due = new System.Windows.Forms.TextBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.paidLabel = new System.Windows.Forms.Label();
+            this.dueLabel = new System.Windows.Forms.Label();
+            this.balanceLabel = new System.Windows.Forms.Label();
             this.div2 = new System.Windows.Forms.Label();
             this.paymentTitle = new System.Windows.Forms.Label();
             this.div4 = new System.Windows.Forms.Label();
@@ -85,7 +85,8 @@
             this.clientLabel = new System.Windows.Forms.Label();
             this.petTable = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.oldBalanceLabel = new System.Windows.Forms.Label();
+            this.Title = new System.Windows.Forms.Label();
             this.invoicePanel.SuspendLayout();
             this.petHead.SuspendLayout();
             this.payRTable.SuspendLayout();
@@ -257,17 +258,17 @@
             this.petName.TabIndex = 20;
             this.petName.Text = "Pet name: Blaki";
             // 
-            // change
+            // balance
             // 
-            this.change.BackColor = System.Drawing.Color.White;
-            this.change.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.change.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.change.Location = new System.Drawing.Point(121, 111);
-            this.change.Name = "change";
-            this.change.ReadOnly = true;
-            this.change.Size = new System.Drawing.Size(157, 22);
-            this.change.TabIndex = 18;
-            this.change.Text = "0";
+            this.balance.BackColor = System.Drawing.Color.White;
+            this.balance.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.balance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.balance.Location = new System.Drawing.Point(112, 149);
+            this.balance.Name = "balance";
+            this.balance.ReadOnly = true;
+            this.balance.Size = new System.Drawing.Size(157, 22);
+            this.balance.TabIndex = 18;
+            this.balance.Text = "0";
             // 
             // petData5
             // 
@@ -325,16 +326,17 @@
             this.petData3.TabIndex = 12;
             this.petData3.Text = "Vaccined 3011";
             // 
-            // btnPrint
+            // btnDone
             // 
-            this.btnPrint.Location = new System.Drawing.Point(187, 147);
-            this.btnPrint.Margin = new System.Windows.Forms.Padding(4);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(91, 34);
-            this.btnPrint.TabIndex = 11;
-            this.btnPrint.Text = "print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnDone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDone.Location = new System.Drawing.Point(222, 187);
+            this.btnDone.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(91, 34);
+            this.btnDone.TabIndex = 11;
+            this.btnDone.Text = "print";
+            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // printBills
             // 
@@ -350,58 +352,64 @@
             this.previewBills.Name = "previewBills";
             this.previewBills.Visible = false;
             // 
-            // oldBal
+            // oldBalance
             // 
-            this.oldBal.BackColor = System.Drawing.Color.White;
-            this.oldBal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.oldBal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.oldBal.Location = new System.Drawing.Point(121, 10);
-            this.oldBal.Name = "oldBal";
-            this.oldBal.ReadOnly = true;
-            this.oldBal.Size = new System.Drawing.Size(157, 22);
-            this.oldBal.TabIndex = 17;
-            this.oldBal.Text = "0";
+            this.oldBalance.BackColor = System.Drawing.Color.White;
+            this.oldBalance.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.oldBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.oldBalance.Location = new System.Drawing.Point(112, 48);
+            this.oldBalance.Name = "oldBalance";
+            this.oldBalance.ReadOnly = true;
+            this.oldBalance.Size = new System.Drawing.Size(157, 22);
+            this.oldBalance.TabIndex = 17;
+            this.oldBalance.Text = "0";
             // 
             // paid
             // 
-            this.paid.Location = new System.Drawing.Point(121, 76);
+            this.paid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.paid.Location = new System.Drawing.Point(112, 114);
             this.paid.Name = "paid";
-            this.paid.Size = new System.Drawing.Size(157, 29);
+            this.paid.Size = new System.Drawing.Size(202, 29);
             this.paid.TabIndex = 15;
+            this.paid.Text = "0";
             // 
             // due
             // 
-            this.due.Location = new System.Drawing.Point(121, 41);
+            this.due.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.due.Location = new System.Drawing.Point(112, 79);
             this.due.Name = "due";
-            this.due.Size = new System.Drawing.Size(157, 29);
+            this.due.Size = new System.Drawing.Size(202, 29);
             this.due.TabIndex = 14;
+            this.due.Text = "0";
             // 
-            // label39
+            // paidLabel
             // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(12, 79);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(102, 19);
-            this.label39.TabIndex = 13;
-            this.label39.Text = "Amount paid:";
+            this.paidLabel.AutoSize = true;
+            this.paidLabel.Location = new System.Drawing.Point(3, 117);
+            this.paidLabel.Name = "paidLabel";
+            this.paidLabel.Size = new System.Drawing.Size(102, 19);
+            this.paidLabel.TabIndex = 13;
+            this.paidLabel.Text = "Amount paid:";
             // 
-            // label38
+            // dueLabel
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(12, 44);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(103, 19);
-            this.label38.TabIndex = 12;
-            this.label38.Text = "Payment due:";
+            this.dueLabel.AutoSize = true;
+            this.dueLabel.Location = new System.Drawing.Point(3, 82);
+            this.dueLabel.Name = "dueLabel";
+            this.dueLabel.Size = new System.Drawing.Size(103, 19);
+            this.dueLabel.TabIndex = 12;
+            this.dueLabel.Text = "Payment due:";
             // 
-            // label10
+            // balanceLabel
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(20, 114);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 19);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Balance due:";
+            this.balanceLabel.AutoSize = true;
+            this.balanceLabel.Location = new System.Drawing.Point(11, 152);
+            this.balanceLabel.Name = "balanceLabel";
+            this.balanceLabel.Size = new System.Drawing.Size(95, 19);
+            this.balanceLabel.TabIndex = 19;
+            this.balanceLabel.Text = "Balance due:";
             // 
             // div2
             // 
@@ -824,33 +832,46 @@
             this.label3.Text = "―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label9
+            // oldBalanceLabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 19);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Old balance:";
+            this.oldBalanceLabel.AutoSize = true;
+            this.oldBalanceLabel.Location = new System.Drawing.Point(12, 48);
+            this.oldBalanceLabel.Name = "oldBalanceLabel";
+            this.oldBalanceLabel.Size = new System.Drawing.Size(94, 19);
+            this.oldBalanceLabel.TabIndex = 16;
+            this.oldBalanceLabel.Text = "Old balance:";
+            // 
+            // Title
+            // 
+            this.Title.BackColor = System.Drawing.Color.Bisque;
+            this.Title.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Title.Location = new System.Drawing.Point(0, 0);
+            this.Title.Name = "Title";
+            this.Title.Size = new System.Drawing.Size(326, 30);
+            this.Title.TabIndex = 20;
+            this.Title.Text = "Invoice";
+            this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(299, 212);
-            this.Controls.Add(this.change);
-            this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.oldBal);
+            this.ClientSize = new System.Drawing.Size(326, 234);
+            this.Controls.Add(this.Title);
+            this.Controls.Add(this.balance);
+            this.Controls.Add(this.btnDone);
+            this.Controls.Add(this.oldBalance);
             this.Controls.Add(this.paid);
             this.Controls.Add(this.due);
-            this.Controls.Add(this.label39);
-            this.Controls.Add(this.label38);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.paidLabel);
+            this.Controls.Add(this.dueLabel);
+            this.Controls.Add(this.balanceLabel);
             this.Controls.Add(this.printBillsPanel);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.oldBalanceLabel);
             this.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(232, 273);
             this.Name = "PaymentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Payment";
@@ -889,21 +910,21 @@
         private System.Windows.Forms.Label petSex;
         private System.Windows.Forms.Label div3;
         private System.Windows.Forms.Label petName;
-        private System.Windows.Forms.TextBox change;
+        private System.Windows.Forms.TextBox balance;
         private System.Windows.Forms.Label petData5;
         private System.Windows.Forms.Label petData4;
         private System.Windows.Forms.Label petData2;
         private System.Windows.Forms.Label petData1;
         private System.Windows.Forms.Label petData3;
-        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnDone;
         private System.Drawing.Printing.PrintDocument printBills;
         private System.Windows.Forms.PrintPreviewDialog previewBills;
-        private System.Windows.Forms.TextBox oldBal;
+        private System.Windows.Forms.TextBox oldBalance;
         private System.Windows.Forms.TextBox paid;
         private System.Windows.Forms.TextBox due;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label paidLabel;
+        private System.Windows.Forms.Label dueLabel;
+        private System.Windows.Forms.Label balanceLabel;
         private System.Windows.Forms.Label div2;
         private System.Windows.Forms.Label paymentTitle;
         private System.Windows.Forms.Label div4;
@@ -933,6 +954,7 @@
         private System.Windows.Forms.Label clientLabel;
         private System.Windows.Forms.TableLayoutPanel petTable;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label oldBalanceLabel;
+        private System.Windows.Forms.Label Title;
     }
 }

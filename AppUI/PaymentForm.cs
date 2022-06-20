@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,9 @@ namespace AppUI
 {
     public partial class PaymentForm : Form
     {
-        private Bitmap ImgMemmory;
+        public BillModel Bill { get; set; }
+        public bool PayLater { get; set; }
+        private Bitmap ImgMemmory { get; set; }
         public PaymentForm()
         {
             InitializeComponent();
@@ -29,7 +32,6 @@ namespace AppUI
             ((Form)previewBills).Size = new Size(700, 900);
             ((Form)previewBills).StartPosition = FormStartPosition.CenterParent;
             previewBills.ShowDialog();
-
         }
         private void printBills_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -39,14 +41,39 @@ namespace AppUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            oldBal.ForeColor = Color.Black;
+            oldBalance.ForeColor = Color.Black;
             printBillsPanel.Location = new Point(-780, 0);
             due.Select();
+            if (PayLater)
+            {
+                paid.Visible = false;
+                paidLabel.Visible = false;
+                balance.Visible = false;
+                balanceLabel.Visible = false;
+                btnDone.Top = btnDone.Top - 60;
+                this.MinimumSize = new Size(232, 213);
+                this.Size = new Size(342, 213);
+                btnDone.Text = "Save";
+            }
         }
 
-        private void btnPrint_Click(object sender, EventArgs e)
+        private void btnDone_Click(object sender, EventArgs e)
         {
-            PrintPanel(printBillsPanel);
+            Bill = new BillModel();
+            Bill.InvoiceNumber = 987654321;
+            Bill.TotalAmount = decimal.Parse(due.Text);
+            Bill.Date = DateTime.Now;
+            if (PayLater)
+            {
+                Bill.PaidAmount = 0;
+            }
+            else
+            {
+                Bill.PaidAmount = decimal.Parse(paid.Text);
+                PrintPanel(printBillsPanel);
+            }
+            this.Close();
+
         }
     }
 }

@@ -80,12 +80,12 @@
             this.petLayoutButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.petLayoutButtons.Controls.Add(this.saveButton, 0, 0);
             this.petLayoutButtons.Controls.Add(this.consultButton, 0, 1);
-            this.petLayoutButtons.Location = new System.Drawing.Point(672, 84);
+            this.petLayoutButtons.Location = new System.Drawing.Point(500, 84);
             this.petLayoutButtons.Name = "petLayoutButtons";
             this.petLayoutButtons.RowCount = 2;
             this.petLayoutButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.petLayoutButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.petLayoutButtons.Size = new System.Drawing.Size(98, 437);
+            this.petLayoutButtons.Size = new System.Drawing.Size(98, 353);
             this.petLayoutButtons.TabIndex = 1;
             // 
             // saveButton
@@ -100,7 +100,7 @@
             this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
             this.saveButton.Location = new System.Drawing.Point(3, 3);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(92, 212);
+            this.saveButton.Size = new System.Drawing.Size(92, 170);
             this.saveButton.TabIndex = 9;
             this.saveButton.Text = "Save";
             this.saveButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -118,14 +118,15 @@
             this.consultButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.consultButton.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.consultButton.Image = ((System.Drawing.Image)(resources.GetObject("consultButton.Image")));
-            this.consultButton.Location = new System.Drawing.Point(3, 221);
+            this.consultButton.Location = new System.Drawing.Point(3, 179);
             this.consultButton.Name = "consultButton";
-            this.consultButton.Size = new System.Drawing.Size(92, 213);
+            this.consultButton.Size = new System.Drawing.Size(92, 171);
             this.consultButton.TabIndex = 10;
             this.consultButton.Text = "Consult";
             this.consultButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.consultButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.consultButton.UseVisualStyleBackColor = false;
+            this.consultButton.Click += new System.EventHandler(this.consultButton_Click);
             // 
             // templatesContextMenu
             // 
@@ -138,7 +139,7 @@
             this.notes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.notes.Location = new System.Drawing.Point(123, 203);
             this.notes.Name = "notes";
-            this.notes.Size = new System.Drawing.Size(529, 231);
+            this.notes.Size = new System.Drawing.Size(357, 147);
             this.notes.TabIndex = 1;
             this.notes.Text = "";
             // 
@@ -146,7 +147,7 @@
             // 
             this.female.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.female.AutoSize = true;
-            this.female.Location = new System.Drawing.Point(575, 168);
+            this.female.Location = new System.Drawing.Point(403, 168);
             this.female.Name = "female";
             this.female.Size = new System.Drawing.Size(77, 23);
             this.female.TabIndex = 7;
@@ -182,7 +183,7 @@
             // 
             this.male.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.male.AutoSize = true;
-            this.male.Location = new System.Drawing.Point(508, 168);
+            this.male.Location = new System.Drawing.Point(336, 168);
             this.male.Name = "male";
             this.male.Size = new System.Drawing.Size(61, 23);
             this.male.TabIndex = 6;
@@ -246,7 +247,7 @@
             this.petLayoutPanel.SetColumnSpan(this.name, 5);
             this.name.Location = new System.Drawing.Point(123, 5);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(529, 29);
+            this.name.Size = new System.Drawing.Size(357, 29);
             this.name.TabIndex = 1;
             // 
             // species
@@ -255,7 +256,7 @@
             this.petLayoutPanel.SetColumnSpan(this.species, 5);
             this.species.Location = new System.Drawing.Point(123, 45);
             this.species.Name = "species";
-            this.species.Size = new System.Drawing.Size(529, 29);
+            this.species.Size = new System.Drawing.Size(357, 29);
             this.species.TabIndex = 2;
             // 
             // breed
@@ -264,7 +265,7 @@
             this.petLayoutPanel.SetColumnSpan(this.breed, 5);
             this.breed.Location = new System.Drawing.Point(123, 85);
             this.breed.Name = "breed";
-            this.breed.Size = new System.Drawing.Size(529, 29);
+            this.breed.Size = new System.Drawing.Size(357, 29);
             this.breed.TabIndex = 3;
             // 
             // colorMarking
@@ -273,14 +274,14 @@
             this.petLayoutPanel.SetColumnSpan(this.colorMarking, 5);
             this.colorMarking.Location = new System.Drawing.Point(123, 125);
             this.colorMarking.Name = "colorMarking";
-            this.colorMarking.Size = new System.Drawing.Size(529, 29);
+            this.colorMarking.Size = new System.Drawing.Size(357, 29);
             this.colorMarking.TabIndex = 4;
             // 
             // notesLabel
             // 
             this.notesLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.notesLabel.AutoSize = true;
-            this.notesLabel.Location = new System.Drawing.Point(64, 309);
+            this.notesLabel.Location = new System.Drawing.Point(64, 267);
             this.notesLabel.Name = "notesLabel";
             this.notesLabel.Size = new System.Drawing.Size(53, 19);
             this.notesLabel.TabIndex = 0;
@@ -294,7 +295,7 @@
             this.petTitle.Font = new System.Drawing.Font("Gadugi", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.petTitle.Location = new System.Drawing.Point(-1, 0);
             this.petTitle.Name = "petTitle";
-            this.petTitle.Size = new System.Drawing.Size(784, 70);
+            this.petTitle.Size = new System.Drawing.Size(612, 70);
             this.petTitle.TabIndex = 2;
             this.petTitle.Text = "Patient\'s information";
             this.petTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -336,14 +337,14 @@
             this.petLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.petLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.petLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.petLayoutPanel.Size = new System.Drawing.Size(655, 437);
+            this.petLayoutPanel.Size = new System.Drawing.Size(483, 353);
             this.petLayoutPanel.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(466, 170);
+            this.label1.Location = new System.Drawing.Point(294, 170);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 19);
             this.label1.TabIndex = 0;
@@ -354,14 +355,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(783, 534);
+            this.ClientSize = new System.Drawing.Size(611, 450);
             this.Controls.Add(this.petLayoutButtons);
             this.Controls.Add(this.petTitle);
             this.Controls.Add(this.petLayoutPanel);
             this.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(544, 371);
+            this.MinimumSize = new System.Drawing.Size(603, 371);
             this.Name = "PetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PetForm";

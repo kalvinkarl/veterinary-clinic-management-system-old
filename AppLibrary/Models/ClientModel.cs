@@ -13,6 +13,10 @@ namespace AppLibrary.Models
         /// </summary>
         public int ID { get; set; }
         /// <summary>
+        /// Represents the picture of the client
+        /// </summary>
+        public byte[] Image { get; set; }
+        /// <summary>
         /// Represents the first name of the costumer
         /// </summary>
         public string FirstName { get; set; }
@@ -31,7 +35,7 @@ namespace AppLibrary.Models
         /// <summary>
         /// Defines the pets of the costumer
         /// </summary>
-        public string DateRegistered { get; set; }
+        public DateTime DateRegistered { get; set; }
         /// <summary>
         /// Returns the full name of client
         /// </summary>
