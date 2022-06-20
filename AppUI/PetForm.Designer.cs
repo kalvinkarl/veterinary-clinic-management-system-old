@@ -366,6 +366,7 @@
             this.Name = "PetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PetForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PetForm_FormClosing);
             this.Load += new System.EventHandler(this.PetForm_Load);
             this.petLayoutButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.age)).EndInit();

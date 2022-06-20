@@ -13,7 +13,7 @@ namespace AppUI
 {
     public partial class VisitForm : Form
     {
-        public BillModel Bill { get; set; } = new BillModel();
+        public BillModel Bill { get; set; }
         public VisitModel Visit { get; set; }
         public VisitForm()
         {
@@ -49,6 +49,10 @@ namespace AppUI
             {
                 PaymentForm paymentForm = new PaymentForm();
                 paymentForm.PayLater = later;
+                if(Bill != null)
+                {
+                    paymentForm.Bill = Bill;
+                }
                 paymentForm.ShowDialog(this);
                 if (paymentForm.Bill != null)
                 {
@@ -64,6 +68,8 @@ namespace AppUI
                     {
                         Visit.NextVisit = DateTime.Parse($"{DateTime.Parse(appDate.Text).ToString("yyyy-MM-dd")} {DateTime.Parse($"{appHour.Value}:{appMinute.Value} {ampm.Text}").ToString("HH:mm")}");
                     }
+                    Bill = new BillModel();
+                    Bill=paymentForm.Bill;
                     this.Close();
                     //MessageBox.Show(DateTime.Parse($"{DateTime.Parse(appDate.Text).ToString("yyyy-MM-dd")} {DateTime.Parse($"{appHour.Value}:{appMinute.Value} {ampm.Text}").ToString("HH:mm")}").ToString());
                 }

@@ -15,8 +15,10 @@ namespace AppUI
 {
     public partial class ClientForm : Form
     {
-        public List<PetModel> Pets { get; set; }
+        public BillModel Bill { get; set; } = new BillModel();
+        public VisitModel Visit { get; set; } = new VisitModel();
         public ClientModel Client { get; set; } = new ClientModel();
+        public List<PetModel> Pets { get; set; }
         public ClientForm()
         {
             InitializeComponent();
@@ -55,11 +57,11 @@ namespace AppUI
             {
                 if(petList.Items.Count > 0)
                 {
+                    FillNewClient();
                     foreach (PetModel pet in Pets)
                     {
-                        FillNewClient();
-                        GlobalConfig.Connection.UpdateClient(Client);
-                        GlobalConfig.Connection.CreatePet(pet);
+                        //GlobalConfig.Connection.UpdateClient(Client);
+                        //GlobalConfig.Connection.CreatePet(pet);
                     }
                     MessageBox.Show("Success!");
                 }

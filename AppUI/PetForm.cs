@@ -14,6 +14,7 @@ namespace AppUI
 {
     public partial class PetForm : Form
     {
+        private CloseReason buttonClose;
         public BillModel Bill { get; set; } = new BillModel();
         public VisitModel Visit { get; set; }
         public PetModel Pet { get; set; }
@@ -101,7 +102,7 @@ namespace AppUI
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if(ValidateForm())
+            if (ValidateForm())
             {
                 Save();
                 this.Close();
@@ -113,6 +114,7 @@ namespace AppUI
             if(Visit != null)
             {
                 visit.Visit = Visit;
+                visit.Bill = Bill;
             }
             visit.ShowDialog(this);
             if(visit.Visit != null)
@@ -120,6 +122,19 @@ namespace AppUI
                 Visit = new VisitModel();
                 Visit = visit.Visit;
                 Bill = visit.Bill;
+            }
+        }
+
+        private void PetForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                MessageBox.Show("user");
+                if (Visit != null)
+                {
+                    var window = MessageBox.Show("Are you sure to end this session? all existing records will be deleted", "Are you sure?", MessageBoxButtons.YesNo);
+                    e.Cancel = (window == DialogResult.No);
+                }
             }
         }
     }

@@ -55,6 +55,11 @@ namespace AppUI
                 this.Size = new Size(342, 213);
                 btnDone.Text = "Save";
             }
+            if (Bill != null)
+            {
+                due.Text = Bill.TotalAmount.ToString();
+                paid.Text = Bill.PaidAmount.ToString();
+            }
         }
 
         private void btnDone_Click(object sender, EventArgs e)
