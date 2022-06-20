@@ -41,7 +41,7 @@ namespace AppUI
                 {
                     Client = new ClientModel();
                     FillClient();
-                    newPetForm.Pet.Owner = GlobalConfig.Connection.CreateClient(Client);
+                    newPetForm.Pet.Owner = Client;
                 }
             }
             else
