@@ -61,11 +61,12 @@ namespace AppUI
                     FillNewClient();
                     foreach (PetModel pet in Pets)
                     {
-                        Saved = true;
                         //GlobalConfig.Connection.UpdateClient(Client);
                         //GlobalConfig.Connection.CreatePet(pet);
+                        Saved = true;
                     }
                     MessageBox.Show("Success!");
+                    this.Close();
                 }
                 else
                 {
