@@ -54,8 +54,8 @@ namespace AppUI
                 {
                     Bill = paymentForm.Bill;
                     Visit = new VisitModel();
-                    Visit.Weight = $"{weight.Text} {weightUnit.Text}";
-                    Visit.Temperature = $"{temp.Text} {tempUnit.Text}";
+                    Visit.Weight = $"{weight.Text} {weightUnit.SelectedIndex}";
+                    Visit.Temperature = $"{temp.Text} {tempUnit.SelectedIndex}";
                     Visit.ComplaintDiagnosis = complaintDiagnosis.Text;
                     Visit.Treatment = treatment.Text;
                     Visit.Notes = notes.Text;
@@ -101,15 +101,18 @@ namespace AppUI
                 string[] w = Visit.Weight.Split(' ');
                 string[] t = Visit.Temperature.Split(' ');
                 weight.Value = decimal.Parse(w[0]);
-                weightUnit.Text = w[1];
+                weightUnit.SelectedIndex = int.Parse(w[1]);
                 temp.Value = decimal.Parse(t[0]);
-                tempUnit.Text = t[1];
+                tempUnit.SelectedIndex = int.Parse(t[1]);
                 complaintDiagnosis.Text = Visit.ComplaintDiagnosis;
                 treatment.Text = Visit.Treatment;
                 notes.Text = Visit.Notes;
             }
-            tempUnit.SelectedIndex = 0;
-            weightUnit.SelectedIndex = 0;
+            else
+            {
+                tempUnit.SelectedIndex = 0;
+                weightUnit.SelectedIndex = 0;
+            }
         }
     }
 }
