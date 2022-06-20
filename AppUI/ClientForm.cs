@@ -15,13 +15,13 @@ namespace AppUI
 {
     public partial class ClientForm : Form
     {
-        public List<PetModel> Pets { get; set; } = new List<PetModel>();
-        public ClientModel Client { get; set; }
+        public List<PetModel> Pets { get; set; }
+        public ClientModel Client { get; set; } = new ClientModel();
         public ClientForm()
         {
             InitializeComponent();
         }
-        private void FillClient()
+        private void FillNewClient()
         {
             MemoryStream stream = new MemoryStream();
             clientPicture.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -31,23 +31,21 @@ namespace AppUI
             Client.Address = address.Text;
             Client.Cellphone = cellphone.Text;
         }
+        private void Reload()
+        {
+            petList.DataSource = null;
+            petList.DataSource = Pets;
+            petList.DisplayMember = "Name";
+        }
         private void OpenPetForm()
         {
+            FillNewClient();
             PetForm newPetForm = new PetForm();
-            if (Client == null)
+            newPetForm.ShowDialog(this);
+            if(newPetForm.Pet != null)
             {
-                newPetForm.ShowDialog(this);
-                if (newPetForm.Pet != null)
-                {
-                    Client = new ClientModel();
-                    FillClient();
-                    newPetForm.Pet.Owner = Client;
-                }
-            }
-            else
-            {
-                newPetForm.Pet.Owner = Client;
-                newPetForm.ShowDialog(this);
+                Pets = new List<PetModel>();
+                Pets.Add(newPetForm.Pet);
             }
             Reload();
         }
@@ -59,7 +57,7 @@ namespace AppUI
                 {
                     foreach (PetModel pet in Pets)
                     {
-                        FillClient();
+                        FillNewClient();
                         GlobalConfig.Connection.UpdateClient(Client);
                         GlobalConfig.Connection.CreatePet(pet);
                     }
@@ -74,12 +72,6 @@ namespace AppUI
             {
                 MessageBox.Show("Cannot proceed with empty field");
             }
-        }
-        private void Reload()
-        {
-            petList.DataSource = null;
-            petList.DataSource = Pets;
-            petList.DisplayMember = "Name";
         }
         private void clientUpload_Click(object sender, EventArgs e)
         {
@@ -171,7 +163,7 @@ namespace AppUI
 
         private void ClientForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Client != null)
+            if(Pets != null)
             {
                 var window = MessageBox.Show("Are you sure to end this session? all existing records will be deleted", "Are you sure?", MessageBoxButtons.YesNo);
                 e.Cancel = (window == DialogResult.No);

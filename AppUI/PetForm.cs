@@ -21,6 +21,15 @@ namespace AppUI
         {
             InitializeComponent();
         }
+        private bool ValidateForm()
+        {
+            if(name.Text == string.Empty)
+            {
+                MessageBox.Show("invalid");
+                return false;
+            }
+            return true;
+        }
         private void Save()
         {
             Pet = new PetModel();
@@ -31,8 +40,6 @@ namespace AppUI
             Pet.Age = int.Parse(age.Text);
             Pet.Sex = getSex();
             Pet.Notes = notes.Text;
-            ClientForm form = (ClientForm)this.Owner;
-            form.Pets.Add(Pet);
         }
         private string getSex()
         {
@@ -69,8 +76,11 @@ namespace AppUI
         }
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Save();
-            this.Close();
+            if(ValidateForm())
+            {
+                Save();
+                this.Close();
+            }
         }
         private void consultButton_Click(object sender, EventArgs e)
         {
