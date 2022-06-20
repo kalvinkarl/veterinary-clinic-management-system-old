@@ -13,6 +13,8 @@ namespace AppUI
 {
     public partial class VisitForm : Form
     {
+        private Dictionary<string, int> WeightUnits { get; set; } = new Dictionary<string, int> { ["kg"] = 0, ["hg"] = 1, ["dag"] = 2, ["g"] = 3 };
+        private Dictionary<string, int> TempUnits { get; set; } = new Dictionary<string, int> { ["°C"] = 0, ["°F"] = 1 };
         public BillModel Bill { get; set; }
         public VisitModel Visit { get; set; }
         public VisitForm()
@@ -58,8 +60,8 @@ namespace AppUI
                 {
                     Bill = paymentForm.Bill;
                     Visit = new VisitModel();
-                    Visit.Weight = $"{weight.Text} {weightUnit.SelectedIndex}";
-                    Visit.Temperature = $"{temp.Text} {tempUnit.SelectedIndex}";
+                    Visit.Weight = $"{weight.Text} {weightUnit.Text}";
+                    Visit.Temperature = $"{temp.Text} {tempUnit.Text}";
                     Visit.ComplaintDiagnosis = complaintDiagnosis.Text;
                     Visit.Treatment = treatment.Text;
                     Visit.Notes = notes.Text;
@@ -107,9 +109,9 @@ namespace AppUI
                 string[] w = Visit.Weight.Split(' ');
                 string[] t = Visit.Temperature.Split(' ');
                 weight.Value = decimal.Parse(w[0]);
-                weightUnit.SelectedIndex = int.Parse(w[1]);
+                weightUnit.SelectedIndex = WeightUnits[w[1]];
                 temp.Value = decimal.Parse(t[0]);
-                tempUnit.SelectedIndex = int.Parse(t[1]);
+                tempUnit.SelectedIndex = TempUnits[t[1]];
                 complaintDiagnosis.Text = Visit.ComplaintDiagnosis;
                 treatment.Text = Visit.Treatment;
                 notes.Text = Visit.Notes;

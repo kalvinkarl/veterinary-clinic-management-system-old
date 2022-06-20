@@ -15,7 +15,7 @@ namespace AppUI
     public partial class PetForm : Form
     {
         private bool Saved { get; set; }
-        public BillModel Bill { get; set; } = new BillModel();
+        public BillModel Bill { get; set; }
         public VisitModel Visit { get; set; }
         public PetModel Pet { get; set; }
         public PetForm()
@@ -24,22 +24,22 @@ namespace AppUI
         }
         private bool ValidateForm()
         {
-            if (name.Text == String.Empty)
+            if (name.Text == string.Empty)
             {
                 MessageBox.Show("Invalid name");
                 return false;
             }
-            else if (species.Text == String.Empty)
+            else if (species.Text == string.Empty)
             {
                 MessageBox.Show("Invalid species");
                 return false;
             }
-            else if (breed.Text == String.Empty)
+            else if (breed.Text == string.Empty)
             {
                 MessageBox.Show("Invalid breed");
                 return false;
             }
-            else if (colorMarking.Text == String.Empty)
+            else if (colorMarking.Text == string.Empty)
             {
                 MessageBox.Show("Invalid color marking");
                 return false;
@@ -122,6 +122,7 @@ namespace AppUI
             {
                 Visit = new VisitModel();
                 Visit = visit.Visit;
+                Bill = new BillModel();
                 Bill = visit.Bill;
             }
         }
