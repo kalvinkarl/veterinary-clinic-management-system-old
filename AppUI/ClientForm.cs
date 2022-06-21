@@ -22,16 +22,6 @@ namespace AppUI
         {
             InitializeComponent();
         }
-        private void FillNewClient()
-        {
-            MemoryStream stream = new MemoryStream();
-            clientPicture.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
-            Client.Image = stream.ToArray();
-            Client.FirstName = firstName.Text;
-            Client.LastName = lastName.Text;
-            Client.Address = address.Text;
-            Client.Cellphone = cellphone.Text;
-        }
         private void Reload()
         {
             petList.DataSource = null;
@@ -40,7 +30,6 @@ namespace AppUI
         }
         private void OpenPetForm()
         {
-            FillNewClient();
             PetForm newPetForm = new PetForm();
             newPetForm.ShowDialog(this);
             if(newPetForm.Saved)
@@ -56,7 +45,13 @@ namespace AppUI
             {
                 if(petList.Items.Count > 0)
                 {
-                    FillNewClient();
+                    MemoryStream stream = new MemoryStream();
+                    clientPicture.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    Client.Image = stream.ToArray();
+                    Client.FirstName = firstName.Text;
+                    Client.LastName = lastName.Text;
+                    Client.Address = address.Text;
+                    Client.Cellphone = cellphone.Text;
                     foreach (PetModel pet in Pets)
                     {
                         //GlobalConfig.Connection.UpdateClient(Client);

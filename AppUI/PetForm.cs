@@ -20,6 +20,30 @@ namespace AppUI
         {
             InitializeComponent();
         }
+        public static int getEditVisitFromDialog(List<VisitModel> visits)
+        {
+            Form form = new Form();
+            form.Font = new Font("Gadugi", 12);
+            form.Width = 220;
+            form.Height = 100;
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.FormBorderStyle = FormBorderStyle.None;
+            Label label = new Label() { Left = 10, Top = 5, Text = "Select visit date" };
+            ComboBox comboBox = new ComboBox() { Top = 30, Left = 10, Width = 200 };
+            comboBox.Items.Add("[Select]");
+            foreach (VisitModel visit in visits)
+            {
+                comboBox.Items.Add(visit.ComplaintDiagnosis);
+            }
+            comboBox.SelectedIndex = 0;
+            Button okButton = new Button() { Top = 65, Left = 10, Width = 200, Text = "Ok", Height = 27 };
+            okButton.Click += (sender, e) => { form.Close(); };
+            form.Controls.Add(label);
+            form.Controls.Add(comboBox);
+            form.Controls.Add(okButton);
+            form.ShowDialog();
+            return comboBox.SelectedIndex;
+        }
         private bool ValidateForm()
         {
             if (name.Text == string.Empty)
@@ -76,7 +100,6 @@ namespace AppUI
                 breed.Text = Pet.Breed;
                 colorMarking.Text = Pet.ColorMarking;
                 age.Text = Pet.Age.ToString();
-                //TODO - add visit
                 if (Pet.Sex == "Male")
                 {
                     male.Checked = true;
@@ -92,7 +115,10 @@ namespace AppUI
         {
             if (ValidateForm())
             {
-                Pet = new PetModel();
+                if(Pet is null)
+                {
+                    Pet = new PetModel();
+                }
                 Pet.Name = name.Text;
                 Pet.Species = species.Text;
                 Pet.Breed = breed.Text;
@@ -100,34 +126,9 @@ namespace AppUI
                 Pet.Age = int.Parse(age.Text);
                 Pet.Sex = getSex();
                 Pet.Notes = notes.Text;
-                //TODO - add visits
                 Saved = true;
                 this.Close();
             }
-        }
-        public static int getVisitFromDialog(List<VisitModel> visits)
-        {
-            Form form = new Form();
-            form.Font = new Font("Gadugi", 12);
-            form.Width = 220;
-            form.Height = 100;
-            form.StartPosition = FormStartPosition.CenterParent;
-            form.FormBorderStyle = FormBorderStyle.None;
-            Label label = new Label() { Left = 10, Top = 5, Text = "Select visit date" };
-            ComboBox comboBox = new ComboBox() { Top = 30, Left = 10, Width = 200 };
-            comboBox.Items.Add("[Select]");
-            foreach(VisitModel visit in visits)
-            {
-                comboBox.Items.Add(visit.ComplaintDiagnosis);
-            }
-            comboBox.SelectedIndex = 0;
-            Button okButton = new Button() { Top = 65, Left = 10, Width = 200, Text = "Ok", Height = 27 };
-            okButton.Click += (sender, e) => { form.Close(); };
-            form.Controls.Add(label);
-            form.Controls.Add(comboBox);
-            form.Controls.Add(okButton);
-            form.ShowDialog();
-            return comboBox.SelectedIndex;
         }
         private void consultButton_Click(object sender, EventArgs e)
         {
@@ -147,7 +148,7 @@ namespace AppUI
                 var AddOrEdit = MessageBox.Show($"Consult is already exist.\nPRESS [Yes] to Edit previous.\nPRESS [No] to Add new.\nCancel to do nothing.", "Do you want to edit? or add?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (AddOrEdit == DialogResult.Yes)
                 {
-                    int visitIndex = getVisitFromDialog(Pet.Visits);
+                    int visitIndex = getEditVisitFromDialog(Pet.Visits);
                     if(visitIndex != 0)
                     {
                         visit.Visit = Pet.Visits[visitIndex-1];
