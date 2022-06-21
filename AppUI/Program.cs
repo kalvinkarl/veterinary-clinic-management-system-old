@@ -19,7 +19,7 @@ namespace AppUI
             Application.SetCompatibleTextRenderingDefault(false);
             //Initialize the database connections
             GlobalConfig.InitializeConnection(DatabaseType.Sql);
-            Application.Run(new ClientForm());
+            Application.Run(new LandingForm());
         }
     }
 }

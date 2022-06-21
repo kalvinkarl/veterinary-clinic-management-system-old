@@ -17,7 +17,6 @@ namespace AppUI
     {
         private bool Saved { get; set; }
         public ClientModel Client { get; set; } = new ClientModel();
-        public List<PetModel> Pets { get; set; } = new List<PetModel>();
         public ClientForm()
         {
             InitializeComponent();
@@ -25,7 +24,7 @@ namespace AppUI
         private void Reload()
         {
             petList.DataSource = null;
-            petList.DataSource = Pets;
+            petList.DataSource = Client.Pets;
             petList.DisplayMember = "Name";
         }
         private void OpenPetForm()
@@ -34,8 +33,7 @@ namespace AppUI
             newPetForm.ShowDialog(this);
             if(newPetForm.Saved)
             {
-                Pets = new List<PetModel>();
-                Pets.Add(newPetForm.Pet);
+                Client.Pets.Add(newPetForm.Pet);
             }
             Reload();
         }
@@ -52,12 +50,22 @@ namespace AppUI
                     Client.LastName = lastName.Text;
                     Client.Address = address.Text;
                     Client.Cellphone = cellphone.Text;
-                    foreach (PetModel pet in Pets)
+                    ClientModel c = GlobalConfig.Connection.CreateClient(Client);
+                    foreach (PetModel pet in Client.Pets)
                     {
-                        //GlobalConfig.Connection.UpdateClient(Client);
-                        //GlobalConfig.Connection.CreatePet(pet);
-                        Saved = true;
+                        pet.OwnerID = c.ID;
+                        PetModel p = GlobalConfig.Connection.CreatePet(pet);
+                        foreach (VisitModel visit in pet.Visits)
+                        {
+                            visit.PetID = p.ID;
+                            VisitModel v = GlobalConfig.Connection.CreateVisit(visit);
+                            visit.Bill.VisitID = v.ID;
+                            BillModel b = GlobalConfig.Connection.CreateBill(visit.Bill);
+                        }
                     }
+                    //GlobalConfig.Connection.UpdateClient(Client);
+                    //GlobalConfig.Connection.CreatePet(pet);
+                    Saved = true;
                     MessageBox.Show("Success!");
                     this.Close();
                 }
@@ -145,8 +153,7 @@ namespace AppUI
                 newPetForm.ShowDialog(this);
                 if (newPetForm.Saved)
                 {
-                    Pets.Add(newPetForm.Pet);
-                    Pets.Remove((PetModel)petList.SelectedItem);
+                    Client.Pets[petList.SelectedIndex] = newPetForm.Pet;
                     Reload();
                 }
             }
@@ -154,7 +161,7 @@ namespace AppUI
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pets.Remove((PetModel)petList.SelectedItem);
+            Client.Pets.Remove((PetModel)petList.SelectedItem);
             Reload();
         }
         private void saveButton_Click(object sender, EventArgs e)
@@ -164,7 +171,7 @@ namespace AppUI
 
         private void ClientForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Pets.Count > 0 &&  Saved == false)
+            if(Client.Pets.Count > 0 &&  Saved == false)
             {
                 var window = MessageBox.Show("Are you sure to end this session? all existing records will be deleted", "Are you sure?", MessageBoxButtons.YesNo);
                 e.Cancel = (window == DialogResult.No);

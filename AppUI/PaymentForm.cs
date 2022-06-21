@@ -15,8 +15,8 @@ namespace AppUI
     public partial class PaymentForm : Form
     {
         public bool Saved { get; set; }
-        public BillModel Bill { get; set; }
         public bool PayLater { get; set; }
+        public BillModel Bill { get; set; }
         private Bitmap ImgMemmory { get; set; }
         public PaymentForm()
         {

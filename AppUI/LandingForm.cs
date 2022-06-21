@@ -16,5 +16,11 @@ namespace AppUI
         {
             InitializeComponent();
         }
+
+        private void newVisitorButton_Click(object sender, EventArgs e)
+        {
+            ClientForm clientForm = new ClientForm();
+            clientForm.ShowDialog();
+        }
     }
 }

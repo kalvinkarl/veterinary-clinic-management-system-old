@@ -15,34 +15,48 @@ namespace AppUI
     public partial class PetForm : Form
     {
         public bool Saved { get; set; }
-        public PetModel Pet { get; set; }
+        public PetModel Pet { get; set; } = new PetModel();
         public PetForm()
         {
             InitializeComponent();
         }
         public static int getEditVisitFromDialog(List<VisitModel> visits)
         {
+            int visitIndex = -2;
             Form form = new Form();
             form.Font = new Font("Gadugi", 12);
-            form.Width = 220;
-            form.Height = 100;
+            form.Width = 237;
+            form.Height = 140;
             form.StartPosition = FormStartPosition.CenterParent;
-            form.FormBorderStyle = FormBorderStyle.None;
+            form.FormBorderStyle = FormBorderStyle.FixedSingle;
             Label label = new Label() { Left = 10, Top = 5, Text = "Select visit date" };
             ComboBox comboBox = new ComboBox() { Top = 30, Left = 10, Width = 200 };
-            comboBox.Items.Add("[Select]");
             foreach (VisitModel visit in visits)
             {
                 comboBox.Items.Add(visit.ComplaintDiagnosis);
             }
             comboBox.SelectedIndex = 0;
-            Button okButton = new Button() { Top = 65, Left = 10, Width = 200, Text = "Ok", Height = 27 };
-            okButton.Click += (sender, e) => { form.Close(); };
+            Button okButton = new Button() { Top = 65, Left = 10, Width = 65, Text = "Ok", Height = 27 };
+            Button addButton = new Button() { Top = 65, Left = 77, Width = 65, Text = "Add", Height = 27 };
+            Button cancelButton = new Button() { Top = 65, Left = 144, Width = 65, Text = "Cancel", Height = 27 };
+            okButton.Click += (sender, e) => {
+                visitIndex = comboBox.SelectedIndex;
+                form.Close();
+            };
+            addButton.Click += (sender, e) => {
+                visitIndex = -1;
+                form.Close();
+            };
+            cancelButton.Click += (sender, e) => {
+                form.Close();
+            };
             form.Controls.Add(label);
             form.Controls.Add(comboBox);
             form.Controls.Add(okButton);
+            form.Controls.Add(addButton);
+            form.Controls.Add(cancelButton);
             form.ShowDialog();
-            return comboBox.SelectedIndex;
+            return visitIndex;
         }
         private bool ValidateForm()
         {
@@ -115,10 +129,6 @@ namespace AppUI
         {
             if (ValidateForm())
             {
-                if(Pet is null)
-                {
-                    Pet = new PetModel();
-                }
                 Pet.Name = name.Text;
                 Pet.Species = species.Text;
                 Pet.Breed = breed.Text;
@@ -133,7 +143,25 @@ namespace AppUI
         private void consultButton_Click(object sender, EventArgs e)
         {
             VisitForm visit = new VisitForm();
-            if(Pet is null)
+            if(Pet.Visits.Count > 0)
+            {
+                int visitIndex = getEditVisitFromDialog(Pet.Visits);
+                if (visitIndex >= 0)
+                {
+                    visit.Visit = Pet.Visits[visitIndex];
+                    visit.ShowDialog(this);
+                    Pet.Visits[visitIndex] = visit.Visit;
+                }
+                else if (visitIndex == -1)
+                {
+                    visit.ShowDialog(this);
+                    if (visit.Visit != null)
+                    {
+                        Pet.Visits.Add(visit.Visit);
+                    }
+                }
+            }
+            else
             {
                 visit.ShowDialog(this);
                 if (visit.Visit != null)
@@ -143,31 +171,10 @@ namespace AppUI
                     
                 }
             }
-            else
-            {
-                var AddOrEdit = MessageBox.Show($"Consult is already exist.\nPRESS [Yes] to Edit previous.\nPRESS [No] to Add new.\nCancel to do nothing.", "Do you want to edit? or add?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (AddOrEdit == DialogResult.Yes)
-                {
-                    int visitIndex = getEditVisitFromDialog(Pet.Visits);
-                    if(visitIndex != 0)
-                    {
-                        visit.Visit = Pet.Visits[visitIndex-1];
-                        visit.ShowDialog(this);
-                        Pet.Visits[visitIndex-1] = visit.Visit;
-                    }
-                }else if (AddOrEdit == DialogResult.No)
-                {
-                    visit.ShowDialog(this);
-                    if (visit.Visit != null)
-                    {
-                        Pet.Visits.Add(visit.Visit);
-                    }
-                }
-            }
         }
         private void PetForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Pet != null && Saved == false)
+            if (Pet.Visits.Count > 0 && Saved == false)
             {
                 var window = MessageBox.Show("Are you sure to end this session? all existing records will be deleted", "Are you sure?", MessageBoxButtons.YesNo);
                 e.Cancel = (window == DialogResult.No);

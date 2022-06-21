@@ -69,6 +69,10 @@ namespace AppUI
                     {
                         Visit.NextVisit = DateTime.Parse($"{DateTime.Parse(appDate.Text).ToString("yyyy-MM-dd")} {DateTime.Parse($"{appHour.Value}:{appMinute.Value} {ampm.Text}").ToString("HH:mm")}");
                     }
+                    else
+                    {
+                        Visit.NextVisit = DateTime.MinValue;
+                    }
                     Visit.Bill = new BillModel();
                     Visit.Bill =paymentForm.Bill;
                     this.Close();
@@ -114,7 +118,7 @@ namespace AppUI
                 complaintDiagnosis.Text = Visit.ComplaintDiagnosis;
                 treatment.Text = Visit.Treatment;
                 notes.Text = Visit.Notes;
-                if(Visit.NextVisit != null)
+                if(Visit.NextVisit != DateTime.MinValue)
                 {
                     appGroup.Visible = true;
                     appDate.Value = Visit.NextVisit.Date;

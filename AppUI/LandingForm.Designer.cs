@@ -71,10 +71,10 @@
             this.aptLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.appointmentsDataGridView = new System.Windows.Forms.DataGridView();
-            this.listComboBox = new System.Windows.Forms.ComboBox();
             this.datePanel = new System.Windows.Forms.Panel();
             this.dateLabel = new System.Windows.Forms.Label();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.listComboBox = new System.Windows.Forms.ComboBox();
             this.reportButton = new System.Windows.Forms.Button();
             this.billsButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
@@ -488,21 +488,6 @@
             this.appointmentsDataGridView.Size = new System.Drawing.Size(793, 502);
             this.appointmentsDataGridView.TabIndex = 13;
             // 
-            // listComboBox
-            // 
-            this.listComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.listComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.listComboBox.FormattingEnabled = true;
-            this.listComboBox.Items.AddRange(new object[] {
-            "Overdue / Late",
-            "Finished today",
-            "All clients"});
-            this.listComboBox.Location = new System.Drawing.Point(802, 12);
-            this.listComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.listComboBox.Name = "listComboBox";
-            this.listComboBox.Size = new System.Drawing.Size(320, 27);
-            this.listComboBox.TabIndex = 4;
-            // 
             // datePanel
             // 
             this.datePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -536,6 +521,21 @@
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(349, 29);
             this.datePicker.TabIndex = 0;
+            // 
+            // listComboBox
+            // 
+            this.listComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.listComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.listComboBox.FormattingEnabled = true;
+            this.listComboBox.Items.AddRange(new object[] {
+            "Overdue / Late",
+            "Finished today",
+            "All clients"});
+            this.listComboBox.Location = new System.Drawing.Point(802, 9);
+            this.listComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listComboBox.Name = "listComboBox";
+            this.listComboBox.Size = new System.Drawing.Size(320, 27);
+            this.listComboBox.TabIndex = 4;
             // 
             // reportButton
             // 
@@ -601,6 +601,7 @@
             this.newVisitorButton.Size = new System.Drawing.Size(121, 120);
             this.newVisitorButton.TabIndex = 12;
             this.newVisitorButton.UseVisualStyleBackColor = false;
+            this.newVisitorButton.Click += new System.EventHandler(this.newVisitorButton_Click);
             // 
             // statusStrip
             // 

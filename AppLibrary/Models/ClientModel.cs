@@ -33,9 +33,13 @@ namespace AppLibrary.Models
         /// </summary>
         public string Cellphone { get; set; }
         /// <summary>
-        /// Defines the pets of the costumer
+        /// Represents the date of the registration
         /// </summary>
         public DateTime DateRegistered { get; set; }
+        /// <summary>
+        /// Defines the pets of the costumer
+        /// </summary>
+        public List<PetModel> Pets = new List<PetModel>();
         /// <summary>
         /// Returns the full name of client
         /// </summary>

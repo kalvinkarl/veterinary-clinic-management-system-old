@@ -11,7 +11,11 @@ namespace AppLibrary.Models
         /// <summary>
         /// Represents the primary ID of visits
         /// </summary>
-        public string ID { get; set; }
+        public int ID { get; set; }
+        /// <summary>
+        /// Represents the pet who visits
+        /// </summary>
+        public int PetID { get; set; }
         /// <summary>
         /// Represents the weight of the pet
         /// </summary>

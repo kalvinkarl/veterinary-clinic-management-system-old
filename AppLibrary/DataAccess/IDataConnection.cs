@@ -12,21 +12,37 @@ namespace AppLibrary.DataAccess
         /// <summary>
         /// Make new client record and save it to database
         /// </summary>
-        /// <param name="client">Client information</param>
+        /// <param name="client">Client informations</param>
         /// <returns>Client model</returns>
         ClientModel CreateClient(ClientModel client);
-        /// <summary>
-        /// Edit existing client record and save it to database
-        /// </summary>
-        /// <param name="client">Client information</param>
-        /// <returns>Client model</returns>
-        ClientModel UpdateClient(ClientModel client);
+
         /// <summary>
         /// Make new pet record and save it to database
         /// </summary>
-        /// <param name="pet">Pet information</param>
+        /// <param name="pet">Pet informations</param>
         /// <returns>Pet model</returns>
         PetModel CreatePet(PetModel pet);
+
+        /// <summary>
+        /// Make new visit record and save it to database
+        /// </summary>
+        /// <param name="bill">Visit informations</param>
+        /// <returns>Visit model</returns>
+        VisitModel CreateVisit(VisitModel visit);
+
+        /// <summary>
+        /// Make new payment bill and save it to database
+        /// </summary>
+        /// <param name="bill">Bill informations</param>
+        /// <returns>Bill model</returns>
+        BillModel CreateBill(BillModel bill);
+
+        /// <summary>
+        /// Edit existing client record and save it to database
+        /// </summary>
+        /// <param name="client">Client informations</param>
+        /// <returns>Client model</returns>
+        ClientModel UpdateClient(ClientModel client);
 
     }
 }

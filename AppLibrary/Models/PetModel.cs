@@ -15,7 +15,7 @@ namespace AppLibrary.Models
         /// <summary>
         /// Represents the owner of the pet
         /// </summary>
-        public ClientModel Owner { get; set; }
+        public int OwnerID { get; set; }
         /// <summary>
         /// Represents the pet name
         /// </summary>
