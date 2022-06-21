@@ -100,17 +100,35 @@ namespace AppLibrary.DataAccess
             }
         }
 
-        public List<ClientModel> GetAllClientPets()
+        public List<ClientModel> GetAllClients()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                List<PetModel> pets = connection.Query<PetModel>("spPets_GetAll", null, commandType: CommandType.StoredProcedure).ToList();
-                List<ClientModel> clients = connection.Query<ClientModel>("spClients_GetAll", null, commandType: CommandType.StoredProcedure).ToList();
-                foreach(ClientModel client in clients)
-                {
-                    client.Pets = pets.Where(p => p.OwnerID == client.ID).ToList();
-                }
-                return clients;
+                return connection.Query<ClientModel>("spClients_GetAll", null, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public List<PetModel> GetPetsByOwnerID(int OwnerID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                return connection.Query<PetModel>("spPets_GetByID", new { OwnerID }, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public List<VisitModel> GetVisitsByPetID(int PetID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                return connection.Query<VisitModel>("spVisits_GetByID", new { PetID }, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+
+        public List<BillModel> GetBillByVisitID(int VisitID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                return connection.Query<BillModel>("spBills_GetByID", new { VisitID }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
@@ -119,47 +137,6 @@ namespace AppLibrary.DataAccess
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
                 return connection.Query<ClientModel>("spClients_GetByToday", null, commandType: CommandType.StoredProcedure).ToList();
-            }
-        }
-
-        public List<ClientModel> GetByVisitDate(DateTime visitDate)
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
-            {
-                List<ClientModel> client = new List<ClientModel>();
-                List<VisitModel> visitsFound = connection.Query<VisitModel>("spClients_GetAllVisits", null, commandType: CommandType.StoredProcedure).Where(v => v.NextVisit == visitDate).ToList();
-                if(visitsFound.Count > 0)
-                {
-                    foreach(VisitModel v in visitsFound)
-                    {
-                        List<PetModel> petsFound = connection.Query<PetModel>("spClients_GetAllVisits", null, commandType: CommandType.StoredProcedure).Where(p => p.ID == v.PetID).ToList();
-                        if(petsFound.Count > 0)
-                        {
-                            foreach(PetModel p in petsFound)
-                            {
-                                client = connection.Query<ClientModel>("spClients_GetAllVisits", null, commandType: CommandType.StoredProcedure).Where(c => c.ID == p.OwnerID).ToList();
-                            }
-                        }
-                    }
-                }
-
-
-                //List<PetModel> P = connection.Query<PetModel>("spClients_GetAllVisits", null, commandType: CommandType.StoredProcedure).ToList();
-                //List<VisitModel> V = connection.Query<VisitModel>("spClients_GetAllVisits", null, commandType: CommandType.StoredProcedure).ToList();
-                //List<BillModel> B = connection.Query<BillModel>("spClients_GetAllVisits", null, commandType: CommandType.StoredProcedure).ToList();
-                //foreach(ClientModel c in C)
-                //{
-                //    c.Pets = P.Where(p => p.OwnerID == c.ID).ToList();
-                //    foreach(PetModel p in c.Pets)
-                //    {
-                //        p.Visits = V.Where(v => v.PetID == p.ID).ToList();
-                //        foreach(VisitModel v in p.Visits)
-                //        {
-                //            v.Bill = B.Where(b => b.VisitID == v.ID).First();
-                //        }
-                //    }
-                //}
-                return client;
             }
         }
     }

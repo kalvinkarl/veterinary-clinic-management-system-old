@@ -14,13 +14,25 @@ namespace AppUI
 {
     public partial class LandingForm : Form
     {
-        public List<ClientModel> Clients { get; set; } = new List<ClientModel>();
+        public List<ClientModel> Clients { get; set; } = GlobalConfig.Connection.GetAllClients();
         private void developerStatus_Click(object sender, EventArgs e) { System.Diagnostics.Process.Start(@"https:\\www.facebook.com\kalvinkarl28"); }
         public LandingForm()
         {
             InitializeComponent();
             DefaultSizeResolution();
             appointmentDatePicker.Value = DateTime.Now;
+            foreach (ClientModel client in Clients)
+            {
+                client.Pets = GlobalConfig.Connection.GetPetsByOwnerID(client.ID);
+                foreach (PetModel pet in client.Pets)
+                {
+                    pet.Visits = GlobalConfig.Connection.GetVisitsByPetID(pet.ID);
+                    foreach(VisitModel visit in pet.Visits)
+                    {
+                        visit.Bill = GlobalConfig.Connection.GetBillByVisitID(visit.ID).First();
+                    }
+                }
+            }
         }
         private void DefaultSizeResolution()
         {
@@ -139,7 +151,6 @@ namespace AppUI
         {
             if (listComboBox.Text == "All clients")
             {
-                Clients = GlobalConfig.Connection.GetAllClientPets();
                 FormatDatagrid();
             }
             else if(listComboBox.Text == "Finished today")
@@ -151,7 +162,7 @@ namespace AppUI
 
         private void appointmentDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            Clients = GlobalConfig.Connection.GetByVisitDate(appointmentDatePicker.Value);
+            //Clients = GlobalConfig.Connection.GetByVisitDate(appointmentDatePicker.Value);
             appGridView.DataSource = Clients;
             appGridView.Columns["ID"].Visible = false;
             appGridView.Columns["Image"].Visible = false;
