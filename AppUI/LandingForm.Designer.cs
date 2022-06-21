@@ -71,7 +71,7 @@
             this.appointmentsTab = new System.Windows.Forms.TabPage();
             this.aptLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.appointmentsDataGridView = new System.Windows.Forms.DataGridView();
+            this.appGridView = new System.Windows.Forms.DataGridView();
             this.datePanel = new System.Windows.Forms.Panel();
             this.dateLabel = new System.Windows.Forms.Label();
             this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -95,7 +95,7 @@
             this.appointmentsTab.SuspendLayout();
             this.aptLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appGridView)).BeginInit();
             this.datePanel.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -454,7 +454,7 @@
             this.aptLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.aptLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.aptLayoutPanel.Controls.Add(this.dataGridView, 1, 1);
-            this.aptLayoutPanel.Controls.Add(this.appointmentsDataGridView, 0, 1);
+            this.aptLayoutPanel.Controls.Add(this.appGridView, 0, 1);
             this.aptLayoutPanel.Controls.Add(this.datePanel, 0, 0);
             this.aptLayoutPanel.Controls.Add(this.listComboBox, 1, 0);
             this.aptLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -468,27 +468,38 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.ColumnHeadersHeight = 27;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView.Location = new System.Drawing.Point(802, 48);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(794, 502);
+            this.dataGridView.StandardTab = true;
             this.dataGridView.TabIndex = 14;
+            this.dataGridView.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_ColumnHeaderMouseClick);
             // 
-            // appointmentsDataGridView
+            // appGridView
             // 
-            this.appointmentsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.appGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.appointmentsDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.appointmentsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.appointmentsDataGridView.Location = new System.Drawing.Point(3, 48);
-            this.appointmentsDataGridView.Name = "appointmentsDataGridView";
-            this.appointmentsDataGridView.Size = new System.Drawing.Size(793, 502);
-            this.appointmentsDataGridView.TabIndex = 13;
+            this.appGridView.BackgroundColor = System.Drawing.Color.White;
+            this.appGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.appGridView.Location = new System.Drawing.Point(3, 48);
+            this.appGridView.Name = "appGridView";
+            this.appGridView.Size = new System.Drawing.Size(793, 502);
+            this.appGridView.TabIndex = 13;
             // 
             // datePanel
             // 
@@ -551,6 +562,7 @@
             this.reportButton.Size = new System.Drawing.Size(121, 120);
             this.reportButton.TabIndex = 8;
             this.reportButton.UseVisualStyleBackColor = false;
+            this.reportButton.Click += new System.EventHandler(this.reportButton_Click);
             // 
             // billsButton
             // 
@@ -590,6 +602,7 @@
             this.addVisitButton.Size = new System.Drawing.Size(121, 120);
             this.addVisitButton.TabIndex = 11;
             this.addVisitButton.UseVisualStyleBackColor = false;
+            this.addVisitButton.Click += new System.EventHandler(this.addVisitButton_Click);
             // 
             // newVisitorButton
             // 
@@ -704,7 +717,7 @@
             this.appointmentsTab.ResumeLayout(false);
             this.aptLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.appGridView)).EndInit();
             this.datePanel.ResumeLayout(false);
             this.datePanel.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -765,7 +778,7 @@
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Button addVisitButton;
         private System.Windows.Forms.Button newVisitorButton;
-        private System.Windows.Forms.DataGridView appointmentsDataGridView;
+        private System.Windows.Forms.DataGridView appGridView;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

@@ -99,5 +99,13 @@ namespace AppLibrary.DataAccess
                 return client;
             }
         }
+
+        public List<ClientModel> GetAllClients()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                return connection.Query<ClientModel>("spClients_GetAll", null,commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
     }
 }

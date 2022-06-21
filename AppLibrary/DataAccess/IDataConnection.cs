@@ -44,5 +44,7 @@ namespace AppLibrary.DataAccess
         /// <returns>Client model</returns>
         ClientModel UpdateClient(ClientModel client);
 
+        List<ClientModel> GetAllClients();
+
     }
 }

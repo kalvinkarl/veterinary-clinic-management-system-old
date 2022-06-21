@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppLibrary;
+using AppLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +14,14 @@ namespace AppUI
 {
     public partial class LandingForm : Form
     {
+        public List<ClientModel> Clients { get; set; } = GlobalConfig.Connection.GetAllClients();
         private void developerStatus_Click(object sender, EventArgs e) { System.Diagnostics.Process.Start(@"https:\\www.facebook.com\kalvinkarl28"); }
         public LandingForm()
         {
             InitializeComponent();
             DefaultSizeResolution();
             appointmentDatePicker.Value = DateTime.Now;
+            FormatDatagrid();
         }
         private void DefaultSizeResolution()
         {
@@ -56,12 +60,27 @@ namespace AppUI
             Properties.Settings.Default.ClientListComboBox = listComboBox.Text;
             Properties.Settings.Default.Save();
         }
+        private void FormatDatagrid()
+        {
+            dataGridView.DataSource = Clients;
+            dataGridView.Columns["ID"].Visible = false;
+            dataGridView.Columns["Image"].Visible = false;
+            dataGridView.Columns["FirstName"].Visible = false;
+            dataGridView.Columns["LastName"].Visible = false;
+            dataGridView.Columns["FullName"].DisplayIndex = 0;
+            dataGridView.Columns["FullName"].Width = 200;
+            dataGridView.Columns["Address"].DisplayIndex = 1;
+            dataGridView.Columns["Address"].Width = 300;
+            dataGridView.Columns["Cellphone"].DisplayIndex = 2;
+            dataGridView.Columns["Cellphone"].Width = 130;
+            dataGridView.Columns["DateRegistered"].DisplayIndex = 3;
+            dataGridView.Columns["DateRegistered"].Width = 160;
+        }
         private void newVisitorButton_Click(object sender, EventArgs e)
         {
             ClientForm clientForm = new ClientForm();
             clientForm.ShowDialog();
         }
-
         private void LandingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveSizeRosolution();
@@ -69,6 +88,50 @@ namespace AppUI
         private void timToday_Tick(object sender, EventArgs e)
         {
             timeStatus.Text = DateTime.Now.ToString();
+        }
+
+        private void addVisitButton_Click(object sender, EventArgs e)
+        {
+            if (landingTabs.SelectedIndex > 0)
+            {
+                //MessageBox.Show(mainTab.SelectedIndex.ToString());
+                VisitForm visitForm = new VisitForm();
+                visitForm.ShowDialog();
+            }
+            else
+            {
+                if (appGridView.SelectedRows.Count > 0)
+                {
+                    //OpenVisitForm(name);
+                    VisitForm visitForm = new VisitForm();
+                    //visitForm.Text += $" ({Clients[aptByDateList.SelectedIndices[0]].FullName})";
+                    visitForm.ShowDialog();
+
+                }
+                else if (dataGridView.SelectedRows.Count > 0)
+                {
+                    //OpenVisitForm(name);
+                    VisitForm visitForm = new VisitForm();
+                    //visitForm.Text += $" ({Clients[aptByOtherList.SelectedIndices[0]].FullName})";
+                    visitForm.ShowDialog();
+                }
+                else
+                { 
+                    MessageBox.Show("Please select a client.");
+                }
+            }
+        }
+
+        private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //MessageBox.Show($"{  }");
+        }
+
+        private void reportButton_Click(object sender, EventArgs e)
+        {
+            ClientModel client = (ClientModel)dataGridView.CurrentRow.DataBoundItem;
+            MessageBox.Show($"{client.FullName}");
+
         }
     }
 }
