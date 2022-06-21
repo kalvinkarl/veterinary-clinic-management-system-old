@@ -491,6 +491,8 @@
             // 
             // appGridView
             // 
+            this.appGridView.AllowUserToAddRows = false;
+            this.appGridView.AllowUserToDeleteRows = false;
             this.appGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -498,6 +500,9 @@
             this.appGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.appGridView.Location = new System.Drawing.Point(3, 48);
             this.appGridView.Name = "appGridView";
+            this.appGridView.ReadOnly = true;
+            this.appGridView.RowHeadersVisible = false;
+            this.appGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.appGridView.Size = new System.Drawing.Size(793, 502);
             this.appGridView.TabIndex = 13;
             // 
@@ -545,7 +550,7 @@
             "Overdue / Late",
             "Finished today",
             "All clients"});
-            this.listComboBox.Location = new System.Drawing.Point(802, 12);
+            this.listComboBox.Location = new System.Drawing.Point(802, 9);
             this.listComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listComboBox.Name = "listComboBox";
             this.listComboBox.Size = new System.Drawing.Size(320, 27);

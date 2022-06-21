@@ -61,19 +61,28 @@ namespace AppUI
         }
         private void FormatDatagrid()
         {
-            dataGridView.DataSource = Clients;
-            dataGridView.Columns["ID"].Visible = false;
-            dataGridView.Columns["Image"].Visible = false;
-            dataGridView.Columns["FirstName"].Visible = false;
-            dataGridView.Columns["LastName"].Visible = false;
-            dataGridView.Columns["FullName"].DisplayIndex = 0;
-            dataGridView.Columns["FullName"].Width = 200;
-            dataGridView.Columns["Address"].DisplayIndex = 1;
-            dataGridView.Columns["Address"].Width = 300;
-            dataGridView.Columns["Cellphone"].DisplayIndex = 2;
-            dataGridView.Columns["Cellphone"].Width = 130;
-            dataGridView.Columns["DateRegistered"].DisplayIndex = 3;
-            dataGridView.Columns["DateRegistered"].Width = 160;
+            if(Clients.Count > 0)
+            {
+                dataGridView.DataSource = Clients;
+                dataGridView.Columns["ID"].Visible = false;
+                dataGridView.Columns["Image"].Visible = false;
+                dataGridView.Columns["FirstName"].Visible = false;
+                dataGridView.Columns["LastName"].Visible = false;
+                dataGridView.Columns["FullName"].DisplayIndex = 0;
+                dataGridView.Columns["FullName"].Width = 200;
+                dataGridView.Columns["Address"].DisplayIndex = 1;
+                dataGridView.Columns["Address"].Width = 300;
+                dataGridView.Columns["Cellphone"].DisplayIndex = 2;
+                dataGridView.Columns["Cellphone"].Width = 130;
+                dataGridView.Columns["DateRegistered"].DisplayIndex = 3;
+                dataGridView.Columns["DateRegistered"].Width = 160;
+            }
+            else
+            {
+                dataGridView.DataSource = null;
+                dataGridView.Rows.Clear();
+                dataGridView.Refresh();
+            }
         }
         private void newVisitorButton_Click(object sender, EventArgs e)
         {
@@ -151,31 +160,28 @@ namespace AppUI
         private void appointmentDatePicker_ValueChanged(object sender, EventArgs e)
         {
             //Clients = GlobalConfig.Connection.GetByVisitDate(appointmentDatePicker.Value);
-            
-            foreach(ClientModel client in Clients)
+            List<ClientModel> clientModel = GlobalConfig.GetClientVisitsByDate(Clients,appointmentDatePicker.Value);
+            if(clientModel .Count > 0)
             {
-                foreach(PetModel pet in client.Pets)
-                {
-                    foreach(VisitModel visit in pet.Visits)
-                    {
-                        if(visit.NextVisit.Date == appointmentDatePicker.Value.Date)
-                        {
-                            appGridView.DataSource = client;
-                            appGridView.Columns["ID"].Visible = false;
-                            appGridView.Columns["Image"].Visible = false;
-                            appGridView.Columns["FirstName"].Visible = false;
-                            appGridView.Columns["LastName"].Visible = false;
-                            appGridView.Columns["FullName"].DisplayIndex = 0;
-                            appGridView.Columns["FullName"].Width = 200;
-                            appGridView.Columns["Address"].DisplayIndex = 1;
-                            appGridView.Columns["Address"].Width = 300;
-                            appGridView.Columns["Cellphone"].DisplayIndex = 2;
-                            appGridView.Columns["Cellphone"].Width = 130;
-                            appGridView.Columns["DateRegistered"].DisplayIndex = 3;
-                            appGridView.Columns["DateRegistered"].Width = 160;
-                        }
-                    }
-                }
+                appGridView.DataSource = clientModel;
+                appGridView.Columns["ID"].Visible = false;
+                appGridView.Columns["Image"].Visible = false;
+                appGridView.Columns["FirstName"].Visible = false;
+                appGridView.Columns["LastName"].Visible = false;
+                appGridView.Columns["FullName"].DisplayIndex = 0;
+                appGridView.Columns["FullName"].Width = 200;
+                appGridView.Columns["Address"].DisplayIndex = 1;
+                appGridView.Columns["Address"].Width = 300;
+                appGridView.Columns["Cellphone"].DisplayIndex = 2;
+                appGridView.Columns["Cellphone"].Width = 130;
+                appGridView.Columns["DateRegistered"].DisplayIndex = 3;
+                appGridView.Columns["DateRegistered"].Width = 160;
+            }
+            else
+            {
+                appGridView.DataSource = null;
+                appGridView.Rows.Clear();
+                appGridView.Refresh();
             }
         }
     }
