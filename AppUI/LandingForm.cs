@@ -16,6 +16,8 @@ namespace AppUI
         public LandingForm()
         {
             InitializeComponent();
+            DefaultSizeResolution();
+            appointmentDatePicker.Value = DateTime.Now;
         }
         private void DefaultSizeResolution()
         {
@@ -38,11 +40,35 @@ namespace AppUI
                 listComboBox.Text = Properties.Settings.Default.ClientListComboBox;
             }
         }
-
+        private void SaveSizeRosolution()
+        {
+            Properties.Settings.Default.State = this.WindowState;
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.Location = this.Location;
+                Properties.Settings.Default.Size = this.Size;
+            }
+            else
+            {
+                Properties.Settings.Default.Location = this.RestoreBounds.Location;
+                Properties.Settings.Default.Size = this.RestoreBounds.Size;
+            }
+            Properties.Settings.Default.ClientListComboBox = listComboBox.Text;
+            Properties.Settings.Default.Save();
+        }
         private void newVisitorButton_Click(object sender, EventArgs e)
         {
             ClientForm clientForm = new ClientForm();
             clientForm.ShowDialog();
+        }
+
+        private void LandingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveSizeRosolution();
+        }
+        private void timToday_Tick(object sender, EventArgs e)
+        {
+            timeStatus.Text = DateTime.Now.ToString();
         }
     }
 }

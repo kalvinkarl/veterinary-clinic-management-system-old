@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LandingForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +74,7 @@
             this.appointmentsDataGridView = new System.Windows.Forms.DataGridView();
             this.datePanel = new System.Windows.Forms.Panel();
             this.dateLabel = new System.Windows.Forms.Label();
-            this.datePicker = new System.Windows.Forms.DateTimePicker();
+            this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
             this.listComboBox = new System.Windows.Forms.ComboBox();
             this.reportButton = new System.Windows.Forms.Button();
             this.billsButton = new System.Windows.Forms.Button();
@@ -87,6 +88,7 @@
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.developerStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timeStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timToday = new System.Windows.Forms.Timer(this.components);
             this.menuStrip.SuspendLayout();
             this.searchGroup.SuspendLayout();
             this.landingTabs.SuspendLayout();
@@ -494,7 +496,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.datePanel.Controls.Add(this.dateLabel);
-            this.datePanel.Controls.Add(this.datePicker);
+            this.datePanel.Controls.Add(this.appointmentDatePicker);
             this.datePanel.Location = new System.Drawing.Point(3, 4);
             this.datePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.datePanel.Name = "datePanel";
@@ -512,15 +514,15 @@
             this.dateLabel.TabIndex = 2;
             this.dateLabel.Text = "Date";
             // 
-            // datePicker
+            // appointmentDatePicker
             // 
-            this.datePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.datePicker.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datePicker.Location = new System.Drawing.Point(57, 4);
-            this.datePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(349, 29);
-            this.datePicker.TabIndex = 0;
+            this.appointmentDatePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.appointmentDatePicker.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentDatePicker.Location = new System.Drawing.Point(57, 4);
+            this.appointmentDatePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.appointmentDatePicker.Name = "appointmentDatePicker";
+            this.appointmentDatePicker.Size = new System.Drawing.Size(349, 29);
+            this.appointmentDatePicker.TabIndex = 0;
             // 
             // listComboBox
             // 
@@ -531,7 +533,7 @@
             "Overdue / Late",
             "Finished today",
             "All clients"});
-            this.listComboBox.Location = new System.Drawing.Point(802, 12);
+            this.listComboBox.Location = new System.Drawing.Point(802, 9);
             this.listComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listComboBox.Name = "listComboBox";
             this.listComboBox.Size = new System.Drawing.Size(320, 27);
@@ -643,7 +645,7 @@
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1144, 19);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1175, 19);
             this.toolStripStatusLabel4.Spring = true;
             this.toolStripStatusLabel4.Text = "Contact us:";
             this.toolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -668,6 +670,12 @@
             this.timeStatus.Size = new System.Drawing.Size(63, 19);
             this.timeStatus.Text = "timeStatus";
             // 
+            // timToday
+            // 
+            this.timToday.Enabled = true;
+            this.timToday.Interval = 1000;
+            this.timToday.Tick += new System.EventHandler(this.timToday_Tick);
+            // 
             // LandingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -687,6 +695,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LandingForm";
             this.Text = "Veterinary Clinic Management System (Sniffs & Licks)";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LandingForm_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.searchGroup.ResumeLayout(false);
@@ -750,7 +759,7 @@
         private System.Windows.Forms.ComboBox listComboBox;
         private System.Windows.Forms.Panel datePanel;
         private System.Windows.Forms.Label dateLabel;
-        private System.Windows.Forms.DateTimePicker datePicker;
+        private System.Windows.Forms.DateTimePicker appointmentDatePicker;
         private System.Windows.Forms.Button reportButton;
         private System.Windows.Forms.Button billsButton;
         private System.Windows.Forms.Button searchButton;
@@ -765,6 +774,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel developerStatus;
         private System.Windows.Forms.ToolStripStatusLabel timeStatus;
+        private System.Windows.Forms.Timer timToday;
     }
 }
 
