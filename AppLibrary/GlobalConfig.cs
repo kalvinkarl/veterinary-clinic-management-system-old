@@ -1,4 +1,5 @@
 ﻿using AppLibrary.DataAccess;
+using AppLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,5 +26,23 @@ namespace AppLibrary
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
+        public static List<ClientModel> InitializeClientRecords()
+        {
+            List<ClientModel> Clients = Connection.GetAllClients();
+            foreach (ClientModel client in Clients)
+            {
+                client.Pets = Connection.GetPetsByOwnerID(client.ID);
+                foreach (PetModel pet in client.Pets)
+                {
+                    pet.Visits = Connection.GetVisitsByPetID(pet.ID);
+                    foreach (VisitModel visit in pet.Visits)
+                    {
+                        visit.Bill = Connection.GetBillByVisitID(visit.ID).First();
+                    }
+                }
+            }
+            return Clients;
+        }
+
     }
 }
