@@ -14,6 +14,7 @@ namespace AppUI
 {
     public partial class PaymentForm : Form
     {
+        public bool Saved { get; set; }
         public BillModel Bill { get; set; }
         public bool PayLater { get; set; }
         private Bitmap ImgMemmory { get; set; }
@@ -77,6 +78,7 @@ namespace AppUI
                 Bill.PaidAmount = decimal.Parse(paid.Text);
                 PrintPanel(printBillsPanel);
             }
+            Saved = true;
             this.Close();
 
         }

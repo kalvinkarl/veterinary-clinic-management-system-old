@@ -45,7 +45,7 @@ namespace AppUI
             FillNewClient();
             PetForm newPetForm = new PetForm();
             newPetForm.ShowDialog(this);
-            if(newPetForm.Pet != null)
+            if(newPetForm.Saved)
             {
                 Pets = new List<PetModel>();
                 Pets.Add(newPetForm.Pet);
@@ -138,21 +138,25 @@ namespace AppUI
             }
         }
 
+        private void addPetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenPetForm();
+        }
+
         private void editPetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (petList.SelectedItems.Count > 0 && petList.Items.Count > 0)
             {
                 PetForm newPetForm = new PetForm();
                 newPetForm.Pet = (PetModel)petList.SelectedItem;
-                Pets.Remove((PetModel)petList.SelectedItem);
                 newPetForm.ShowDialog(this);
-                Reload();
+                if (newPetForm.Saved)
+                {
+                    Pets.Add(newPetForm.Pet);
+                    Pets.Remove((PetModel)petList.SelectedItem);
+                    Reload();
+                }
             }
-        }
-
-        private void addPetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenPetForm();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,7 +164,6 @@ namespace AppUI
             Pets.Remove((PetModel)petList.SelectedItem);
             Reload();
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             Save();

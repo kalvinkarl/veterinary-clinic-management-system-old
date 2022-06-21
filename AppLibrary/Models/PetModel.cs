@@ -44,5 +44,9 @@ namespace AppLibrary.Models
         /// Represents the notes for the pet
         /// </summary>
         public string Notes { get; set; }
+        /// <summary>
+        /// Represents the visits of the pet
+        /// </summary>
+        public List<VisitModel> Visits { get; set; } = new List<VisitModel>();
     }
 }

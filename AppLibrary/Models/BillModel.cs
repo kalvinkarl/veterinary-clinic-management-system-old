@@ -13,10 +13,6 @@ namespace AppLibrary.Models
         /// </summary>
         public int ID { get; set; }
         /// <summary>
-        /// Represents the source of payment
-        /// </summary>
-        public VisitModel Visit { get; set; } = new VisitModel();
-        /// <summary>
         /// Represents the transaction number
         /// </summary>
         public int InvoiceNumber { get; set; }

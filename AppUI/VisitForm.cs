@@ -15,7 +15,6 @@ namespace AppUI
     {
         private Dictionary<string, int> WeightUnits { get; set; } = new Dictionary<string, int> { ["kg"] = 0, ["hg"] = 1, ["dag"] = 2, ["g"] = 3 };
         private Dictionary<string, int> TempUnits { get; set; } = new Dictionary<string, int> { ["°C"] = 0, ["°F"] = 1 };
-        public BillModel Bill { get; set; }
         public VisitModel Visit { get; set; }
         public VisitForm()
         {
@@ -51,15 +50,15 @@ namespace AppUI
             {
                 PaymentForm paymentForm = new PaymentForm();
                 paymentForm.PayLater = later;
-                if(Bill != null)
+                if(Visit != null)
                 {
-                    paymentForm.Bill = Bill;
+                    paymentForm.Bill = Visit.Bill;
                 }
                 paymentForm.ShowDialog(this);
-                if (paymentForm.Bill != null)
+                if (paymentForm.Saved)
                 {
-                    Bill = paymentForm.Bill;
                     Visit = new VisitModel();
+                    Visit.Bill = paymentForm.Bill;
                     Visit.Weight = $"{weight.Text} {weightUnit.Text}";
                     Visit.Temperature = $"{temp.Text} {tempUnit.Text}";
                     Visit.ComplaintDiagnosis = complaintDiagnosis.Text;
@@ -70,8 +69,8 @@ namespace AppUI
                     {
                         Visit.NextVisit = DateTime.Parse($"{DateTime.Parse(appDate.Text).ToString("yyyy-MM-dd")} {DateTime.Parse($"{appHour.Value}:{appMinute.Value} {ampm.Text}").ToString("HH:mm")}");
                     }
-                    Bill = new BillModel();
-                    Bill=paymentForm.Bill;
+                    Visit.Bill = new BillModel();
+                    Visit.Bill =paymentForm.Bill;
                     this.Close();
                     //MessageBox.Show(DateTime.Parse($"{DateTime.Parse(appDate.Text).ToString("yyyy-MM-dd")} {DateTime.Parse($"{appHour.Value}:{appMinute.Value} {ampm.Text}").ToString("HH:mm")}").ToString());
                 }

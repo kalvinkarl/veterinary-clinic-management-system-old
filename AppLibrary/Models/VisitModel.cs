@@ -13,10 +13,6 @@ namespace AppLibrary.Models
         /// </summary>
         public string ID { get; set; }
         /// <summary>
-        /// Represents the pet
-        /// </summary>
-        public PetModel Pet { get; set; }
-        /// <summary>
         /// Represents the weight of the pet
         /// </summary>
         public string Weight { get; set; }
@@ -44,5 +40,9 @@ namespace AppLibrary.Models
         /// Represents the date of next visit
         /// </summary>
         public DateTime NextVisit { get; set; }
+        /// <summary>
+        /// Represents the bill of the visit
+        /// </summary>
+        public BillModel Bill { get; set; }
     }
 }
