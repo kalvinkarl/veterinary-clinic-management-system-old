@@ -100,11 +100,25 @@ namespace AppLibrary.DataAccess
             }
         }
 
-        public List<ClientModel> GetAllClients()
+        public List<ClientModel> GetAllClientPets()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<ClientModel>("spClients_GetAll", null,commandType: CommandType.StoredProcedure).ToList();
+                List<PetModel> pets = connection.Query<PetModel>("spPets_GetAll", null, commandType: CommandType.StoredProcedure).ToList();
+                List<ClientModel> clients = connection.Query<ClientModel>("spClients_GetAll", null, commandType: CommandType.StoredProcedure).ToList();
+                foreach(ClientModel client in clients)
+                {
+                    client.Pets = pets.Where(p => p.OwnerID == client.ID).ToList();
+                }
+                return clients;
+            }
+        }
+
+        public List<ClientModel> GetByTodayClients()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                return connection.Query<ClientModel>("spClients_GetByToday", null, commandType: CommandType.StoredProcedure).ToList();
             }
         }
     }

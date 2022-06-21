@@ -71,7 +71,7 @@ namespace AppUI
                     }
                     else
                     {
-                        Visit.NextVisit = DateTime.MinValue;
+                        Visit.NextVisit = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
                     }
                     Visit.Bill = new BillModel();
                     Visit.Bill =paymentForm.Bill;
@@ -111,6 +111,7 @@ namespace AppUI
             {
                 string[] w = Visit.Weight.Split(' ');
                 string[] t = Visit.Temperature.Split(' ');
+                date.Value = Visit.Date;
                 weight.Value = decimal.Parse(w[0]);
                 weightUnit.SelectedIndex = WeightUnits[w[1]];
                 temp.Value = decimal.Parse(t[0]);
@@ -129,6 +130,8 @@ namespace AppUI
             }
             else
             {
+                date.Value = DateTime.Now;
+                appDate.Value = DateTime.Now.AddDays(1);
                 tempUnit.SelectedIndex = 0;
                 weightUnit.SelectedIndex = 0;
             }

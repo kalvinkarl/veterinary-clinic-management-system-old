@@ -14,14 +14,13 @@ namespace AppUI
 {
     public partial class LandingForm : Form
     {
-        public List<ClientModel> Clients { get; set; } = GlobalConfig.Connection.GetAllClients();
+        public List<ClientModel> Clients { get; set; } = new List<ClientModel>();
         private void developerStatus_Click(object sender, EventArgs e) { System.Diagnostics.Process.Start(@"https:\\www.facebook.com\kalvinkarl28"); }
         public LandingForm()
         {
             InitializeComponent();
             DefaultSizeResolution();
             appointmentDatePicker.Value = DateTime.Now;
-            FormatDatagrid();
         }
         private void DefaultSizeResolution()
         {
@@ -129,9 +128,24 @@ namespace AppUI
 
         private void reportButton_Click(object sender, EventArgs e)
         {
-            ClientModel client = (ClientModel)dataGridView.CurrentRow.DataBoundItem;
-            MessageBox.Show($"{client.FullName}");
+            //ClientModel client = (ClientModel)dataGridView.CurrentRow.DataBoundItem;
+            //MessageBox.Show($"{client.FullName}");
+            MessageBox.Show(DateTime.MinValue.ToString());
 
+        }
+
+        private void listComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listComboBox.Text == "All clients")
+            {
+                Clients = GlobalConfig.Connection.GetAllClientPets();
+                FormatDatagrid();
+            }
+            else if(listComboBox.Text == "Finished today")
+            {
+                Clients = GlobalConfig.Connection.GetByTodayClients();
+                FormatDatagrid();
+            }
         }
     }
 }

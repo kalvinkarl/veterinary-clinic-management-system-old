@@ -238,7 +238,7 @@
             "g"});
             this.weightUnit.Location = new System.Drawing.Point(187, 104);
             this.weightUnit.Name = "weightUnit";
-            this.weightUnit.Size = new System.Drawing.Size(44, 27);
+            this.weightUnit.Size = new System.Drawing.Size(55, 27);
             this.weightUnit.TabIndex = 32;
             // 
             // treatLabel

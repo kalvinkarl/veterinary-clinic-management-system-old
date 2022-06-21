@@ -544,11 +544,12 @@
             "Overdue / Late",
             "Finished today",
             "All clients"});
-            this.listComboBox.Location = new System.Drawing.Point(802, 9);
+            this.listComboBox.Location = new System.Drawing.Point(802, 12);
             this.listComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listComboBox.Name = "listComboBox";
             this.listComboBox.Size = new System.Drawing.Size(320, 27);
             this.listComboBox.TabIndex = 4;
+            this.listComboBox.SelectedIndexChanged += new System.EventHandler(this.listComboBox_SelectedIndexChanged);
             // 
             // reportButton
             // 
