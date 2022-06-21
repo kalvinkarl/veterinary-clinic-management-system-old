@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AppUI")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Veterinary Clinic Management System")]
+[assembly: AssemblyDescription("Record management system where the computer will fetch records of the clients who is undergoing medication and make reservation/appointment of the service that will the office provides, and management will tell about the services and the computer will automatically generate bills of the clients.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AppUI")]
+[assembly: AssemblyCompany("Nonato")]
+[assembly: AssemblyProduct("Veterinary Clinic")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("Nonato.co")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

@@ -531,7 +531,7 @@
             "Overdue / Late",
             "Finished today",
             "All clients"});
-            this.listComboBox.Location = new System.Drawing.Point(802, 9);
+            this.listComboBox.Location = new System.Drawing.Point(802, 12);
             this.listComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listComboBox.Name = "listComboBox";
             this.listComboBox.Size = new System.Drawing.Size(320, 27);
@@ -643,7 +643,7 @@
             // toolStripStatusLabel4
             // 
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1175, 19);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1144, 19);
             this.toolStripStatusLabel4.Spring = true;
             this.toolStripStatusLabel4.Text = "Contact us:";
             this.toolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -660,6 +660,7 @@
             this.developerStatus.Size = new System.Drawing.Size(68, 19);
             this.developerStatus.Text = "nonats.org";
             this.developerStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.developerStatus.Click += new System.EventHandler(this.developerStatus_Click);
             // 
             // timeStatus
             // 
