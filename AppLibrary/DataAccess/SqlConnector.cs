@@ -112,7 +112,7 @@ namespace AppLibrary.DataAccess
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<PetModel>("spPets_GetByID", new { OwnerID }, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<PetModel>("spPets_GetByOwnerID", new { OwnerID }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
@@ -120,7 +120,7 @@ namespace AppLibrary.DataAccess
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<VisitModel>("spVisits_GetByID", new { PetID }, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<VisitModel>("spVisits_GetByPetID", new { PetID }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
@@ -128,7 +128,7 @@ namespace AppLibrary.DataAccess
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<BillModel>("spBills_GetByID", new { VisitID }, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<BillModel>("spBills_GetByVisitID", new { VisitID }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
