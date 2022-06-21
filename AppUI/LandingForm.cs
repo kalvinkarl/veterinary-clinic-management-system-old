@@ -130,7 +130,8 @@ namespace AppUI
         {
             //ClientModel client = (ClientModel)dataGridView.CurrentRow.DataBoundItem;
             //MessageBox.Show($"{client.FullName}");
-            MessageBox.Show(DateTime.MinValue.ToString());
+            DateTime md = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+            MessageBox.Show(md.ToString());
 
         }
 
@@ -146,6 +147,24 @@ namespace AppUI
                 Clients = GlobalConfig.Connection.GetByTodayClients();
                 FormatDatagrid();
             }
+        }
+
+        private void appointmentDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            Clients = GlobalConfig.Connection.GetByVisitDate(appointmentDatePicker.Value);
+            appGridView.DataSource = Clients;
+            appGridView.Columns["ID"].Visible = false;
+            appGridView.Columns["Image"].Visible = false;
+            appGridView.Columns["FirstName"].Visible = false;
+            appGridView.Columns["LastName"].Visible = false;
+            appGridView.Columns["FullName"].DisplayIndex = 0;
+            appGridView.Columns["FullName"].Width = 200;
+            appGridView.Columns["Address"].DisplayIndex = 1;
+            appGridView.Columns["Address"].Width = 300;
+            appGridView.Columns["Cellphone"].DisplayIndex = 2;
+            appGridView.Columns["Cellphone"].Width = 130;
+            appGridView.Columns["DateRegistered"].DisplayIndex = 3;
+            appGridView.Columns["DateRegistered"].Width = 160;
         }
     }
 }

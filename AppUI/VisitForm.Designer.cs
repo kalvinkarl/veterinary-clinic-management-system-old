@@ -63,6 +63,7 @@
             this.visitTitle = new System.Windows.Forms.Label();
             this.weight = new System.Windows.Forms.NumericUpDown();
             this.temp = new System.Windows.Forms.NumericUpDown();
+            this.appCheck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.appMinute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appHour)).BeginInit();
             this.appGroup.SuspendLayout();
@@ -146,14 +147,15 @@
             // appGroup
             // 
             this.appGroup.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.appGroup.Controls.Add(this.appCheck);
             this.appGroup.Controls.Add(this.ampm);
-            this.appGroup.Controls.Add(this.appBack);
             this.appGroup.Controls.Add(this.appDate);
             this.appGroup.Controls.Add(this.appTime);
             this.appGroup.Controls.Add(this.appDateLabel);
             this.appGroup.Controls.Add(this.appColTimeLabel);
             this.appGroup.Controls.Add(this.appHour);
             this.appGroup.Controls.Add(this.appMinute);
+            this.appGroup.Controls.Add(this.appBack);
             this.appGroup.Location = new System.Drawing.Point(369, 64);
             this.appGroup.Name = "appGroup";
             this.appGroup.Size = new System.Drawing.Size(326, 118);
@@ -177,14 +179,15 @@
             // 
             // appBack
             // 
-            this.appBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(180)))), ((int)(((byte)(187)))));
+            this.appBack.BackColor = System.Drawing.Color.PowderBlue;
             this.appBack.FlatAppearance.BorderSize = 0;
             this.appBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.appBack.Location = new System.Drawing.Point(239, 73);
+            this.appBack.Location = new System.Drawing.Point(299, 11);
             this.appBack.Name = "appBack";
-            this.appBack.Size = new System.Drawing.Size(68, 29);
+            this.appBack.Size = new System.Drawing.Size(26, 26);
             this.appBack.TabIndex = 20;
-            this.appBack.Text = "Back";
+            this.appBack.Text = "X";
+            this.appBack.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.appBack.UseVisualStyleBackColor = false;
             this.appBack.Click += new System.EventHandler(this.appOpenClose_Click);
             // 
@@ -477,6 +480,18 @@
             this.temp.Size = new System.Drawing.Size(71, 29);
             this.temp.TabIndex = 36;
             // 
+            // appCheck
+            // 
+            this.appCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(180)))), ((int)(((byte)(187)))));
+            this.appCheck.FlatAppearance.BorderSize = 0;
+            this.appCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appCheck.Location = new System.Drawing.Point(239, 72);
+            this.appCheck.Name = "appCheck";
+            this.appCheck.Size = new System.Drawing.Size(68, 29);
+            this.appCheck.TabIndex = 37;
+            this.appCheck.Text = "Check";
+            this.appCheck.UseVisualStyleBackColor = false;
+            // 
             // VisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -552,5 +567,6 @@
         private System.Windows.Forms.Button ampm;
         private System.Windows.Forms.NumericUpDown weight;
         private System.Windows.Forms.NumericUpDown temp;
+        private System.Windows.Forms.Button appCheck;
     }
 }

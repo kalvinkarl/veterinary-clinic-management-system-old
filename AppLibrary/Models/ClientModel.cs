@@ -37,7 +37,7 @@ namespace AppLibrary.Models
         /// </summary>
         public DateTime DateRegistered { get; set; }
         /// <summary>
-        /// Defines the pets of the costumer
+        /// Defines all pets of the costumer
         /// </summary>
         public List<PetModel> Pets = new List<PetModel>();
         /// <summary>

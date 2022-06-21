@@ -46,6 +46,7 @@ namespace AppLibrary.DataAccess
 
         List<ClientModel> GetAllClientPets();
         List<ClientModel> GetByTodayClients();
+        List<ClientModel> GetByVisitDate(DateTime visitDate);
 
     }
 }

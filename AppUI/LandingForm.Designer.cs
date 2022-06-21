@@ -534,6 +534,7 @@
             this.appointmentDatePicker.Name = "appointmentDatePicker";
             this.appointmentDatePicker.Size = new System.Drawing.Size(349, 29);
             this.appointmentDatePicker.TabIndex = 0;
+            this.appointmentDatePicker.ValueChanged += new System.EventHandler(this.appointmentDatePicker_ValueChanged);
             // 
             // listComboBox
             // 
