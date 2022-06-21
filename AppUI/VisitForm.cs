@@ -114,6 +114,14 @@ namespace AppUI
                 complaintDiagnosis.Text = Visit.ComplaintDiagnosis;
                 treatment.Text = Visit.Treatment;
                 notes.Text = Visit.Notes;
+                if(Visit.NextVisit != null)
+                {
+                    appGroup.Visible = true;
+                    appDate.Value = Visit.NextVisit.Date;
+                    appHour.Value = int.Parse(Visit.NextVisit.ToString("hh"));
+                    appMinute.Value = Visit.NextVisit.Minute;
+                    ampm.Text = Visit.NextVisit.ToString("tt");
+                }
             }
             else
             {

@@ -16,10 +16,8 @@ namespace AppUI
     public partial class ClientForm : Form
     {
         private bool Saved { get; set; }
-        public BillModel Bill { get; set; } = new BillModel();
-        public VisitModel Visit { get; set; } = new VisitModel();
         public ClientModel Client { get; set; } = new ClientModel();
-        public List<PetModel> Pets { get; set; }
+        public List<PetModel> Pets { get; set; } = new List<PetModel>();
         public ClientForm()
         {
             InitializeComponent();
@@ -171,7 +169,7 @@ namespace AppUI
 
         private void ClientForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Pets != null && Saved == false)
+            if(Pets.Count > 0 &&  Saved == false)
             {
                 var window = MessageBox.Show("Are you sure to end this session? all existing records will be deleted", "Are you sure?", MessageBoxButtons.YesNo);
                 e.Cancel = (window == DialogResult.No);
