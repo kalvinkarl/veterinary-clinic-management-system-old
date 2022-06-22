@@ -1,4 +1,5 @@
-﻿using AppLibrary.Models;
+﻿using AppLibrary;
+using AppLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,50 @@ namespace AppUI
         public VisitForm()
         {
             InitializeComponent();
+            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
+            if (GlobalConfig.IsDark)
+            {
+                this.BackColor = Color.FromArgb(31, 31, 31);
+                date.ForeColor = Color.White;
+                dateLabel.ForeColor = Color.White;
+                weightLabel.ForeColor = Color.White;
+                tempLabel.ForeColor = Color.White;
+                comDiagLabel.ForeColor = Color.White;
+                treatLabel.ForeColor = Color.White;
+                noteLabel.ForeColor = Color.White;
+                appGroup.ForeColor = Color.White;
+                appDateLabel.ForeColor = Color.White;
+                appTime.ForeColor = Color.White;
+                appHour.ForeColor = Color.FromArgb(64, 64, 64);
+                appHour.BorderStyle = BorderStyle.FixedSingle;
+                appHour.ForeColor = Color.White;
+                appMinute.ForeColor = Color.FromArgb(64, 64, 64);
+                appMinute.BorderStyle = BorderStyle.FixedSingle;
+                appMinute.ForeColor = Color.White;
+                ampm.ForeColor = Color.White;
+                compDiagAttach.ForeColor = Color.White;
+                treatmentAttach.ForeColor = Color.White;
+                notesAttach.ForeColor = Color.White;
+                weightUnit.BackColor = Color.FromArgb(31, 31, 31);
+                tempUnit.BackColor = Color.FromArgb(31, 31, 31);
+                weightUnit.ForeColor = Color.White;
+                tempUnit.ForeColor = Color.White;
+                weight.BackColor = Color.FromArgb(64, 64, 64);
+                weight.BorderStyle = BorderStyle.FixedSingle;
+                weight.ForeColor = Color.White;
+                temp.BackColor = Color.FromArgb(64, 64, 64);
+                temp.BorderStyle = BorderStyle.FixedSingle;
+                temp.ForeColor = Color.White;
+                complaintDiagnosis.BackColor = Color.FromArgb(64,64,64);
+                complaintDiagnosis.BorderStyle = BorderStyle.FixedSingle;
+                complaintDiagnosis.ForeColor = Color.White;
+                treatment.BackColor = Color.FromArgb(64, 64, 64);
+                treatment.BorderStyle = BorderStyle.FixedSingle;
+                treatment.ForeColor = Color.White;
+                notes.BackColor = Color.FromArgb(64, 64, 64);
+                notes.BorderStyle = BorderStyle.FixedSingle;
+                notes.ForeColor = Color.White;
+            }
         }
         private bool ValidateForm()
         {

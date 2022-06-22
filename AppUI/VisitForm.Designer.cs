@@ -52,12 +52,12 @@
             this.paymentButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.compDiagAttach = new System.Windows.Forms.Label();
             this.complaintDiagnosis = new System.Windows.Forms.RichTextBox();
             this.treatment = new System.Windows.Forms.RichTextBox();
             this.notes = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.treatmentAttach = new System.Windows.Forms.Label();
+            this.notesAttach = new System.Windows.Forms.Label();
             this.weightLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.visitTitle = new System.Windows.Forms.Label();
@@ -169,6 +169,7 @@
             this.appCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(180)))), ((int)(((byte)(187)))));
             this.appCheck.FlatAppearance.BorderSize = 0;
             this.appCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appCheck.ForeColor = System.Drawing.Color.Black;
             this.appCheck.Location = new System.Drawing.Point(239, 72);
             this.appCheck.Name = "appCheck";
             this.appCheck.Size = new System.Drawing.Size(68, 29);
@@ -211,6 +212,7 @@
             this.appBack.BackColor = System.Drawing.Color.PowderBlue;
             this.appBack.FlatAppearance.BorderSize = 0;
             this.appBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appBack.ForeColor = System.Drawing.Color.Black;
             this.appBack.Location = new System.Drawing.Point(299, 11);
             this.appBack.Name = "appBack";
             this.appBack.Size = new System.Drawing.Size(26, 26);
@@ -345,15 +347,15 @@
             this.tablePanel.ColumnCount = 2;
             this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tablePanel.Controls.Add(this.label1, 1, 0);
+            this.tablePanel.Controls.Add(this.compDiagAttach, 1, 0);
             this.tablePanel.Controls.Add(this.comDiagLabel, 0, 0);
             this.tablePanel.Controls.Add(this.noteLabel, 0, 4);
             this.tablePanel.Controls.Add(this.treatLabel, 0, 2);
             this.tablePanel.Controls.Add(this.complaintDiagnosis, 0, 1);
             this.tablePanel.Controls.Add(this.treatment, 0, 3);
             this.tablePanel.Controls.Add(this.notes, 0, 5);
-            this.tablePanel.Controls.Add(this.label2, 1, 2);
-            this.tablePanel.Controls.Add(this.label3, 1, 4);
+            this.tablePanel.Controls.Add(this.treatmentAttach, 1, 2);
+            this.tablePanel.Controls.Add(this.notesAttach, 1, 4);
             this.tablePanel.Location = new System.Drawing.Point(12, 188);
             this.tablePanel.Name = "tablePanel";
             this.tablePanel.RowCount = 6;
@@ -366,15 +368,15 @@
             this.tablePanel.Size = new System.Drawing.Size(683, 546);
             this.tablePanel.TabIndex = 28;
             // 
-            // label1
+            // compDiagAttach
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(523, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 19);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "<🧷Add attachment>";
+            this.compDiagAttach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.compDiagAttach.AutoSize = true;
+            this.compDiagAttach.Location = new System.Drawing.Point(523, 0);
+            this.compDiagAttach.Name = "compDiagAttach";
+            this.compDiagAttach.Size = new System.Drawing.Size(157, 19);
+            this.compDiagAttach.TabIndex = 36;
+            this.compDiagAttach.Text = "<🧷Add attachment>";
             // 
             // complaintDiagnosis
             // 
@@ -406,25 +408,25 @@
             this.notes.TabIndex = 26;
             this.notes.Text = "";
             // 
-            // label2
+            // treatmentAttach
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(523, 182);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 19);
-            this.label2.TabIndex = 36;
-            this.label2.Text = "<🧷Add attachment>";
+            this.treatmentAttach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.treatmentAttach.AutoSize = true;
+            this.treatmentAttach.Location = new System.Drawing.Point(523, 182);
+            this.treatmentAttach.Name = "treatmentAttach";
+            this.treatmentAttach.Size = new System.Drawing.Size(157, 19);
+            this.treatmentAttach.TabIndex = 36;
+            this.treatmentAttach.Text = "<🧷Add attachment>";
             // 
-            // label3
+            // notesAttach
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(523, 364);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 19);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "<🧷Add attachment>";
+            this.notesAttach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.notesAttach.AutoSize = true;
+            this.notesAttach.Location = new System.Drawing.Point(523, 364);
+            this.notesAttach.Name = "notesAttach";
+            this.notesAttach.Size = new System.Drawing.Size(157, 19);
+            this.notesAttach.TabIndex = 36;
+            this.notesAttach.Text = "<🧷Add attachment>";
             // 
             // weightLabel
             // 
@@ -565,9 +567,9 @@
         private System.Windows.Forms.RichTextBox complaintDiagnosis;
         private System.Windows.Forms.RichTextBox treatment;
         private System.Windows.Forms.RichTextBox notes;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label compDiagAttach;
+        private System.Windows.Forms.Label treatmentAttach;
+        private System.Windows.Forms.Label notesAttach;
         private System.Windows.Forms.Button ampm;
         private System.Windows.Forms.NumericUpDown weight;
         private System.Windows.Forms.NumericUpDown temp;

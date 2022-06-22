@@ -39,7 +39,7 @@
             this.age = new System.Windows.Forms.NumericUpDown();
             this.nameLabel = new System.Windows.Forms.Label();
             this.male = new System.Windows.Forms.RadioButton();
-            this.sexLabel = new System.Windows.Forms.Label();
+            this.monthsLabel = new System.Windows.Forms.Label();
             this.speciesLabel = new System.Windows.Forms.Label();
             this.ageLabel = new System.Windows.Forms.Label();
             this.colorMarkingLabel = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.notesLabel = new System.Windows.Forms.Label();
             this.petTitle = new System.Windows.Forms.Label();
             this.petLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.sexLabel = new System.Windows.Forms.Label();
             this.petLayoutButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.age)).BeginInit();
             this.petLayoutPanel.SuspendLayout();
@@ -191,15 +191,15 @@
             this.male.Text = "Male";
             this.male.UseVisualStyleBackColor = true;
             // 
-            // sexLabel
+            // monthsLabel
             // 
-            this.sexLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.sexLabel.AutoSize = true;
-            this.sexLabel.Location = new System.Drawing.Point(202, 170);
-            this.sexLabel.Name = "sexLabel";
-            this.sexLabel.Size = new System.Drawing.Size(62, 19);
-            this.sexLabel.TabIndex = 0;
-            this.sexLabel.Text = "Months";
+            this.monthsLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.monthsLabel.AutoSize = true;
+            this.monthsLabel.Location = new System.Drawing.Point(202, 170);
+            this.monthsLabel.Name = "monthsLabel";
+            this.monthsLabel.Size = new System.Drawing.Size(62, 19);
+            this.monthsLabel.TabIndex = 0;
+            this.monthsLabel.Text = "Months";
             // 
             // speciesLabel
             // 
@@ -315,7 +315,7 @@
             this.petLayoutPanel.Controls.Add(this.notes, 1, 5);
             this.petLayoutPanel.Controls.Add(this.age, 1, 4);
             this.petLayoutPanel.Controls.Add(this.nameLabel, 0, 0);
-            this.petLayoutPanel.Controls.Add(this.sexLabel, 2, 4);
+            this.petLayoutPanel.Controls.Add(this.monthsLabel, 2, 4);
             this.petLayoutPanel.Controls.Add(this.speciesLabel, 0, 1);
             this.petLayoutPanel.Controls.Add(this.ageLabel, 0, 4);
             this.petLayoutPanel.Controls.Add(this.colorMarkingLabel, 0, 3);
@@ -327,7 +327,7 @@
             this.petLayoutPanel.Controls.Add(this.notesLabel, 0, 5);
             this.petLayoutPanel.Controls.Add(this.female, 5, 4);
             this.petLayoutPanel.Controls.Add(this.male, 4, 4);
-            this.petLayoutPanel.Controls.Add(this.label1, 3, 4);
+            this.petLayoutPanel.Controls.Add(this.sexLabel, 3, 4);
             this.petLayoutPanel.Location = new System.Drawing.Point(11, 84);
             this.petLayoutPanel.Name = "petLayoutPanel";
             this.petLayoutPanel.RowCount = 6;
@@ -340,15 +340,15 @@
             this.petLayoutPanel.Size = new System.Drawing.Size(483, 353);
             this.petLayoutPanel.TabIndex = 3;
             // 
-            // label1
+            // sexLabel
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(294, 170);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Sex:";
+            this.sexLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.sexLabel.AutoSize = true;
+            this.sexLabel.Location = new System.Drawing.Point(294, 170);
+            this.sexLabel.Name = "sexLabel";
+            this.sexLabel.Size = new System.Drawing.Size(36, 19);
+            this.sexLabel.TabIndex = 0;
+            this.sexLabel.Text = "Sex:";
             // 
             // PetForm
             // 
@@ -365,7 +365,7 @@
             this.MinimumSize = new System.Drawing.Size(603, 371);
             this.Name = "PetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "PetForm";
+            this.Text = "Pet\'s information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PetForm_FormClosing);
             this.Load += new System.EventHandler(this.PetForm_Load);
             this.petLayoutButtons.ResumeLayout(false);
@@ -388,7 +388,7 @@
         private System.Windows.Forms.NumericUpDown age;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.RadioButton male;
-        private System.Windows.Forms.Label sexLabel;
+        private System.Windows.Forms.Label monthsLabel;
         private System.Windows.Forms.Label speciesLabel;
         private System.Windows.Forms.Label ageLabel;
         private System.Windows.Forms.Label colorMarkingLabel;
@@ -399,6 +399,6 @@
         private System.Windows.Forms.TextBox colorMarking;
         private System.Windows.Forms.Label notesLabel;
         private System.Windows.Forms.Label petTitle;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label sexLabel;
     }
 }

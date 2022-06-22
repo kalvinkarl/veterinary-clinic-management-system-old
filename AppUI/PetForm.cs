@@ -19,6 +19,39 @@ namespace AppUI
         public PetForm()
         {
             InitializeComponent();
+            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
+            if (GlobalConfig.IsDark)
+            {
+                this.BackColor = Color.FromArgb(31, 31, 31);
+                nameLabel.ForeColor = Color.White;
+                speciesLabel.ForeColor = Color.White;
+                breedLabel.ForeColor = Color.White;
+                colorMarkingLabel.ForeColor = Color.White;
+                ageLabel.ForeColor = Color.White;
+                notesLabel.ForeColor = Color.White;
+                monthsLabel.ForeColor = Color.White;
+                sexLabel.ForeColor = Color.White;
+                male.ForeColor = Color.White;
+                female.ForeColor = Color.White;
+                name.BackColor = Color.FromArgb(64, 64, 64);
+                name.BorderStyle = BorderStyle.FixedSingle;
+                name.ForeColor = Color.White;
+                species.BackColor = Color.FromArgb(64, 64, 64);
+                species.BorderStyle = BorderStyle.FixedSingle;
+                species.ForeColor = Color.White;
+                breed.BackColor = Color.FromArgb(64, 64, 64);
+                breed.BorderStyle = BorderStyle.FixedSingle;
+                breed.ForeColor = Color.White;
+                colorMarking.BackColor = Color.FromArgb(64, 64, 64);
+                colorMarking.BorderStyle = BorderStyle.FixedSingle;
+                colorMarking.ForeColor = Color.White;
+                age.BackColor = Color.FromArgb(64, 64, 64);
+                age.BorderStyle = BorderStyle.FixedSingle;
+                age.ForeColor = Color.White;
+                notes.BackColor = Color.FromArgb(64, 64, 64);
+                notes.BorderStyle = BorderStyle.FixedSingle;
+                notes.ForeColor = Color.White;
+            }
         }
         public static int getEditVisitFromDialog(List<VisitModel> visits)
         {

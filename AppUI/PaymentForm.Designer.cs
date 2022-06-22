@@ -47,7 +47,7 @@
             this.petData2 = new System.Windows.Forms.Label();
             this.petData1 = new System.Windows.Forms.Label();
             this.petData3 = new System.Windows.Forms.Label();
-            this.btnDone = new System.Windows.Forms.Button();
+            this.doneButton = new System.Windows.Forms.Button();
             this.printBills = new System.Drawing.Printing.PrintDocument();
             this.previewBills = new System.Windows.Forms.PrintPreviewDialog();
             this.oldBalance = new System.Windows.Forms.TextBox();
@@ -87,6 +87,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.oldBalanceLabel = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
+            this.paymentPanel = new System.Windows.Forms.Panel();
             this.invoicePanel.SuspendLayout();
             this.petHead.SuspendLayout();
             this.payRTable.SuspendLayout();
@@ -326,17 +327,17 @@
             this.petData3.TabIndex = 12;
             this.petData3.Text = "Vaccined 3011";
             // 
-            // btnDone
+            // doneButton
             // 
-            this.btnDone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDone.Location = new System.Drawing.Point(222, 187);
-            this.btnDone.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(91, 34);
-            this.btnDone.TabIndex = 11;
-            this.btnDone.Text = "print";
-            this.btnDone.UseVisualStyleBackColor = true;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            this.doneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.doneButton.Location = new System.Drawing.Point(222, 187);
+            this.doneButton.Margin = new System.Windows.Forms.Padding(4);
+            this.doneButton.Name = "doneButton";
+            this.doneButton.Size = new System.Drawing.Size(91, 34);
+            this.doneButton.TabIndex = 11;
+            this.doneButton.Text = "print";
+            this.doneButton.UseVisualStyleBackColor = true;
+            this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
             // 
             // printBills
             // 
@@ -356,7 +357,7 @@
             // 
             this.oldBalance.BackColor = System.Drawing.Color.White;
             this.oldBalance.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.oldBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.oldBalance.ForeColor = System.Drawing.Color.Black;
             this.oldBalance.Location = new System.Drawing.Point(112, 48);
             this.oldBalance.Name = "oldBalance";
             this.oldBalance.ReadOnly = true;
@@ -852,6 +853,14 @@
             this.Title.Text = "Invoice";
             this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // paymentPanel
+            // 
+            this.paymentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.paymentPanel.Location = new System.Drawing.Point(0, 0);
+            this.paymentPanel.Name = "paymentPanel";
+            this.paymentPanel.Size = new System.Drawing.Size(326, 234);
+            this.paymentPanel.TabIndex = 21;
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -860,7 +869,7 @@
             this.ClientSize = new System.Drawing.Size(326, 234);
             this.Controls.Add(this.Title);
             this.Controls.Add(this.balance);
-            this.Controls.Add(this.btnDone);
+            this.Controls.Add(this.doneButton);
             this.Controls.Add(this.oldBalance);
             this.Controls.Add(this.paid);
             this.Controls.Add(this.due);
@@ -869,6 +878,7 @@
             this.Controls.Add(this.balanceLabel);
             this.Controls.Add(this.printBillsPanel);
             this.Controls.Add(this.oldBalanceLabel);
+            this.Controls.Add(this.paymentPanel);
             this.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(232, 273);
@@ -916,7 +926,7 @@
         private System.Windows.Forms.Label petData2;
         private System.Windows.Forms.Label petData1;
         private System.Windows.Forms.Label petData3;
-        private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.Button doneButton;
         private System.Drawing.Printing.PrintDocument printBills;
         private System.Windows.Forms.PrintPreviewDialog previewBills;
         private System.Windows.Forms.TextBox oldBalance;
@@ -956,5 +966,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label oldBalanceLabel;
         private System.Windows.Forms.Label Title;
+        private System.Windows.Forms.Panel paymentPanel;
     }
 }

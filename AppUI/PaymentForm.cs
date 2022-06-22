@@ -1,4 +1,5 @@
-﻿using AppLibrary.Models;
+﻿using AppLibrary;
+using AppLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,33 @@ namespace AppUI
         public PaymentForm()
         {
             InitializeComponent();
+            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
+            if (GlobalConfig.IsDark)
+            {
+                paymentPanel.BackColor = Color.FromArgb(31, 31, 31);
+                oldBalance.ForeColor = Color.White;
+                oldBalance.BackColor = Color.FromArgb(31, 31, 31);
+                balance.ForeColor = Color.White;
+                balance.BackColor = Color.FromArgb(31, 31, 31);
+                oldBalanceLabel.ForeColor = Color.White;
+                oldBalanceLabel.BackColor = Color.FromArgb(31, 31, 31);
+                dueLabel.ForeColor = Color.White;
+                dueLabel.BackColor = Color.FromArgb(31, 31, 31);
+                paidLabel.ForeColor = Color.White;
+                paidLabel.BackColor = Color.FromArgb(31, 31, 31);
+                balanceLabel.ForeColor = Color.White;
+                balanceLabel.BackColor = Color.FromArgb(31, 31, 31);
+                due.BackColor = Color.FromArgb(64,64,64);
+                due.BorderStyle = BorderStyle.FixedSingle;
+                due.ForeColor = Color.White;
+                paid.BackColor = Color.FromArgb(64,64,64);
+                paid.BorderStyle = BorderStyle.FixedSingle;
+                paid.ForeColor = Color.White;
+                doneButton.BackColor = Color.FromArgb(64,64,64);
+                doneButton.FlatStyle = FlatStyle.Flat;
+                doneButton.ForeColor = Color.White;
+
+            }
         }
         private void PrintPanel(Panel panel)
         {
@@ -42,7 +70,6 @@ namespace AppUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            oldBalance.ForeColor = Color.Black;
             printBillsPanel.Location = new Point(-780, 0);
             due.Select();
             if (PayLater)
@@ -51,10 +78,10 @@ namespace AppUI
                 paidLabel.Visible = false;
                 balance.Visible = false;
                 balanceLabel.Visible = false;
-                btnDone.Top = btnDone.Top - 60;
+                doneButton.Top = doneButton.Top - 60;
                 this.MinimumSize = new Size(232, 213);
                 this.Size = new Size(342, 213);
-                btnDone.Text = "Save";
+                doneButton.Text = "Save";
             }
             if (Bill != null)
             {
@@ -62,8 +89,7 @@ namespace AppUI
                 paid.Text = Bill.PaidAmount.ToString();
             }
         }
-
-        private void btnDone_Click(object sender, EventArgs e)
+        private void doneButton_Click(object sender, EventArgs e)
         {
             Bill = new BillModel();
             Bill.InvoiceNumber = 987654321;
@@ -80,7 +106,6 @@ namespace AppUI
             }
             Saved = true;
             this.Close();
-
         }
     }
 }

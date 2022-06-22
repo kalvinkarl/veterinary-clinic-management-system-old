@@ -331,6 +331,8 @@ namespace AppUI
         {
             appGridView.ClearSelection();
             dataGridView.ClearSelection();
+            appGridView.DefaultCellStyle.Font = new Font("Gadugi", 12, FontStyle.Regular);
+            dataGridView.DefaultCellStyle.Font = new Font("Gadugi", 12, FontStyle.Regular);
             SwitchTheme();
         }
 
