@@ -33,8 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.userManMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +84,6 @@
             this.appPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appPet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.appAppointment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appBlank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.dataID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,7 +91,6 @@
             this.dataPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataPet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataAppointment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataBlank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datePanel = new System.Windows.Forms.Panel();
             this.dateLabel = new System.Windows.Forms.Label();
             this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -101,10 +101,10 @@
             this.addVisitButton = new System.Windows.Forms.Button();
             this.newVisitorButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.adminStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.clientsSatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.appointmentsSatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.contactStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.developerStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timeStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timToday = new System.Windows.Forms.Timer(this.components);
@@ -322,47 +322,50 @@
             this.darkToolStripMenuItem});
             this.themeMenu.Image = ((System.Drawing.Image)(resources.GetObject("themeMenu.Image")));
             this.themeMenu.Name = "themeMenu";
-            this.themeMenu.Size = new System.Drawing.Size(155, 22);
+            this.themeMenu.Size = new System.Drawing.Size(180, 22);
             this.themeMenu.Text = "Theme";
             // 
             // defaultToolStripMenuItem
             // 
             this.defaultToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("defaultToolStripMenuItem.Image")));
             this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.defaultToolStripMenuItem.Text = "Default";
+            this.defaultToolStripMenuItem.Click += new System.EventHandler(this.defaultToolStripMenuItem_Click);
             // 
             // grayToolStripMenuItem
             // 
             this.grayToolStripMenuItem.Name = "grayToolStripMenuItem";
-            this.grayToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.grayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.grayToolStripMenuItem.Text = "Gray";
+            this.grayToolStripMenuItem.Click += new System.EventHandler(this.grayToolStripMenuItem_Click);
             // 
             // darkToolStripMenuItem
             // 
             this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            this.darkToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.darkToolStripMenuItem.Text = "Dark";
+            this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
             // 
             // historyMenu
             // 
             this.historyMenu.Image = ((System.Drawing.Image)(resources.GetObject("historyMenu.Image")));
             this.historyMenu.Name = "historyMenu";
             this.historyMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.historyMenu.Size = new System.Drawing.Size(155, 22);
+            this.historyMenu.Size = new System.Drawing.Size(180, 22);
             this.historyMenu.Text = "History";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(152, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // settingsMenu
             // 
             this.settingsMenu.Image = ((System.Drawing.Image)(resources.GetObject("settingsMenu.Image")));
             this.settingsMenu.Name = "settingsMenu";
             this.settingsMenu.ShortcutKeys = System.Windows.Forms.Keys.F9;
-            this.settingsMenu.Size = new System.Drawing.Size(155, 22);
+            this.settingsMenu.Size = new System.Drawing.Size(180, 22);
             this.settingsMenu.Text = "Settings";
             // 
             // helpMenu
@@ -439,36 +442,37 @@
             // 
             // landingTabs
             // 
+            this.landingTabs.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.landingTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.landingTabs.Controls.Add(this.appointmentsTab);
-            this.landingTabs.Location = new System.Drawing.Point(0, 159);
+            this.landingTabs.Location = new System.Drawing.Point(-4, 167);
             this.landingTabs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.landingTabs.Name = "landingTabs";
             this.landingTabs.SelectedIndex = 0;
-            this.landingTabs.Size = new System.Drawing.Size(1485, 591);
+            this.landingTabs.Size = new System.Drawing.Size(1493, 591);
             this.landingTabs.TabIndex = 7;
             // 
             // appointmentsTab
             // 
+            this.appointmentsTab.BackColor = System.Drawing.Color.White;
             this.appointmentsTab.Controls.Add(this.aptLayoutPanel);
             this.appointmentsTab.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentsTab.Location = new System.Drawing.Point(4, 28);
             this.appointmentsTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.appointmentsTab.Name = "appointmentsTab";
             this.appointmentsTab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.appointmentsTab.Size = new System.Drawing.Size(1477, 559);
+            this.appointmentsTab.Size = new System.Drawing.Size(1485, 559);
             this.appointmentsTab.TabIndex = 0;
             this.appointmentsTab.Text = "Appointments";
-            this.appointmentsTab.UseVisualStyleBackColor = true;
             // 
             // aptLayoutPanel
             // 
             this.aptLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.aptLayoutPanel.BackColor = System.Drawing.Color.White;
+            this.aptLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this.aptLayoutPanel.ColumnCount = 2;
             this.aptLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.aptLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -482,7 +486,7 @@
             this.aptLayoutPanel.RowCount = 2;
             this.aptLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.aptLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.aptLayoutPanel.Size = new System.Drawing.Size(1475, 553);
+            this.aptLayoutPanel.Size = new System.Drawing.Size(1483, 553);
             this.aptLayoutPanel.TabIndex = 5;
             // 
             // appGridView
@@ -490,39 +494,47 @@
             this.appGridView.AllowUserToAddRows = false;
             this.appGridView.AllowUserToDeleteRows = false;
             this.appGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.appGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.appGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.appGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.appGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.appGridView.BackgroundColor = System.Drawing.Color.White;
             this.appGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.appGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
-            this.appGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.appGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.appGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.appGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.appGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.appGridView.ColumnHeadersHeight = 25;
+            this.appGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.appGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.appID,
             this.appName,
             this.appAddress,
             this.appPhone,
             this.appPet,
-            this.appAppointment,
-            this.appBlank});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.appGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.appAppointment});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.appGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.appGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.appGridView.EnableHeadersVisualStyles = false;
             this.appGridView.GridColor = System.Drawing.Color.LightGray;
             this.appGridView.Location = new System.Drawing.Point(3, 48);
             this.appGridView.Name = "appGridView";
@@ -530,7 +542,7 @@
             this.appGridView.RowHeadersVisible = false;
             this.appGridView.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.appGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.appGridView.Size = new System.Drawing.Size(731, 502);
+            this.appGridView.Size = new System.Drawing.Size(735, 502);
             this.appGridView.TabIndex = 10;
             this.appGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.appGridView_CellContentDoubleClick);
             this.appGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.appGridView_MouseDown);
@@ -549,7 +561,6 @@
             this.appName.MinimumWidth = 50;
             this.appName.Name = "appName";
             this.appName.ReadOnly = true;
-            this.appName.Width = 200;
             // 
             // appAddress
             // 
@@ -557,7 +568,6 @@
             this.appAddress.MinimumWidth = 50;
             this.appAddress.Name = "appAddress";
             this.appAddress.ReadOnly = true;
-            this.appAddress.Width = 300;
             // 
             // appPhone
             // 
@@ -565,7 +575,6 @@
             this.appPhone.MinimumWidth = 50;
             this.appPhone.Name = "appPhone";
             this.appPhone.ReadOnly = true;
-            this.appPhone.Width = 120;
             // 
             // appPet
             // 
@@ -573,7 +582,6 @@
             this.appPet.MinimumWidth = 50;
             this.appPet.Name = "appPet";
             this.appPet.ReadOnly = true;
-            this.appPet.Width = 120;
             // 
             // appAppointment
             // 
@@ -581,63 +589,61 @@
             this.appAppointment.MinimumWidth = 50;
             this.appAppointment.Name = "appAppointment";
             this.appAppointment.ReadOnly = true;
-            this.appAppointment.Width = 160;
-            // 
-            // appBlank
-            // 
-            this.appBlank.HeaderText = " ";
-            this.appBlank.Name = "appBlank";
-            this.appBlank.ReadOnly = true;
-            this.appBlank.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.appBlank.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.appBlank.Width = 300;
             // 
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
-            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView.ColumnHeadersHeight = 25;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataID,
             this.dataName,
             this.dataAddress,
             this.dataPhone,
             this.dataPet,
-            this.dataAppointment,
-            this.dataBlank});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataAppointment});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView.EnableHeadersVisualStyles = false;
             this.dataGridView.GridColor = System.Drawing.Color.LightGray;
-            this.dataGridView.Location = new System.Drawing.Point(740, 48);
+            this.dataGridView.Location = new System.Drawing.Point(744, 48);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(732, 502);
+            this.dataGridView.Size = new System.Drawing.Size(736, 502);
             this.dataGridView.TabIndex = 9;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentDoubleClick);
             this.dataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseDown);
@@ -655,7 +661,6 @@
             this.dataName.MinimumWidth = 50;
             this.dataName.Name = "dataName";
             this.dataName.ReadOnly = true;
-            this.dataName.Width = 200;
             // 
             // dataAddress
             // 
@@ -663,7 +668,6 @@
             this.dataAddress.MinimumWidth = 50;
             this.dataAddress.Name = "dataAddress";
             this.dataAddress.ReadOnly = true;
-            this.dataAddress.Width = 300;
             // 
             // dataPhone
             // 
@@ -671,7 +675,6 @@
             this.dataPhone.MinimumWidth = 50;
             this.dataPhone.Name = "dataPhone";
             this.dataPhone.ReadOnly = true;
-            this.dataPhone.Width = 120;
             // 
             // dataPet
             // 
@@ -679,26 +682,15 @@
             this.dataPet.MinimumWidth = 50;
             this.dataPet.Name = "dataPet";
             this.dataPet.ReadOnly = true;
-            this.dataPet.Width = 120;
             // 
             // dataAppointment
             // 
-            dataGridViewCellStyle4.NullValue = "No appointments";
-            this.dataAppointment.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.NullValue = "No appointments";
+            this.dataAppointment.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataAppointment.HeaderText = "Appointment";
             this.dataAppointment.MinimumWidth = 50;
             this.dataAppointment.Name = "dataAppointment";
             this.dataAppointment.ReadOnly = true;
-            this.dataAppointment.Width = 160;
-            // 
-            // dataBlank
-            // 
-            this.dataBlank.HeaderText = " ";
-            this.dataBlank.Name = "dataBlank";
-            this.dataBlank.ReadOnly = true;
-            this.dataBlank.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataBlank.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataBlank.Width = 300;
             // 
             // datePanel
             // 
@@ -710,7 +702,7 @@
             this.datePanel.Location = new System.Drawing.Point(3, 4);
             this.datePanel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.datePanel.Name = "datePanel";
-            this.datePanel.Size = new System.Drawing.Size(731, 37);
+            this.datePanel.Size = new System.Drawing.Size(735, 37);
             this.datePanel.TabIndex = 5;
             // 
             // dateLabel
@@ -727,12 +719,19 @@
             // appointmentDatePicker
             // 
             this.appointmentDatePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.appointmentDatePicker.CalendarFont = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentDatePicker.CalendarForeColor = System.Drawing.Color.Black;
+            this.appointmentDatePicker.CalendarMonthBackground = System.Drawing.Color.White;
+            this.appointmentDatePicker.CalendarTitleBackColor = System.Drawing.Color.White;
+            this.appointmentDatePicker.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.appointmentDatePicker.CalendarTrailingForeColor = System.Drawing.Color.Black;
             this.appointmentDatePicker.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointmentDatePicker.Location = new System.Drawing.Point(57, 4);
             this.appointmentDatePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.appointmentDatePicker.Name = "appointmentDatePicker";
             this.appointmentDatePicker.Size = new System.Drawing.Size(272, 29);
             this.appointmentDatePicker.TabIndex = 0;
+            this.appointmentDatePicker.Value = new System.DateTime(2022, 6, 23, 5, 48, 24, 0);
             this.appointmentDatePicker.ValueChanged += new System.EventHandler(this.appointmentDatePicker_ValueChanged);
             // 
             // listComboBox
@@ -745,7 +744,7 @@
             "Overdue/Late",
             "Finished today",
             "All client visits"});
-            this.listComboBox.Location = new System.Drawing.Point(740, 9);
+            this.listComboBox.Location = new System.Drawing.Point(744, 9);
             this.listComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listComboBox.Name = "listComboBox";
             this.listComboBox.Size = new System.Drawing.Size(320, 27);
@@ -822,48 +821,50 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.BackColor = System.Drawing.Color.White;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3,
-            this.toolStripStatusLabel4,
+            this.adminStatus,
+            this.clientsSatus,
+            this.appointmentsSatus,
+            this.contactStatus,
             this.developerStatus,
             this.timeStatus});
             this.statusStrip.Location = new System.Drawing.Point(0, 754);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
+            this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip.Size = new System.Drawing.Size(1485, 24);
             this.statusStrip.TabIndex = 13;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // adminStatus
             // 
-            this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(122, 19);
-            this.toolStripStatusLabel1.Text = "Status: Administrator";
+            this.adminStatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.adminStatus.Name = "adminStatus";
+            this.adminStatus.Size = new System.Drawing.Size(122, 19);
+            this.adminStatus.Text = "Status: Administrator";
             // 
-            // toolStripStatusLabel2
+            // clientsSatus
             // 
-            this.toolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(59, 19);
-            this.toolStripStatusLabel2.Text = "Clients: 4";
+            this.clientsSatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.clientsSatus.Name = "clientsSatus";
+            this.clientsSatus.Size = new System.Drawing.Size(59, 19);
+            this.clientsSatus.Text = "Clients: 4";
             // 
-            // toolStripStatusLabel3
+            // appointmentsSatus
             // 
-            this.toolStripStatusLabel3.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(99, 19);
-            this.toolStripStatusLabel3.Text = "Appointments: 3";
+            this.appointmentsSatus.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.appointmentsSatus.Name = "appointmentsSatus";
+            this.appointmentsSatus.Size = new System.Drawing.Size(99, 19);
+            this.appointmentsSatus.Text = "Appointments: 3";
             // 
-            // toolStripStatusLabel4
+            // contactStatus
             // 
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(1051, 19);
-            this.toolStripStatusLabel4.Spring = true;
-            this.toolStripStatusLabel4.Text = "Contact us:";
-            this.toolStripStatusLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.contactStatus.Name = "contactStatus";
+            this.contactStatus.Size = new System.Drawing.Size(1051, 19);
+            this.contactStatus.Spring = true;
+            this.contactStatus.Text = "Contact us:";
+            this.contactStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // developerStatus
             // 
@@ -984,10 +985,10 @@
         private System.Windows.Forms.Button addVisitButton;
         private System.Windows.Forms.Button newVisitorButton;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private System.Windows.Forms.ToolStripStatusLabel adminStatus;
+        private System.Windows.Forms.ToolStripStatusLabel clientsSatus;
+        private System.Windows.Forms.ToolStripStatusLabel appointmentsSatus;
+        private System.Windows.Forms.ToolStripStatusLabel contactStatus;
         private System.Windows.Forms.ToolStripStatusLabel developerStatus;
         private System.Windows.Forms.ToolStripStatusLabel timeStatus;
         private System.Windows.Forms.Timer timToday;
@@ -999,14 +1000,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn appPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn appPet;
         private System.Windows.Forms.DataGridViewTextBoxColumn appAppointment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn appBlank;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataID;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataPet;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataAppointment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataBlank;
     }
 }
 

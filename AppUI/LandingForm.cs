@@ -16,7 +16,7 @@ namespace AppUI
     {
         private List<ClientModel> Clients { get; set; } = new List<ClientModel>();
         private List<ClientModel> ClientAppointments { get; set; } = new List<ClientModel>();
-
+        private int themes { get; set; }
         public LandingForm()
         {
             InitializeComponent();
@@ -65,6 +65,90 @@ namespace AppUI
             Properties.Settings.Default.ClientListComboBox = listComboBox.Text;
             Properties.Settings.Default.Save();
         }
+        private int SwitchTheme()
+        {
+            if (themes == 1)
+            {
+                this.BackColor = Color.FromArgb(31, 31, 31);
+                landingTabs.TabPages[0].BackColor = Color.FromArgb(31, 31, 31);
+                statusStrip.BackColor = Color.FromArgb(31, 31, 31);
+                menuStrip.BackColor = Color.FromArgb(31, 31, 31);
+                adminStatus.ForeColor = Color.White;
+                clientsSatus.ForeColor = Color.White;
+                appointmentsSatus.ForeColor = Color.White;
+                contactStatus.ForeColor = Color.White;
+                timeStatus.ForeColor = Color.White;
+                menuStrip.ForeColor = Color.White;
+                dateLabel.ForeColor = Color.White;
+                //listComboBox normalmode
+                listComboBox.BackColor = Color.FromArgb(31, 31, 31);
+                listComboBox.ForeColor = Color.White;
+                //appGridView darkmode (Appointment datagrid view)
+                appGridView.BackgroundColor = Color.FromArgb(31, 31, 31);
+                appGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(64, 64, 64);
+                appGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(64, 64, 64);
+                appGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(54, 54, 54);
+                appGridView.DefaultCellStyle.BackColor = Color.FromArgb(31, 31, 31);
+                appGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.White;
+                appGridView.DefaultCellStyle.ForeColor = Color.White;
+                appGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                //dataGridView darkmode (default datagrid view)
+                dataGridView.BackgroundColor = Color.FromArgb(31, 31, 31);
+                dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(64, 64, 64);
+                dataGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(64, 64, 64);
+                dataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(54, 54, 54);
+                dataGridView.DefaultCellStyle.BackColor = Color.FromArgb(31, 31, 31);
+                dataGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.White;
+                dataGridView.DefaultCellStyle.ForeColor = Color.White;
+                dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                this.Refresh();
+                return 1;
+            }
+            else if (themes == 2)
+            {
+                this.BackColor = Color.FromArgb(64, 64, 64);
+                return 2;
+            }
+            else
+            {
+                this.BackColor = Color.White;
+                landingTabs.TabPages[0].BackColor = Color.White;
+                menuStrip.BackColor = Color.White;
+                menuStrip.ForeColor = Color.Black;
+                statusStrip.BackColor = Color.White;
+                adminStatus.ForeColor = Color.Black;
+                clientsSatus.ForeColor = Color.Black;
+                appointmentsSatus.ForeColor = Color.Black;
+                contactStatus.ForeColor = Color.Black;
+                timeStatus.ForeColor = Color.Black;
+                dateLabel.ForeColor = Color.Black;
+                //listComboBox normalmode
+                listComboBox.BackColor = Color.White;
+                listComboBox.ForeColor = Color.Black;
+                //appGridView normalmode (Appointment datagrid view)
+                appGridView.BackgroundColor = Color.White;
+                appGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                appGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                appGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+                appGridView.DefaultCellStyle.BackColor = Color.White;
+                appGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+                appGridView.DefaultCellStyle.ForeColor = Color.Black;
+                appGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                //dataGridView normalmode (default datagrid view)
+                dataGridView.BackgroundColor = Color.White;
+                dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
+                dataGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+                dataGridView.DefaultCellStyle.BackColor = Color.White;
+                dataGridView.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+                dataGridView.DefaultCellStyle.ForeColor = Color.Black;
+                dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                this.Refresh();
+                return 0;
+            }
+        }
+
+
         private void BindDataGrid()
         {
             dataGridView.Rows.Clear();
@@ -237,8 +321,34 @@ namespace AppUI
 
         private void LandingForm_Load(object sender, EventArgs e)
         {
+            themes = 0;
             appGridView.ClearSelection();
             dataGridView.ClearSelection();
+            SwitchTheme();
+        }
+
+        private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            themes = 0;
+            GlobalConfig.IsDark = false;
+            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
+            SwitchTheme();
+        }
+
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            themes = 1;
+            GlobalConfig.IsDark = true;
+            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
+            SwitchTheme();
+        }
+
+        private void grayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            themes = 2;
+            GlobalConfig.IsDark = true;
+            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
+            SwitchTheme();
         }
     }
 }
