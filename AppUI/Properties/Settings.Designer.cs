@@ -61,7 +61,7 @@ namespace AppUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Overdue / Late")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Overdue/Late")]
         public string ClientListComboBox {
             get {
                 return ((string)(this["ClientListComboBox"]));

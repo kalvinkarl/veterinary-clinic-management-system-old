@@ -15,8 +15,7 @@ namespace AppUI
     public partial class LandingForm : Form
     {
         private List<ClientModel> Clients { get; set; } = new List<ClientModel>();
-        private List<ClientModel> clientAppointments { get; set; } = new List<ClientModel>();
-        private void developerStatus_Click(object sender, EventArgs e) { System.Diagnostics.Process.Start(@"https:\\www.facebook.com\kalvinkarl28"); }
+        private List<ClientModel> ClientAppointments { get; set; } = new List<ClientModel>();
         public LandingForm()
         {
             InitializeComponent();
@@ -73,6 +72,10 @@ namespace AppUI
             {
                 Clients = GlobalConfig.Connection.GetTodayVisitsOfClients();
             }
+            else if (listComboBox.Text == "Overdue/Late")
+            {
+                Clients = GlobalConfig.Connection.GetVisitsOfClients();
+            }
             if (Clients.Count > 0)
             {
                 foreach (ClientModel client in Clients)
@@ -82,16 +85,27 @@ namespace AppUI
                     {
                         nextVisit = client.NextVisit.ToString("g");
                     }
-                    dataGridView.Rows.Add(new string[] { client.FullName, client.Address, client.Cellphone, client.PetName, nextVisit });
+                    if (listComboBox.Text != "Overdue/Late")
+                    {
+                        dataGridView.Rows.Add(new string[] { client.FullName, client.Address, client.Cellphone, client.PetName, nextVisit });
+                    }
+                    else
+                    {
+                        if (client.NextVisit.Date < DateTime.Now.Date && client.NextVisit != (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue)
+                        {
+                            dataGridView.Rows.Add(new string[] { client.FullName, client.Address, client.Cellphone, client.PetName, nextVisit });
+                        }
+                    }
+                    
                 }
             }
         }
         private void BindAppGrid()
         {
-            clientAppointments = GlobalConfig.Connection.GetVisitsOfClients();
+            ClientAppointments = GlobalConfig.Connection.GetVisitsOfClients();
             appGridView.Rows.Clear();
             appGridView.Refresh();
-            foreach (ClientModel client in clientAppointments)
+            foreach (ClientModel client in ClientAppointments)
             {
                 if (client.NextVisit.Date == appointmentDatePicker.Value.Date)
                 {
@@ -164,5 +178,6 @@ namespace AppUI
         {
             BindAppGrid();
         }
+        private void developerStatus_Click(object sender, EventArgs e) { System.Diagnostics.Process.Start(@"https:\\www.facebook.com\kalvinkarl28"); }
     }
 }
