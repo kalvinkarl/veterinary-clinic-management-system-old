@@ -48,5 +48,6 @@ namespace AppLibrary.Models
         /// Represents the visits of the pet
         /// </summary>
         public List<VisitModel> Visits { get; set; } = new List<VisitModel>();
+
     }
 }

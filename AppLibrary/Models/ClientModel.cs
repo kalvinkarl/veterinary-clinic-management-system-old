@@ -47,8 +47,5 @@ namespace AppLibrary.Models
         {
             get { return $"{FirstName} {LastName}"; }
         }
-        public string PetName { get; set; }
-        public DateTime NextVisit { get; set; }
-
     }
 }

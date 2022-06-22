@@ -22,7 +22,7 @@ namespace AppLibrary.DataAccess
                 c.Add("@LastName", client.LastName);
                 c.Add("@Address", client.Address);
                 c.Add("@Cellphone", client.Cellphone);
-                c.Add("@ID",0,dbType: DbType.Int32,direction: ParameterDirection.Output);
+                c.Add("@ClientID", 0,dbType: DbType.Int32,direction: ParameterDirection.Output);
                 connection.Execute("spClients_Create", c, commandType: CommandType.StoredProcedure);
                 client.ID = c.Get<int>("@ID");
                 return client;
@@ -41,7 +41,7 @@ namespace AppLibrary.DataAccess
                 p.Add("Age", pet.Age);
                 p.Add("Sex", pet.Sex);
                 p.Add("Notes", pet.Notes);
-                p.Add("@ID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                p.Add("@PetID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                 connection.Execute("spPets_Create", p, commandType: CommandType.StoredProcedure);
                 pet.ID = p.Get<int>("@ID");
                 return pet;
@@ -60,7 +60,7 @@ namespace AppLibrary.DataAccess
                 v.Add("@Notes", visit.Notes);
                 v.Add("@Date", visit.Date);
                 v.Add("@NextVisit", visit.NextVisit);
-                v.Add("@ID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                v.Add("@VisitID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                 connection.Execute("spVisits_Create", v, commandType: CommandType.StoredProcedure);
                 visit.ID = v.Get<int>("@ID");
                 return visit;
@@ -76,7 +76,7 @@ namespace AppLibrary.DataAccess
                 b.Add("@TotalAmount", bill.TotalAmount);
                 b.Add("@PaidAmount", bill.PaidAmount);
                 b.Add("@Date", bill.Date);
-                b.Add("@ID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                b.Add("@BillID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                 connection.Execute("spBills_Create", b, commandType: CommandType.StoredProcedure);
                 bill.ID = b.Get<int>("@ID");
                 return bill;
@@ -132,29 +132,25 @@ namespace AppLibrary.DataAccess
             }
         }
 
-
-
-
-
-        public List<ClientModel> GetAllWithVisitOfClients()
+        public List<ClientModel> GetAllWithPetVisitsOfClients()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<ClientModel>("spClients_GetAllWithVisits", null, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<ClientModel, PetModel,VisitModel, ClientModel>("spClients_GetAllWithVisits", (c, p, v) => { p.Visits.Add(v); c.Pets.Add(p); return c; } , null, commandType: CommandType.StoredProcedure).ToList();
             }
         }
         public List<ClientModel> GetTodayVisitsOfClients()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<ClientModel>("spClients_GetTodayVisits", null, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<ClientModel, PetModel, VisitModel, ClientModel>("spClients_GetTodayVisits", (c, p, v) => { p.Visits.Add(v); c.Pets.Add(p); return c; }, null, commandType: CommandType.StoredProcedure).ToList();
             }
         }
         public List<ClientModel> GetVisitsOfClients()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<ClientModel>("spClients_GetVisits", null, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<ClientModel, PetModel, VisitModel, ClientModel>("spClients_GetVisits", (c, p, v) => { p.Visits.Add(v); c.Pets.Add(p); return c; }, null, commandType: CommandType.StoredProcedure).ToList();
             }
         }
     }

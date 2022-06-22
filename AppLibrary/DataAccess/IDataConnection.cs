@@ -53,8 +53,10 @@ namespace AppLibrary.DataAccess
 
 
 
-        List<ClientModel> GetAllWithVisitOfClients();
+        List<ClientModel> GetAllWithPetVisitsOfClients();
+
         List<ClientModel> GetTodayVisitsOfClients(); 
+
         List<ClientModel> GetVisitsOfClients();
 
     }

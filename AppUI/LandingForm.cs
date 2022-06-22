@@ -16,6 +16,7 @@ namespace AppUI
     {
         private List<ClientModel> Clients { get; set; } = new List<ClientModel>();
         private List<ClientModel> ClientAppointments { get; set; } = new List<ClientModel>();
+
         public LandingForm()
         {
             InitializeComponent();
@@ -61,12 +62,11 @@ namespace AppUI
         }
         private void BindDataGrid()
         {
-            string nextVisit;
             dataGridView.Rows.Clear();
             dataGridView.Refresh();
             if (listComboBox.Text == "All clients")
             {
-                Clients = GlobalConfig.Connection.GetAllWithVisitOfClients();
+                Clients = GlobalConfig.Connection.GetAllWithPetVisitsOfClients();
             }
             else if (listComboBox.Text == "Finished today")
             {
@@ -80,23 +80,15 @@ namespace AppUI
             {
                 foreach (ClientModel client in Clients)
                 {
-                    nextVisit = "No Appointments";
-                    if (client.NextVisit >= (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue)
-                    {
-                        nextVisit = client.NextVisit.ToString("g");
-                    }
                     if (listComboBox.Text != "Overdue/Late")
                     {
-                        dataGridView.Rows.Add(new string[] { client.FullName, client.Address, client.Cellphone, client.PetName, nextVisit });
+                        dataGridView.Rows.Add(new string[] { client.Pets[0].ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
                     }
-                    else
+                    else if(client.Pets[0].Visits[0]?.NextVisit.Date < DateTime.Now.Date && client.Pets[0].Visits[0]?.NextVisit != (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue)
                     {
-                        if (client.NextVisit.Date < DateTime.Now.Date && client.NextVisit != (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue)
-                        {
-                            dataGridView.Rows.Add(new string[] { client.FullName, client.Address, client.Cellphone, client.PetName, nextVisit });
-                        }
+                        dataGridView.Rows.Add(new string[] { client.Pets[0].ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
                     }
-                    
+
                 }
             }
         }
@@ -107,9 +99,9 @@ namespace AppUI
             appGridView.Refresh();
             foreach (ClientModel client in ClientAppointments)
             {
-                if (client.NextVisit.Date == appointmentDatePicker.Value.Date)
+                if (client.Pets[0].Visits[0]?.NextVisit.Date == appointmentDatePicker.Value.Date)
                 {
-                    appGridView.Rows.Add(new string[] { client.FullName, client.Address, client.Cellphone, client.PetName, client.NextVisit.ToString("g") });
+                    appGridView.Rows.Add(new string[] { client.Pets[0].ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
                 }
             }
         }
@@ -164,11 +156,9 @@ namespace AppUI
         }
         private void reportButton_Click(object sender, EventArgs e)
         {
-            //ClientModel client = (ClientModel)dataGridView.CurrentRow.DataBoundItem;
-            //MessageBox.Show($"{client.FullName}");
-            DateTime md = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
-            MessageBox.Show(md.ToString());
-
+            MessageBox.Show(dataGridView.SelectedRows.Count.ToString());
+            dataGridView.ClearSelection();
+            appGridView.ClearSelection();
         }
         private void listComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -179,5 +169,32 @@ namespace AppUI
             BindAppGrid();
         }
         private void developerStatus_Click(object sender, EventArgs e) { System.Diagnostics.Process.Start(@"https:\\www.facebook.com\kalvinkarl28"); }
+        private void dataGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            appGridView.ClearSelection();
+        }
+
+        private void appGridView_MouseDown(object sender, MouseEventArgs e)
+        {
+            dataGridView.ClearSelection();
+        }
+
+        private void appGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(appGridView.SelectedRows.Count > 0)
+            {
+                string index = appGridView.SelectedRows[0].Cells[0].Value.ToString();
+                MessageBox.Show(index);
+            }
+        }
+
+        private void dataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dataGridView.SelectedRows.Count > 0)
+            {
+                string index = dataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                MessageBox.Show(index);
+            }
+        }
     }
 }
