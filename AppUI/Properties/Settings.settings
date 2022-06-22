@@ -14,5 +14,8 @@
     <Setting Name="ClientListComboBox" Type="System.String" Scope="User">
       <Value Profile="(Default)">All client visits</Value>
     </Setting>
+    <Setting Name="themes" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

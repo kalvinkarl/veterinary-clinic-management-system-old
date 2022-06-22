@@ -70,5 +70,17 @@ namespace AppUI.Properties {
                 this["ClientListComboBox"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int themes {
+            get {
+                return ((int)(this["themes"]));
+            }
+            set {
+                this["themes"] = value;
+            }
+        }
     }
 }

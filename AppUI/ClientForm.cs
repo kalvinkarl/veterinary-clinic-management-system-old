@@ -20,6 +20,32 @@ namespace AppUI
         public ClientForm()
         {
             InitializeComponent();
+            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
+            if (GlobalConfig.IsDark)
+            {
+                this.BackColor = Color.FromArgb(31, 31, 31);
+                clientLayoutPanel.BackColor = Color.FromArgb(31, 31, 31);
+                firstNameLabel.ForeColor = Color.White;
+                lastNameLabel.ForeColor = Color.White;
+                addressLabel.ForeColor = Color.White;
+                cellphoneLabel.ForeColor = Color.White;
+                petLabel.ForeColor = Color.White;
+                firstName.BackColor = Color.FromArgb(64, 64, 64);
+                firstName.BorderStyle = BorderStyle.FixedSingle;
+                firstName.ForeColor = Color.White;
+                lastName.BackColor = Color.FromArgb(64, 64, 64);
+                lastName.BorderStyle = BorderStyle.FixedSingle;
+                lastName.ForeColor = Color.White;
+                address.BackColor = Color.FromArgb(64, 64, 64);
+                address.BorderStyle = BorderStyle.FixedSingle;
+                address.ForeColor = Color.White;
+                cellphone.BackColor = Color.FromArgb(64, 64, 64);
+                cellphone.BorderStyle = BorderStyle.FixedSingle;
+                cellphone.ForeColor = Color.White;
+                petList.BackColor = Color.FromArgb(64, 64, 64);
+                petList.BorderStyle = BorderStyle.FixedSingle;
+                petList.ForeColor = Color.White;
+            }
         }
         private void Reload()
         {

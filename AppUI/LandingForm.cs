@@ -47,6 +47,7 @@ namespace AppUI
                 this.Location = Properties.Settings.Default.Location;
                 this.Size = Properties.Settings.Default.Size;
                 listComboBox.Text = Properties.Settings.Default.ClientListComboBox;
+                themes = Properties.Settings.Default.themes;
             }
         }
         private void SaveSizeRosolution()
@@ -63,12 +64,15 @@ namespace AppUI
                 Properties.Settings.Default.Size = this.RestoreBounds.Size;
             }
             Properties.Settings.Default.ClientListComboBox = listComboBox.Text;
+            Properties.Settings.Default.themes = themes;
             Properties.Settings.Default.Save();
         }
         private int SwitchTheme()
         {
             if (themes == 1)
             {
+                GlobalConfig.IsDark = true;
+                GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
                 this.BackColor = Color.FromArgb(31, 31, 31);
                 landingTabs.TabPages[0].BackColor = Color.FromArgb(31, 31, 31);
                 statusStrip.BackColor = Color.FromArgb(31, 31, 31);
@@ -106,11 +110,15 @@ namespace AppUI
             }
             else if (themes == 2)
             {
+                GlobalConfig.IsDark = true;
+                GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
                 this.BackColor = Color.FromArgb(64, 64, 64);
                 return 2;
             }
             else
             {
+                GlobalConfig.IsDark = false;
+                GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
                 this.BackColor = Color.White;
                 landingTabs.TabPages[0].BackColor = Color.White;
                 menuStrip.BackColor = Color.White;
@@ -321,7 +329,6 @@ namespace AppUI
 
         private void LandingForm_Load(object sender, EventArgs e)
         {
-            themes = 0;
             appGridView.ClearSelection();
             dataGridView.ClearSelection();
             SwitchTheme();
@@ -330,24 +337,18 @@ namespace AppUI
         private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
             themes = 0;
-            GlobalConfig.IsDark = false;
-            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
             SwitchTheme();
         }
 
         private void darkToolStripMenuItem_Click(object sender, EventArgs e)
         {
             themes = 1;
-            GlobalConfig.IsDark = true;
-            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
             SwitchTheme();
         }
 
         private void grayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             themes = 2;
-            GlobalConfig.IsDark = true;
-            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
             SwitchTheme();
         }
     }
