@@ -45,6 +45,10 @@ namespace AppLibrary.Models
         /// </summary>
         public string Notes { get; set; }
         /// <summary>
+        /// This is the count output from the database
+        /// </summary>
+        public int VisitsCount { get; set; }
+        /// <summary>
         /// Represents the visits of the pet
         /// </summary>
         public List<VisitModel> Visits { get; set; } = new List<VisitModel>();

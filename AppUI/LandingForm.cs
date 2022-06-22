@@ -85,23 +85,24 @@ namespace AppUI
             {
                 foreach (ClientModel client in Clients)
                 {
-                    if (listComboBox.Text == "All client visits" && client.Pets[0].Visits[0] != null)
+                    string nextVisit=null;
+                    if (client.Pets[0].Visits[0]?.NextVisit.Date != System.Data.SqlTypes.SqlDateTime.MaxValue.Value.Date )
                     {
-                        if (client.Pets[0].Visits[0].VisitsCount == 1)
-                        {
-                            dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
-                        }
+                        nextVisit = client.Pets[0].Visits[0]?.NextVisit.ToString("g");
+                    }
+                    if (listComboBox.Text == "All client visits" && client.Pets[0].VisitsCount == 1)
+                    {
+                        dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, nextVisit });
                     }
                     else if (listComboBox.Text == "Finished today")
                     {
-                        dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
+                        dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, nextVisit });
                     }
-                    else if(listComboBox.Text == "Overdue/Late" && client.Pets[0].Visits[0]?.NextVisit.Date < DateTime.Now.Date && client.Pets[0].Visits[0]?.NextVisit != (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue)
+                    else if(listComboBox.Text == "Overdue/Late" && client.Pets[0].Visits[0]?.NextVisit < DateTime.Now && client.Pets[0].Visits[0]?.NextVisit.Date != System.Data.SqlTypes.SqlDateTime.MaxValue.Value.Date && client.Pets[0].VisitsCount == 1)
                     {
-                        dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
+                        dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, nextVisit });
                     }
                     dataGridView.ClearSelection();
-
                 }
             }
         }
@@ -112,7 +113,7 @@ namespace AppUI
             appGridView.Refresh();
             foreach (ClientModel client in ClientAppointments)
             {
-                if (client.Pets[0].Visits[0]?.NextVisit.Date == appointmentDatePicker.Value.Date)
+                if (client.Pets[0].Visits[0]?.NextVisit.Date == appointmentDatePicker.Value.Date && client.Pets[0].VisitsCount == 1)
                 {
                     appGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
                     appGridView.ClearSelection();

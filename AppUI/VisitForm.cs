@@ -72,7 +72,7 @@ namespace AppUI
                     }
                     else
                     {
-                        Visit.NextVisit = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+                        Visit.NextVisit = (DateTime)System.Data.SqlTypes.SqlDateTime.MaxValue;
                     }
                     Visit.Bill = new BillModel();
                     Visit.Bill =paymentForm.Bill;

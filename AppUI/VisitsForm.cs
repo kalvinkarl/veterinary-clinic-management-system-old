@@ -42,7 +42,12 @@ namespace AppUI
             sex.Text = Client.Pets[0].Sex;
             foreach(VisitModel visit in Client.Pets[0].Visits)
             {
-                visitsData.Rows.Add(new String[] { visit.Date.ToString(), visit.WTT, visit.ComplaintDiagnosis, visit.Treatment, visit.NextVisit.ToString(), visit.Bill.TotalAmount.ToString("0.00") });
+                string nextVisit = null;
+                if (visit.NextVisit.Date != System.Data.SqlTypes.SqlDateTime.MaxValue.Value.Date)
+                {
+                    nextVisit = visit.NextVisit.ToString();
+                }
+                visitsData.Rows.Add(new String[] { visit.Date.ToString(), visit.WTT, visit.ComplaintDiagnosis, visit.Treatment, visit.Notes ,nextVisit, visit.Bill.TotalAmount.ToString("₱0.00") });
             }
         }
     }

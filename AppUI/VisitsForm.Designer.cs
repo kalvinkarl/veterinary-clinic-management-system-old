@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitsForm));
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cellphone = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.Label();
@@ -65,7 +65,10 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientGroup = new System.Windows.Forms.GroupBox();
             this.pic = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.Label();
@@ -77,14 +80,6 @@
             this.clientGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Followup";
-            this.Column5.MinimumWidth = 100;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 155;
             // 
             // tableLayoutPanel1
             // 
@@ -404,7 +399,9 @@
             this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6});
+            this.Column6,
+            this.Column7,
+            this.Column8});
             this.visitsData.GridColor = System.Drawing.Color.LightGray;
             this.visitsData.Location = new System.Drawing.Point(12, 198);
             this.visitsData.Name = "visitsData";
@@ -419,40 +416,61 @@
             // Column1
             // 
             this.Column1.HeaderText = "Date";
-            this.Column1.MinimumWidth = 50;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 155;
+            this.Column1.Width = 180;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "WT./T.";
-            this.Column2.MinimumWidth = 50;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 170;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Complaint/Diagnosis";
-            this.Column3.MinimumWidth = 165;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 300;
+            this.Column3.Width = 270;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Treatment";
-            this.Column4.MinimumWidth = 83;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            this.Column4.Width = 350;
+            this.Column4.Width = 270;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Notes";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 200;
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "Payment";
-            this.Column6.MinimumWidth = 70;
+            dataGridViewCellStyle2.NullValue = "No appointment";
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column6.HeaderText = "Followup";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            this.Column6.Width = 180;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Payment";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = " ";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column8.Width = 500;
             // 
             // clientGroup
             // 
@@ -522,8 +540,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label cellphone;
         private System.Windows.Forms.Label address;
@@ -554,12 +570,15 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         private System.Windows.Forms.DataGridView visitsData;
+        private System.Windows.Forms.GroupBox clientGroup;
+        private System.Windows.Forms.Label closeButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.GroupBox clientGroup;
-        private System.Windows.Forms.Label closeButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
     }
 }

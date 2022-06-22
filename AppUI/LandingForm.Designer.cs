@@ -33,8 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.userManMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,21 +74,7 @@
             this.appointmentsTab = new System.Windows.Forms.TabPage();
             this.aptLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.appGridView = new System.Windows.Forms.DataGridView();
-            this.appID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appPet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appAppointment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.appBlank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.dataID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataPet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataAppointment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataBlank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datePanel = new System.Windows.Forms.Panel();
             this.dateLabel = new System.Windows.Forms.Label();
             this.appointmentDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -108,6 +92,20 @@
             this.developerStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timeStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timToday = new System.Windows.Forms.Timer(this.components);
+            this.appID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appPet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appAppointment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.appBlank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataPet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataAppointment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataBlank = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip.SuspendLayout();
             this.searchGroup.SuspendLayout();
             this.landingTabs.SuspendLayout();
@@ -515,14 +513,6 @@
             this.appPet,
             this.appAppointment,
             this.appBlank});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.appGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.appGridView.GridColor = System.Drawing.Color.LightGray;
             this.appGridView.Location = new System.Drawing.Point(3, 48);
             this.appGridView.Name = "appGridView";
@@ -534,61 +524,6 @@
             this.appGridView.TabIndex = 10;
             this.appGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.appGridView_CellContentDoubleClick);
             this.appGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.appGridView_MouseDown);
-            // 
-            // appID
-            // 
-            this.appID.HeaderText = "ID";
-            this.appID.Name = "appID";
-            this.appID.ReadOnly = true;
-            this.appID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.appID.Visible = false;
-            // 
-            // appName
-            // 
-            this.appName.HeaderText = "Name";
-            this.appName.MinimumWidth = 50;
-            this.appName.Name = "appName";
-            this.appName.ReadOnly = true;
-            this.appName.Width = 200;
-            // 
-            // appAddress
-            // 
-            this.appAddress.HeaderText = "Address";
-            this.appAddress.MinimumWidth = 50;
-            this.appAddress.Name = "appAddress";
-            this.appAddress.ReadOnly = true;
-            this.appAddress.Width = 300;
-            // 
-            // appPhone
-            // 
-            this.appPhone.HeaderText = "Phone";
-            this.appPhone.MinimumWidth = 50;
-            this.appPhone.Name = "appPhone";
-            this.appPhone.ReadOnly = true;
-            this.appPhone.Width = 120;
-            // 
-            // appPet
-            // 
-            this.appPet.HeaderText = "Pet";
-            this.appPet.MinimumWidth = 50;
-            this.appPet.Name = "appPet";
-            this.appPet.ReadOnly = true;
-            this.appPet.Width = 120;
-            // 
-            // appAppointment
-            // 
-            this.appAppointment.HeaderText = "Appointment";
-            this.appAppointment.MinimumWidth = 50;
-            this.appAppointment.Name = "appAppointment";
-            this.appAppointment.ReadOnly = true;
-            this.appAppointment.Width = 160;
-            // 
-            // appBlank
-            // 
-            this.appBlank.HeaderText = " ";
-            this.appBlank.Name = "appBlank";
-            this.appBlank.ReadOnly = true;
-            this.appBlank.Width = 300;
             // 
             // dataGridView
             // 
@@ -603,14 +538,14 @@
             this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
             this.dataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataID,
@@ -620,14 +555,6 @@
             this.dataPet,
             this.dataAppointment,
             this.dataBlank});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView.GridColor = System.Drawing.Color.LightGray;
             this.dataGridView.Location = new System.Drawing.Point(740, 48);
             this.dataGridView.Name = "dataGridView";
@@ -639,62 +566,6 @@
             this.dataGridView.TabIndex = 9;
             this.dataGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentDoubleClick);
             this.dataGridView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView_MouseDown);
-            // 
-            // dataID
-            // 
-            this.dataID.HeaderText = "ID";
-            this.dataID.Name = "dataID";
-            this.dataID.ReadOnly = true;
-            this.dataID.Visible = false;
-            // 
-            // dataName
-            // 
-            this.dataName.HeaderText = "Name";
-            this.dataName.MinimumWidth = 50;
-            this.dataName.Name = "dataName";
-            this.dataName.ReadOnly = true;
-            this.dataName.Width = 200;
-            // 
-            // dataAddress
-            // 
-            this.dataAddress.HeaderText = "Address";
-            this.dataAddress.MinimumWidth = 50;
-            this.dataAddress.Name = "dataAddress";
-            this.dataAddress.ReadOnly = true;
-            this.dataAddress.Width = 300;
-            // 
-            // dataPhone
-            // 
-            this.dataPhone.HeaderText = "Phone";
-            this.dataPhone.MinimumWidth = 50;
-            this.dataPhone.Name = "dataPhone";
-            this.dataPhone.ReadOnly = true;
-            this.dataPhone.Width = 120;
-            // 
-            // dataPet
-            // 
-            this.dataPet.HeaderText = "Pet";
-            this.dataPet.MinimumWidth = 50;
-            this.dataPet.Name = "dataPet";
-            this.dataPet.ReadOnly = true;
-            this.dataPet.Width = 120;
-            // 
-            // dataAppointment
-            // 
-            dataGridViewCellStyle4.NullValue = "No appointments";
-            this.dataAppointment.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataAppointment.HeaderText = "Appointment";
-            this.dataAppointment.MinimumWidth = 50;
-            this.dataAppointment.Name = "dataAppointment";
-            this.dataAppointment.ReadOnly = true;
-            this.dataAppointment.Width = 160;
-            // 
-            // dataBlank
-            // 
-            this.dataBlank.HeaderText = " ";
-            this.dataBlank.Name = "dataBlank";
-            this.dataBlank.ReadOnly = true;
-            this.dataBlank.Width = 300;
             // 
             // datePanel
             // 
@@ -886,6 +757,121 @@
             this.timToday.Enabled = true;
             this.timToday.Interval = 1000;
             this.timToday.Tick += new System.EventHandler(this.timToday_Tick);
+            // 
+            // appID
+            // 
+            this.appID.HeaderText = "ID";
+            this.appID.Name = "appID";
+            this.appID.ReadOnly = true;
+            this.appID.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.appID.Visible = false;
+            // 
+            // appName
+            // 
+            this.appName.HeaderText = "Name";
+            this.appName.MinimumWidth = 50;
+            this.appName.Name = "appName";
+            this.appName.ReadOnly = true;
+            this.appName.Width = 200;
+            // 
+            // appAddress
+            // 
+            this.appAddress.HeaderText = "Address";
+            this.appAddress.MinimumWidth = 50;
+            this.appAddress.Name = "appAddress";
+            this.appAddress.ReadOnly = true;
+            this.appAddress.Width = 300;
+            // 
+            // appPhone
+            // 
+            this.appPhone.HeaderText = "Phone";
+            this.appPhone.MinimumWidth = 50;
+            this.appPhone.Name = "appPhone";
+            this.appPhone.ReadOnly = true;
+            this.appPhone.Width = 120;
+            // 
+            // appPet
+            // 
+            this.appPet.HeaderText = "Pet";
+            this.appPet.MinimumWidth = 50;
+            this.appPet.Name = "appPet";
+            this.appPet.ReadOnly = true;
+            this.appPet.Width = 120;
+            // 
+            // appAppointment
+            // 
+            this.appAppointment.HeaderText = "Appointment";
+            this.appAppointment.MinimumWidth = 50;
+            this.appAppointment.Name = "appAppointment";
+            this.appAppointment.ReadOnly = true;
+            this.appAppointment.Width = 160;
+            // 
+            // appBlank
+            // 
+            this.appBlank.HeaderText = " ";
+            this.appBlank.Name = "appBlank";
+            this.appBlank.ReadOnly = true;
+            this.appBlank.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.appBlank.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.appBlank.Width = 300;
+            // 
+            // dataID
+            // 
+            this.dataID.HeaderText = "ID";
+            this.dataID.Name = "dataID";
+            this.dataID.ReadOnly = true;
+            this.dataID.Visible = false;
+            // 
+            // dataName
+            // 
+            this.dataName.HeaderText = "Name";
+            this.dataName.MinimumWidth = 50;
+            this.dataName.Name = "dataName";
+            this.dataName.ReadOnly = true;
+            this.dataName.Width = 200;
+            // 
+            // dataAddress
+            // 
+            this.dataAddress.HeaderText = "Address";
+            this.dataAddress.MinimumWidth = 50;
+            this.dataAddress.Name = "dataAddress";
+            this.dataAddress.ReadOnly = true;
+            this.dataAddress.Width = 300;
+            // 
+            // dataPhone
+            // 
+            this.dataPhone.HeaderText = "Phone";
+            this.dataPhone.MinimumWidth = 50;
+            this.dataPhone.Name = "dataPhone";
+            this.dataPhone.ReadOnly = true;
+            this.dataPhone.Width = 120;
+            // 
+            // dataPet
+            // 
+            this.dataPet.HeaderText = "Pet";
+            this.dataPet.MinimumWidth = 50;
+            this.dataPet.Name = "dataPet";
+            this.dataPet.ReadOnly = true;
+            this.dataPet.Width = 120;
+            // 
+            // dataAppointment
+            // 
+            dataGridViewCellStyle3.NullValue = "No appointments";
+            this.dataAppointment.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataAppointment.HeaderText = "Appointment";
+            this.dataAppointment.MinimumWidth = 50;
+            this.dataAppointment.Name = "dataAppointment";
+            this.dataAppointment.ReadOnly = true;
+            this.dataAppointment.Width = 160;
+            // 
+            // dataBlank
+            // 
+            this.dataBlank.HeaderText = " ";
+            this.dataBlank.Name = "dataBlank";
+            this.dataBlank.ReadOnly = true;
+            this.dataBlank.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataBlank.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataBlank.Width = 300;
             // 
             // LandingForm
             // 
