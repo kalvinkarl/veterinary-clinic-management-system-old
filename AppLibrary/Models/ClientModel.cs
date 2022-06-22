@@ -47,10 +47,8 @@ namespace AppLibrary.Models
         {
             get { return $"{FirstName} {LastName}"; }
         }
-
-        //public ClientModel DisplayClient {
-        //    get { return new ClientModel() { FullName = FullName,Address=Address }; }
-        //}
+        public string PetName { get; set; }
+        public DateTime NextVisit { get; set; }
 
     }
 }

@@ -14,7 +14,8 @@ namespace AppUI
 {
     public partial class LandingForm : Form
     {
-        public List<ClientModel> Clients { get; set; } = GlobalConfig.InitializeClientRecords();
+        private List<ClientModel> Clients { get; set; } = new List<ClientModel>();
+        private List<ClientModel> clientAppointments { get; set; } = new List<ClientModel>();
         private void developerStatus_Click(object sender, EventArgs e) { System.Diagnostics.Process.Start(@"https:\\www.facebook.com\kalvinkarl28"); }
         public LandingForm()
         {
@@ -59,35 +60,54 @@ namespace AppUI
             Properties.Settings.Default.ClientListComboBox = listComboBox.Text;
             Properties.Settings.Default.Save();
         }
-        private void FormatDatagrid()
+        private void BindDataGrid()
         {
-            if(Clients.Count > 0)
+            string nextVisit;
+            dataGridView.Rows.Clear();
+            dataGridView.Refresh();
+            if (listComboBox.Text == "All clients")
             {
-                dataGridView.DataSource = Clients;
-                dataGridView.Columns["ID"].Visible = false;
-                dataGridView.Columns["Image"].Visible = false;
-                dataGridView.Columns["FirstName"].Visible = false;
-                dataGridView.Columns["LastName"].Visible = false;
-                dataGridView.Columns["FullName"].DisplayIndex = 0;
-                dataGridView.Columns["FullName"].Width = 200;
-                dataGridView.Columns["Address"].DisplayIndex = 1;
-                dataGridView.Columns["Address"].Width = 300;
-                dataGridView.Columns["Cellphone"].DisplayIndex = 2;
-                dataGridView.Columns["Cellphone"].Width = 130;
-                dataGridView.Columns["DateRegistered"].DisplayIndex = 3;
-                dataGridView.Columns["DateRegistered"].Width = 160;
+                Clients = GlobalConfig.Connection.GetAllWithVisitOfClients();
             }
-            else
+            else if (listComboBox.Text == "Finished today")
             {
-                dataGridView.DataSource = null;
-                dataGridView.Rows.Clear();
-                dataGridView.Refresh();
+                Clients = GlobalConfig.Connection.GetTodayVisitsOfClients();
+            }
+            if (Clients.Count > 0)
+            {
+                foreach (ClientModel client in Clients)
+                {
+                    nextVisit = "No Appointments";
+                    if (client.NextVisit >= (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue)
+                    {
+                        nextVisit = client.NextVisit.ToString("g");
+                    }
+                    dataGridView.Rows.Add(new string[] { client.FullName, client.Address, client.Cellphone, client.PetName, nextVisit });
+                }
+            }
+        }
+        private void BindAppGrid()
+        {
+            clientAppointments = GlobalConfig.Connection.GetVisitsOfClients();
+            appGridView.Rows.Clear();
+            appGridView.Refresh();
+            foreach (ClientModel client in clientAppointments)
+            {
+                if (client.NextVisit.Date == appointmentDatePicker.Value.Date)
+                {
+                    appGridView.Rows.Add(new string[] { client.FullName, client.Address, client.Cellphone, client.PetName, client.NextVisit.ToString("g") });
+                }
             }
         }
         private void newVisitorButton_Click(object sender, EventArgs e)
         {
             ClientForm clientForm = new ClientForm();
             clientForm.ShowDialog();
+            if (clientForm.Saved)
+            {
+                BindDataGrid();
+                BindAppGrid();
+            }
         }
         private void LandingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -97,7 +117,6 @@ namespace AppUI
         {
             timeStatus.Text = DateTime.Now.ToString();
         }
-
         private void addVisitButton_Click(object sender, EventArgs e)
         {
             if (landingTabs.SelectedIndex > 0)
@@ -129,12 +148,6 @@ namespace AppUI
                 }
             }
         }
-
-        private void dataGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            //MessageBox.Show($"{  }");
-        }
-
         private void reportButton_Click(object sender, EventArgs e)
         {
             //ClientModel client = (ClientModel)dataGridView.CurrentRow.DataBoundItem;
@@ -143,46 +156,13 @@ namespace AppUI
             MessageBox.Show(md.ToString());
 
         }
-
         private void listComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listComboBox.Text == "All clients")
-            {
-                FormatDatagrid();
-            }
-            else if(listComboBox.Text == "Finished today")
-            {
-                Clients = GlobalConfig.Connection.GetByTodayClients();
-                FormatDatagrid();
-            }
+            BindDataGrid();
         }
-
         private void appointmentDatePicker_ValueChanged(object sender, EventArgs e)
         {
-            //Clients = GlobalConfig.Connection.GetByVisitDate(appointmentDatePicker.Value);
-            List<ClientModel> clientModel = GlobalConfig.GetClientVisitsByDate(Clients,appointmentDatePicker.Value);
-            if(clientModel .Count > 0)
-            {
-                appGridView.DataSource = clientModel;
-                appGridView.Columns["ID"].Visible = false;
-                appGridView.Columns["Image"].Visible = false;
-                appGridView.Columns["FirstName"].Visible = false;
-                appGridView.Columns["LastName"].Visible = false;
-                appGridView.Columns["FullName"].DisplayIndex = 0;
-                appGridView.Columns["FullName"].Width = 200;
-                appGridView.Columns["Address"].DisplayIndex = 1;
-                appGridView.Columns["Address"].Width = 300;
-                appGridView.Columns["Cellphone"].DisplayIndex = 2;
-                appGridView.Columns["Cellphone"].Width = 130;
-                appGridView.Columns["DateRegistered"].DisplayIndex = 3;
-                appGridView.Columns["DateRegistered"].Width = 160;
-            }
-            else
-            {
-                appGridView.DataSource = null;
-                appGridView.Rows.Clear();
-                appGridView.Refresh();
-            }
+            BindAppGrid();
         }
     }
 }

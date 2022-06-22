@@ -100,13 +100,13 @@ namespace AppLibrary.DataAccess
             }
         }
 
-        public List<ClientModel> GetAllClients()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
-            {
-                return connection.Query<ClientModel>("spClients_GetAll", null, commandType: CommandType.StoredProcedure).ToList();
-            }
-        }
+        //public List<ClientModel> GetAllClients()
+        //{
+        //    using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+        //    {
+        //        return connection.Query<ClientModel>("spClients_GetAll", null, commandType: CommandType.StoredProcedure).ToList();
+        //    }
+        //}
 
         public List<PetModel> GetPetsByOwnerID(int OwnerID)
         {
@@ -132,11 +132,29 @@ namespace AppLibrary.DataAccess
             }
         }
 
-        public List<ClientModel> GetByTodayClients()
+
+
+
+
+        public List<ClientModel> GetAllWithVisitOfClients()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<ClientModel>("spClients_GetByToday", null, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<ClientModel>("spClients_GetAllWithVisits", null, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+        public List<ClientModel> GetTodayVisitsOfClients()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                return connection.Query<ClientModel>("spClients_GetTodayVisits", null, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
+        public List<ClientModel> GetVisitsOfClients()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                return connection.Query<ClientModel>("spClients_GetVisits", null, commandType: CommandType.StoredProcedure).ToList();
             }
         }
     }

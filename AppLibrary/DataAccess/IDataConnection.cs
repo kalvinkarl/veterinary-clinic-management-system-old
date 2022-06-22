@@ -44,11 +44,18 @@ namespace AppLibrary.DataAccess
         /// <returns>Client model</returns>
         ClientModel UpdateClient(ClientModel client);
 
-        List<ClientModel> GetAllClients();
+
+
+        //List<ClientModel> GetAllClients();
         List<PetModel> GetPetsByOwnerID(int OwnerID);
         List<VisitModel> GetVisitsByPetID(int PetID);
         List<BillModel> GetBillByVisitID(int VisitID);
-        List<ClientModel> GetByTodayClients();
+
+
+
+        List<ClientModel> GetAllWithVisitOfClients();
+        List<ClientModel> GetTodayVisitsOfClients(); 
+        List<ClientModel> GetVisitsOfClients();
 
     }
 }

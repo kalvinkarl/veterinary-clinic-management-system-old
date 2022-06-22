@@ -15,7 +15,7 @@ namespace AppUI
 {
     public partial class ClientForm : Form
     {
-        private bool Saved { get; set; }
+        public bool Saved { get; set; }
         public ClientModel Client { get; set; } = new ClientModel();
         public ClientForm()
         {
