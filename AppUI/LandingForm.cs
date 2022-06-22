@@ -23,6 +23,11 @@ namespace AppUI
             DefaultSizeResolution();
             appointmentDatePicker.Value = DateTime.Now;
         }
+        public void CloseCurrentTab()
+        {
+            landingTabs.TabPages.Remove(landingTabs.SelectedTab);
+            landingTabs.SelectedIndex = landingTabs.TabCount - 1;
+        }
         private void DefaultSizeResolution()
         {
             if (Properties.Settings.Default.Size.Width == 0) Properties.Settings.Default.Upgrade();
@@ -173,27 +178,36 @@ namespace AppUI
         {
             appGridView.ClearSelection();
         }
-
         private void appGridView_MouseDown(object sender, MouseEventArgs e)
         {
             dataGridView.ClearSelection();
         }
-
         private void appGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(appGridView.SelectedRows.Count > 0)
             {
-                string index = appGridView.SelectedRows[0].Cells[0].Value.ToString();
-                MessageBox.Show(index);
+                int i = appGridView.CurrentCell.RowIndex;
+                VisitsForm visitsForm = new VisitsForm(this) { TopLevel = false, AutoScroll = true, Dock = DockStyle.Fill, Text = Name };
+                TabPage visitTab = new TabPage(Name) { Visible = true };
+                landingTabs.TabPages.Add(visitTab);
+                visitTab.Controls.Add(visitsForm);
+                landingTabs.SelectedIndex = landingTabs.TabCount - 1;
+                visitsForm.Client = ClientAppointments[i];
+                visitsForm.Show();
             }
         }
-
         private void dataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dataGridView.SelectedRows.Count > 0)
             {
-                string index = dataGridView.SelectedRows[0].Cells[0].Value.ToString();
-                MessageBox.Show(index);
+                int i = dataGridView.CurrentCell.RowIndex;
+                VisitsForm visitsForm = new VisitsForm(this) { TopLevel = false, AutoScroll = true, Dock = DockStyle.Fill, Text = Name };
+                TabPage visitTab = new TabPage(Name) { Visible = true };
+                landingTabs.TabPages.Add(visitTab);
+                visitTab.Controls.Add(visitsForm);
+                landingTabs.SelectedIndex = landingTabs.TabCount - 1;
+                visitsForm.Client = Clients[i];
+                visitsForm.Show();
             }
         }
     }
