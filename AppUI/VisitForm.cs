@@ -113,7 +113,7 @@ namespace AppUI
             {
                 string[] w = Visit.Weight.Split(' ');
                 string[] t = Visit.Temperature.Split(' ');
-                date.Value = Visit.Date;
+                date.Text = Visit.Date.ToString("dddd   ,   MMMM   dd   ,   yyyy");
                 weight.Value = decimal.Parse(w[0]);
                 weightUnit.SelectedIndex = WeightUnits[w[1]];
                 temp.Value = decimal.Parse(t[0]);
@@ -132,7 +132,7 @@ namespace AppUI
             }
             else
             {
-                date.Value = DateTime.Now;
+                date.Text = DateTime.Now.ToString("dddd   ,   MMMM   dd   ,   yyyy");
                 appDate.Value = DateTime.Now.AddDays(1);
                 tempUnit.SelectedIndex = 0;
                 weightUnit.SelectedIndex = 0;

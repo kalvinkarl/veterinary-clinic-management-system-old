@@ -58,12 +58,12 @@
             this.notes = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.date = new System.Windows.Forms.DateTimePicker();
             this.weightLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.visitTitle = new System.Windows.Forms.Label();
             this.weight = new System.Windows.Forms.NumericUpDown();
             this.temp = new System.Windows.Forms.NumericUpDown();
+            this.date = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.appMinute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appHour)).BeginInit();
             this.appGroup.SuspendLayout();
@@ -426,14 +426,6 @@
             this.label3.TabIndex = 36;
             this.label3.Text = "<🧷Add attachment>";
             // 
-            // date
-            // 
-            this.date.Location = new System.Drawing.Point(113, 67);
-            this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(250, 29);
-            this.date.TabIndex = 27;
-            this.date.Value = new System.DateTime(2022, 3, 20, 16, 35, 12, 0);
-            // 
             // weightLabel
             // 
             this.weightLabel.AutoSize = true;
@@ -492,22 +484,34 @@
             this.temp.Size = new System.Drawing.Size(71, 29);
             this.temp.TabIndex = 36;
             // 
+            // date
+            // 
+            this.date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.date.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Location = new System.Drawing.Point(113, 67);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(250, 29);
+            this.date.TabIndex = 37;
+            this.date.Text = "Date";
+            this.date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // VisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(813, 747);
+            this.Controls.Add(this.appGroup);
+            this.Controls.Add(this.date);
             this.Controls.Add(this.temp);
             this.Controls.Add(this.weight);
             this.Controls.Add(this.tempLabel);
-            this.Controls.Add(this.appGroup);
             this.Controls.Add(this.tempUnit);
             this.Controls.Add(this.weightUnit);
             this.Controls.Add(this.appOpen);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tablePanel);
-            this.Controls.Add(this.date);
             this.Controls.Add(this.weightLabel);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.visitTitle);
@@ -555,7 +559,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button paymentButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DateTimePicker date;
         private System.Windows.Forms.Label weightLabel;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label visitTitle;
@@ -569,5 +572,6 @@
         private System.Windows.Forms.NumericUpDown weight;
         private System.Windows.Forms.NumericUpDown temp;
         private System.Windows.Forms.Button appCheck;
+        private System.Windows.Forms.Label date;
     }
 }

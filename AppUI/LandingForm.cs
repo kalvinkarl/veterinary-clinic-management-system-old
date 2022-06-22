@@ -98,7 +98,7 @@ namespace AppUI
                     {
                         dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, nextVisit });
                     }
-                    else if(listComboBox.Text == "Overdue/Late" && client.Pets[0].Visits[0]?.NextVisit < DateTime.Now && client.Pets[0].Visits[0]?.NextVisit.Date != System.Data.SqlTypes.SqlDateTime.MaxValue.Value.Date && client.Pets[0].VisitsCount == 1)
+                    else if(listComboBox.Text == "Overdue/Late" && client.Pets[0].Visits[0]?.NextVisit < DateTime.Now && client.Pets[0].VisitsCount == 1)
                     {
                         dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, nextVisit });
                     }
