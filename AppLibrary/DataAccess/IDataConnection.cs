@@ -50,13 +50,8 @@ namespace AppLibrary.DataAccess
         List<PetModel> GetPetsByOwnerID(int OwnerID);
         List<VisitModel> GetVisitsByPetID(int PetID);
         List<BillModel> GetBillByVisitID(int VisitID);
-
-
-
         List<ClientModel> GetAllWithPetVisitsOfClients();
-
         List<ClientModel> GetTodayVisitsOfClients(); 
-
         List<ClientModel> GetVisitsOfClients();
 
     }

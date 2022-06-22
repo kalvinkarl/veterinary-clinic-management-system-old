@@ -12,7 +12,7 @@
       <Value Profile="(Default)">100, 70</Value>
     </Setting>
     <Setting Name="ClientListComboBox" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Overdue/Late</Value>
+      <Value Profile="(Default)">All client visits</Value>
     </Setting>
   </Settings>
 </SettingsFile>

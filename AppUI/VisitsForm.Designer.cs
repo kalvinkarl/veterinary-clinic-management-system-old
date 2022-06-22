@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisitsForm));
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -67,7 +67,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientGroup = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pic = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.petGroup.SuspendLayout();
@@ -75,7 +75,7 @@
             this.visitContext.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.visitsData)).BeginInit();
             this.clientGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.SuspendLayout();
             // 
             // Column5
@@ -114,6 +114,7 @@
             // cellphone
             // 
             this.cellphone.AutoSize = true;
+            this.cellphone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cellphone.Location = new System.Drawing.Point(241, 0);
             this.cellphone.Name = "cellphone";
             this.cellphone.Size = new System.Drawing.Size(148, 20);
@@ -123,6 +124,7 @@
             // address
             // 
             this.address.AutoSize = true;
+            this.address.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address.Location = new System.Drawing.Point(81, 20);
             this.address.Name = "address";
             this.address.Size = new System.Drawing.Size(76, 20);
@@ -136,7 +138,6 @@
             this.label6.Size = new System.Drawing.Size(72, 19);
             this.label6.TabIndex = 6;
             this.label6.Text = "CP#:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label4
             // 
@@ -150,6 +151,7 @@
             // name
             // 
             this.name.AutoSize = true;
+            this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.name.Location = new System.Drawing.Point(81, 0);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(69, 20);
@@ -219,7 +221,6 @@
             this.label5.Size = new System.Drawing.Size(68, 19);
             this.label5.TabIndex = 6;
             this.label5.Text = "Note:";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label1
             // 
@@ -233,6 +234,7 @@
             // sex
             // 
             this.sex.AutoSize = true;
+            this.sex.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sex.Location = new System.Drawing.Point(244, 20);
             this.sex.Name = "sex";
             this.sex.Size = new System.Drawing.Size(44, 20);
@@ -242,6 +244,7 @@
             // petName
             // 
             this.petName.AutoSize = true;
+            this.petName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.petName.Location = new System.Drawing.Point(90, 0);
             this.petName.Name = "petName";
             this.petName.Size = new System.Drawing.Size(41, 20);
@@ -255,11 +258,11 @@
             this.label10.Size = new System.Drawing.Size(68, 19);
             this.label10.TabIndex = 0;
             this.label10.Text = "Sex:";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // breed
             // 
             this.breed.AutoSize = true;
+            this.breed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.breed.Location = new System.Drawing.Point(90, 20);
             this.breed.Name = "breed";
             this.breed.Size = new System.Drawing.Size(60, 20);
@@ -269,6 +272,7 @@
             // species
             // 
             this.species.AutoSize = true;
+            this.species.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.species.Location = new System.Drawing.Point(90, 40);
             this.species.Name = "species";
             this.species.Size = new System.Drawing.Size(74, 20);
@@ -291,11 +295,11 @@
             this.label8.Size = new System.Drawing.Size(68, 19);
             this.label8.TabIndex = 0;
             this.label8.Text = "Age:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // age
             // 
             this.age.AutoSize = true;
+            this.age.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.age.Location = new System.Drawing.Point(244, 0);
             this.age.Name = "age";
             this.age.Size = new System.Drawing.Size(46, 20);
@@ -327,11 +331,11 @@
             this.label7.Size = new System.Drawing.Size(126, 19);
             this.label7.TabIndex = 6;
             this.label7.Text = "Color Marking:";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // colorMarking
             // 
             this.colorMarking.AutoSize = true;
+            this.colorMarking.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colorMarking.Location = new System.Drawing.Point(513, 0);
             this.colorMarking.Name = "colorMarking";
             this.colorMarking.Size = new System.Drawing.Size(54, 20);
@@ -385,14 +389,14 @@
             this.visitsData.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.visitsData.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.visitsData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.visitsData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.visitsData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.visitsData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.visitsData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -455,7 +459,7 @@
             this.clientGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.clientGroup.Controls.Add(this.tableLayoutPanel1);
-            this.clientGroup.Controls.Add(this.pictureBox1);
+            this.clientGroup.Controls.Add(this.pic);
             this.clientGroup.Location = new System.Drawing.Point(12, 24);
             this.clientGroup.Name = "clientGroup";
             this.clientGroup.Size = new System.Drawing.Size(1156, 74);
@@ -463,15 +467,15 @@
             this.clientGroup.TabStop = false;
             this.clientGroup.Text = "Client\'s Information";
             // 
-            // pictureBox1
+            // pic
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.pic.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pic.BackgroundImage")));
+            this.pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pic.Location = new System.Drawing.Point(6, 19);
+            this.pic.Name = "pic";
+            this.pic.Size = new System.Drawing.Size(50, 50);
+            this.pic.TabIndex = 7;
+            this.pic.TabStop = false;
             // 
             // closeButton
             // 
@@ -512,7 +516,7 @@
             this.visitContext.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.visitsData)).EndInit();
             this.clientGroup.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -527,7 +531,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label name;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pic;
         private System.Windows.Forms.GroupBox petGroup;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label5;

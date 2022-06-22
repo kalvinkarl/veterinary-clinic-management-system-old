@@ -37,10 +37,11 @@
             this.appTime = new System.Windows.Forms.Label();
             this.appHour = new System.Windows.Forms.NumericUpDown();
             this.appGroup = new System.Windows.Forms.GroupBox();
+            this.appCheck = new System.Windows.Forms.Button();
             this.ampm = new System.Windows.Forms.Button();
-            this.appBack = new System.Windows.Forms.Button();
             this.appDate = new System.Windows.Forms.DateTimePicker();
             this.appDateLabel = new System.Windows.Forms.Label();
+            this.appBack = new System.Windows.Forms.Button();
             this.noteLabel = new System.Windows.Forms.Label();
             this.tempUnit = new System.Windows.Forms.ComboBox();
             this.weightUnit = new System.Windows.Forms.ComboBox();
@@ -63,7 +64,6 @@
             this.visitTitle = new System.Windows.Forms.Label();
             this.weight = new System.Windows.Forms.NumericUpDown();
             this.temp = new System.Windows.Forms.NumericUpDown();
-            this.appCheck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.appMinute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appHour)).BeginInit();
             this.appGroup.SuspendLayout();
@@ -164,6 +164,18 @@
             this.appGroup.Text = "Appointment:";
             this.appGroup.Visible = false;
             // 
+            // appCheck
+            // 
+            this.appCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(180)))), ((int)(((byte)(187)))));
+            this.appCheck.FlatAppearance.BorderSize = 0;
+            this.appCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appCheck.Location = new System.Drawing.Point(239, 72);
+            this.appCheck.Name = "appCheck";
+            this.appCheck.Size = new System.Drawing.Size(68, 29);
+            this.appCheck.TabIndex = 37;
+            this.appCheck.Text = "Check";
+            this.appCheck.UseVisualStyleBackColor = false;
+            // 
             // ampm
             // 
             this.ampm.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(179)))));
@@ -176,20 +188,6 @@
             this.ampm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ampm.UseVisualStyleBackColor = true;
             this.ampm.Click += new System.EventHandler(this.ampm_Click);
-            // 
-            // appBack
-            // 
-            this.appBack.BackColor = System.Drawing.Color.PowderBlue;
-            this.appBack.FlatAppearance.BorderSize = 0;
-            this.appBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.appBack.Location = new System.Drawing.Point(299, 11);
-            this.appBack.Name = "appBack";
-            this.appBack.Size = new System.Drawing.Size(26, 26);
-            this.appBack.TabIndex = 20;
-            this.appBack.Text = "X";
-            this.appBack.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.appBack.UseVisualStyleBackColor = false;
-            this.appBack.Click += new System.EventHandler(this.appOpenClose_Click);
             // 
             // appDate
             // 
@@ -207,6 +205,20 @@
             this.appDateLabel.Size = new System.Drawing.Size(44, 19);
             this.appDateLabel.TabIndex = 0;
             this.appDateLabel.Text = "Date:";
+            // 
+            // appBack
+            // 
+            this.appBack.BackColor = System.Drawing.Color.PowderBlue;
+            this.appBack.FlatAppearance.BorderSize = 0;
+            this.appBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.appBack.Location = new System.Drawing.Point(299, 11);
+            this.appBack.Name = "appBack";
+            this.appBack.Size = new System.Drawing.Size(26, 26);
+            this.appBack.TabIndex = 20;
+            this.appBack.Text = "X";
+            this.appBack.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.appBack.UseVisualStyleBackColor = false;
+            this.appBack.Click += new System.EventHandler(this.appOpenClose_Click);
             // 
             // noteLabel
             // 
@@ -480,18 +492,6 @@
             this.temp.Size = new System.Drawing.Size(71, 29);
             this.temp.TabIndex = 36;
             // 
-            // appCheck
-            // 
-            this.appCheck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(180)))), ((int)(((byte)(187)))));
-            this.appCheck.FlatAppearance.BorderSize = 0;
-            this.appCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.appCheck.Location = new System.Drawing.Point(239, 72);
-            this.appCheck.Name = "appCheck";
-            this.appCheck.Size = new System.Drawing.Size(68, 29);
-            this.appCheck.TabIndex = 37;
-            this.appCheck.Text = "Check";
-            this.appCheck.UseVisualStyleBackColor = false;
-            // 
             // VisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -512,11 +512,12 @@
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.visitTitle);
             this.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(825, 370);
             this.Name = "VisitForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "VisitForm";
+            this.Text = "Add Visit";
             this.Load += new System.EventHandler(this.VisitForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.appMinute)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appHour)).EndInit();

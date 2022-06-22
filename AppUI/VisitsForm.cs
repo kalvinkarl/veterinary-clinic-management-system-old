@@ -1,4 +1,5 @@
-﻿using AppLibrary.Models;
+﻿using AppLibrary;
+using AppLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,8 @@ namespace AppUI
 
         private void VisitsForm_Load(object sender, EventArgs e)
         {
+            Client.Pets[0].Visits = GlobalConfig.Connection.GetVisitsByPetID(Client.Pets[0].ID);
+            pic.BackgroundImage = Client.ImageBitmap;
             name.Text = Client.FullName;
             address.Text = Client.Address;
             cellphone.Text = Client.Cellphone;
@@ -37,6 +40,10 @@ namespace AppUI
             colorMarking.Text = Client.Pets[0].ColorMarking;
             age.Text = Client.Pets[0].Age.ToString();
             sex.Text = Client.Pets[0].Sex;
+            foreach(VisitModel visit in Client.Pets[0].Visits)
+            {
+                visitsData.Rows.Add(new String[] { visit.Date.ToString(), visit.WTT, visit.ComplaintDiagnosis, visit.Treatment, visit.NextVisit.ToString(), visit.Bill.TotalAmount.ToString("0.00") });
+            }
         }
     }
 }

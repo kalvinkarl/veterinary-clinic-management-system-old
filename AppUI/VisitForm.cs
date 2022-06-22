@@ -13,6 +13,7 @@ namespace AppUI
 {
     public partial class VisitForm : Form
     {
+        public bool Saved { get; set; }
         private Dictionary<string, int> WeightUnits { get; set; } = new Dictionary<string, int> { ["kg"] = 0, ["hg"] = 1, ["dag"] = 2, ["g"] = 3 };
         private Dictionary<string, int> TempUnits { get; set; } = new Dictionary<string, int> { ["°C"] = 0, ["°F"] = 1 };
         public VisitModel Visit { get; set; }
@@ -64,7 +65,7 @@ namespace AppUI
                     Visit.ComplaintDiagnosis = complaintDiagnosis.Text;
                     Visit.Treatment = treatment.Text;
                     Visit.Notes = notes.Text;
-                    Visit.Date = DateTime.Parse(date.Text);
+                    Visit.Date = DateTime.Now;
                     if (appGroup.Visible)
                     {
                         Visit.NextVisit = DateTime.Parse($"{DateTime.Parse(appDate.Text).ToString("yyyy-MM-dd")} {DateTime.Parse($"{appHour.Value}:{appMinute.Value} {ampm.Text}").ToString("HH:mm")}");
@@ -75,6 +76,7 @@ namespace AppUI
                     }
                     Visit.Bill = new BillModel();
                     Visit.Bill =paymentForm.Bill;
+                    Saved = true;
                     this.Close();
                     //MessageBox.Show(DateTime.Parse($"{DateTime.Parse(appDate.Text).ToString("yyyy-MM-dd")} {DateTime.Parse($"{appHour.Value}:{appMinute.Value} {ampm.Text}").ToString("HH:mm")}").ToString());
                 }

@@ -22,7 +22,7 @@ namespace AppLibrary.DataAccess
                 c.Add("@LastName", client.LastName);
                 c.Add("@Address", client.Address);
                 c.Add("@Cellphone", client.Cellphone);
-                c.Add("@ClientID", 0,dbType: DbType.Int32,direction: ParameterDirection.Output);
+                c.Add("@ID", 0,dbType: DbType.Int32,direction: ParameterDirection.Output);
                 connection.Execute("spClients_Create", c, commandType: CommandType.StoredProcedure);
                 client.ID = c.Get<int>("@ID");
                 return client;
@@ -41,7 +41,7 @@ namespace AppLibrary.DataAccess
                 p.Add("Age", pet.Age);
                 p.Add("Sex", pet.Sex);
                 p.Add("Notes", pet.Notes);
-                p.Add("@PetID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                p.Add("@ID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                 connection.Execute("spPets_Create", p, commandType: CommandType.StoredProcedure);
                 pet.ID = p.Get<int>("@ID");
                 return pet;
@@ -60,7 +60,7 @@ namespace AppLibrary.DataAccess
                 v.Add("@Notes", visit.Notes);
                 v.Add("@Date", visit.Date);
                 v.Add("@NextVisit", visit.NextVisit);
-                v.Add("@VisitID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                v.Add("@ID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                 connection.Execute("spVisits_Create", v, commandType: CommandType.StoredProcedure);
                 visit.ID = v.Get<int>("@ID");
                 return visit;
@@ -76,7 +76,7 @@ namespace AppLibrary.DataAccess
                 b.Add("@TotalAmount", bill.TotalAmount);
                 b.Add("@PaidAmount", bill.PaidAmount);
                 b.Add("@Date", bill.Date);
-                b.Add("@BillID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                b.Add("@ID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                 connection.Execute("spBills_Create", b, commandType: CommandType.StoredProcedure);
                 bill.ID = b.Get<int>("@ID");
                 return bill;
@@ -120,7 +120,7 @@ namespace AppLibrary.DataAccess
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
-                return connection.Query<VisitModel>("spVisits_GetByPetID", new { PetID }, commandType: CommandType.StoredProcedure).ToList();
+                return connection.Query<VisitModel, BillModel, VisitModel>("spVisits_GetByPetID", (v, b) => { v.Bill = b; return v; }, new { PetID }, commandType: CommandType.StoredProcedure).ToList();
             }
         }
 
@@ -129,6 +129,7 @@ namespace AppLibrary.DataAccess
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
             {
                 return connection.Query<BillModel>("spBills_GetByVisitID", new { VisitID }, commandType: CommandType.StoredProcedure).ToList();
+                
             }
         }
 

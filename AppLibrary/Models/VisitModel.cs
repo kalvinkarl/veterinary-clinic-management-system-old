@@ -48,5 +48,16 @@ namespace AppLibrary.Models
         /// Represents the bill of the visit
         /// </summary>
         public BillModel Bill { get; set; }
+        /// <summary>
+        /// This is the count output from the database
+        /// </summary>
+        public int VisitsCount { get; set; }
+        public string WTT
+        {
+            get
+            {
+                return $"{Weight}/{Temperature}";
+            }
+        }
     }
 }

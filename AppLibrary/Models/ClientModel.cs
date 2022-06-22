@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +48,18 @@ namespace AppLibrary.Models
         public string FullName
         {
             get { return $"{FirstName} {LastName}"; }
+        }
+        public Bitmap ImageBitmap
+        {
+            get
+            {
+                MemoryStream mStream = new MemoryStream();
+                byte[] pData = Image;
+                mStream.Write(pData, 0, Convert.ToInt32(pData.Length));
+                Bitmap bm = new Bitmap(mStream, false);
+                mStream.Dispose();
+                return bm;
+            }
         }
     }
 }

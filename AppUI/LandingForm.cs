@@ -69,7 +69,7 @@ namespace AppUI
         {
             dataGridView.Rows.Clear();
             dataGridView.Refresh();
-            if (listComboBox.Text == "All clients")
+            if (listComboBox.Text == "All client visits")
             {
                 Clients = GlobalConfig.Connection.GetAllWithPetVisitsOfClients();
             }
@@ -85,14 +85,22 @@ namespace AppUI
             {
                 foreach (ClientModel client in Clients)
                 {
-                    if (listComboBox.Text != "Overdue/Late")
+                    if (listComboBox.Text == "All client visits" && client.Pets[0].Visits[0] != null)
                     {
-                        dataGridView.Rows.Add(new string[] { client.Pets[0].ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
+                        if (client.Pets[0].Visits[0].VisitsCount == 1)
+                        {
+                            dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
+                        }
                     }
-                    else if(client.Pets[0].Visits[0]?.NextVisit.Date < DateTime.Now.Date && client.Pets[0].Visits[0]?.NextVisit != (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue)
+                    else if (listComboBox.Text == "Finished today")
                     {
-                        dataGridView.Rows.Add(new string[] { client.Pets[0].ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
+                        dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
                     }
+                    else if(listComboBox.Text == "Overdue/Late" && client.Pets[0].Visits[0]?.NextVisit.Date < DateTime.Now.Date && client.Pets[0].Visits[0]?.NextVisit != (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue)
+                    {
+                        dataGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
+                    }
+                    dataGridView.ClearSelection();
 
                 }
             }
@@ -106,9 +114,20 @@ namespace AppUI
             {
                 if (client.Pets[0].Visits[0]?.NextVisit.Date == appointmentDatePicker.Value.Date)
                 {
-                    appGridView.Rows.Add(new string[] { client.Pets[0].ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
+                    appGridView.Rows.Add(new string[] { client.ID.ToString(), client.FullName, client.Address, client.Cellphone, client.Pets[0].Name, client.Pets[0].Visits[0]?.NextVisit.ToString("g") });
+                    appGridView.ClearSelection();
                 }
             }
+        }
+        private void OpenVisitsForm(ClientModel client)
+        {
+            VisitsForm visitsForm = new VisitsForm(this) { TopLevel = false, AutoScroll = true, Dock = DockStyle.Fill, Text = Name };
+            TabPage visitTab = new TabPage(Name = client.FullName) { Visible = true };
+            landingTabs.TabPages.Add(visitTab);
+            visitTab.Controls.Add(visitsForm);
+            landingTabs.SelectedIndex = landingTabs.TabCount - 1;
+            visitsForm.Client = client;
+            visitsForm.Show();
         }
         private void newVisitorButton_Click(object sender, EventArgs e)
         {
@@ -127,37 +146,6 @@ namespace AppUI
         private void timToday_Tick(object sender, EventArgs e)
         {
             timeStatus.Text = DateTime.Now.ToString();
-        }
-        private void addVisitButton_Click(object sender, EventArgs e)
-        {
-            if (landingTabs.SelectedIndex > 0)
-            {
-                //MessageBox.Show(mainTab.SelectedIndex.ToString());
-                VisitForm visitForm = new VisitForm();
-                visitForm.ShowDialog();
-            }
-            else
-            {
-                if (appGridView.SelectedRows.Count > 0)
-                {
-                    //OpenVisitForm(name);
-                    VisitForm visitForm = new VisitForm();
-                    //visitForm.Text += $" ({Clients[aptByDateList.SelectedIndices[0]].FullName})";
-                    visitForm.ShowDialog();
-
-                }
-                else if (dataGridView.SelectedRows.Count > 0)
-                {
-                    //OpenVisitForm(name);
-                    VisitForm visitForm = new VisitForm();
-                    //visitForm.Text += $" ({Clients[aptByOtherList.SelectedIndices[0]].FullName})";
-                    visitForm.ShowDialog();
-                }
-                else
-                { 
-                    MessageBox.Show("Please select a client.");
-                }
-            }
         }
         private void reportButton_Click(object sender, EventArgs e)
         {
@@ -186,29 +174,70 @@ namespace AppUI
         {
             if(appGridView.SelectedRows.Count > 0)
             {
-                int i = appGridView.CurrentCell.RowIndex;
-                VisitsForm visitsForm = new VisitsForm(this) { TopLevel = false, AutoScroll = true, Dock = DockStyle.Fill, Text = Name };
-                TabPage visitTab = new TabPage(Name) { Visible = true };
-                landingTabs.TabPages.Add(visitTab);
-                visitTab.Controls.Add(visitsForm);
-                landingTabs.SelectedIndex = landingTabs.TabCount - 1;
-                visitsForm.Client = ClientAppointments[i];
-                visitsForm.Show();
+                int clientID = int.Parse(appGridView.SelectedRows[0].Cells[0].Value.ToString());
+                OpenVisitsForm(ClientAppointments.Where(c => c.ID == clientID).First());
             }
         }
         private void dataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if(dataGridView.SelectedRows.Count > 0)
             {
-                int i = dataGridView.CurrentCell.RowIndex;
-                VisitsForm visitsForm = new VisitsForm(this) { TopLevel = false, AutoScroll = true, Dock = DockStyle.Fill, Text = Name };
-                TabPage visitTab = new TabPage(Name) { Visible = true };
-                landingTabs.TabPages.Add(visitTab);
-                visitTab.Controls.Add(visitsForm);
-                landingTabs.SelectedIndex = landingTabs.TabCount - 1;
-                visitsForm.Client = Clients[i];
-                visitsForm.Show();
+                int clientID = int.Parse(dataGridView.SelectedRows[0].Cells[0].Value.ToString());
+                OpenVisitsForm(Clients.Where(c => c.ID == clientID).First());
             }
+        }
+        private void addVisitButton_Click(object sender, EventArgs e)
+        {
+            string title = "";
+            int ClientID = 0;
+            ClientModel model = new ClientModel();
+            if (landingTabs.SelectedIndex > 0)
+            {
+                //MessageBox.Show(mainTab.SelectedIndex.ToString());
+                VisitForm visitForm = new VisitForm();
+                visitForm.ShowDialog();
+            }
+            else
+            {
+                if (appGridView.SelectedRows.Count > 0)
+                {
+                    title = $" - { appGridView.SelectedRows[0].Cells[1].Value }({appGridView.SelectedRows[0].Cells[4].Value })";
+                    ClientID = int.Parse(appGridView.SelectedRows[0].Cells[0].Value.ToString());
+                    model = ClientAppointments.Where(c => c.ID == ClientID).First();
+                }
+                else if(dataGridView.SelectedRows.Count > 0)
+                {
+                    title = $" - { dataGridView.SelectedRows[0].Cells[1].Value }({dataGridView.SelectedRows[0].Cells[4].Value })";
+                    ClientID = int.Parse(dataGridView.SelectedRows[0].Cells[0].Value.ToString());
+                    model = Clients.Where(c => c.ID == ClientID).First();
+                }
+                if (appGridView.SelectedRows.Count > 0 || dataGridView.SelectedRows.Count > 0)
+                {
+                    VisitForm visitForm = new VisitForm();
+                    visitForm.Text += title;
+                    visitForm.ShowDialog();
+                    if (visitForm.Saved)
+                    {
+                        visitForm.Visit.PetID = model.Pets[0].ID;
+                        VisitModel v = GlobalConfig.Connection.CreateVisit(visitForm.Visit);
+                        visitForm.Visit.Bill.VisitID = v.ID;
+                        BillModel b = GlobalConfig.Connection.CreateBill(visitForm.Visit.Bill);
+                        BindDataGrid();
+                        BindAppGrid();
+                        OpenVisitsForm(model);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a client.");
+                }
+            }
+        }
+
+        private void LandingForm_Load(object sender, EventArgs e)
+        {
+            appGridView.ClearSelection();
+            dataGridView.ClearSelection();
         }
     }
 }
