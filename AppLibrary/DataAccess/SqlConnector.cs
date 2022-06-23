@@ -175,8 +175,8 @@ namespace AppLibrary.DataAccess
                 DynamicParameters t = new DynamicParameters();
                 t.Add("@ID", template.ID);
                 t.Add("@Category", template.Category);
-                t.Add("@Name", template.Title);
-                t.Add("@Details", template.Template);
+                t.Add("@Title", template.Title);
+                t.Add("@Template", template.Template);
                 connection.Execute("spTemplates_Update", t, commandType: CommandType.StoredProcedure);
                 return template;
             }

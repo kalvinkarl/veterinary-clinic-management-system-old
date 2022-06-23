@@ -20,6 +20,12 @@ namespace AppUI
         public TemplateForm()
         {
             InitializeComponent();
+            GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
+            if (GlobalConfig.IsDark)
+            {
+                template.BackColor = Color.FromArgb(64, 64, 64);
+                template.ForeColor = Color.White;
+            }
         }
         //Start Shadow + Mouse Move for Borderless
         private bool Drag;
@@ -119,6 +125,7 @@ namespace AppUI
                 tempTitle.Text = Template.Title;
                 title.Text = Template.Title;
                 template.Text = Template.Template;
+                deleteTemplate.Enabled = true;
             }
         }
         private void OnMouseEnter(object sender, EventArgs e)
@@ -183,19 +190,21 @@ namespace AppUI
         {
             if (title.Text != "Title" && template.Text != "")
             {
-                Template = new TemplateModel();
-                Template.Category = Category;
-                Template.Title = title.Text;
-                Template.Template = template.Text;
-                if (Template.ID >= 0)
+                if (Template is null)
                 {
-                    GlobalConfig.Connection.UpdateTemplate(Template);
-                    MessageBox.Show($"Successfully update template {Template.Title}!");
+                    Template = new TemplateModel();
+                    Template.Category = Category;
+                    Template.Title = title.Text;
+                    Template.Template = template.Text;
+                    GlobalConfig.Connection.CreateTemplate(Template);
+                    MessageBox.Show($"Successfully saved template {Template.Title}!");
                 }
                 else
                 {
-                    GlobalConfig.Connection.CreateTemplate(Template);
-                    MessageBox.Show($"Successfully saved template {Template.Title}!");
+                    Template.Title = title.Text;
+                    Template.Template = template.Text;
+                    GlobalConfig.Connection.UpdateTemplate(Template);
+                    MessageBox.Show($"Successfully update template {Template.Title}!");
                 }
                 Saved = true;
                 this.Close();
@@ -203,6 +212,17 @@ namespace AppUI
             else
             {
                 MessageBox.Show("Please enter a Title and Details of the template before saving.");
+            }
+        }
+
+        private void deleteTemplate_Click(object sender, EventArgs e)
+        {
+            var msg = MessageBox.Show($"Are you sure to delete {Template.Title} template?", $"Delete {Template.Title}", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (msg == DialogResult.OK)
+            {
+                GlobalConfig.Connection.DeleteTemplate(Template);
+                Saved = true;
+                this.Close();
             }
         }
     }

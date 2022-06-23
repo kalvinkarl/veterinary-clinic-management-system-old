@@ -73,7 +73,7 @@
             this.addTemplate.Image = ((System.Drawing.Image)(resources.GetObject("addTemplate.Image")));
             this.addTemplate.Name = "addTemplate";
             this.addTemplate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.addTemplate.Size = new System.Drawing.Size(174, 22);
+            this.addTemplate.Size = new System.Drawing.Size(185, 22);
             this.addTemplate.Text = "Save Temp";
             this.addTemplate.Click += new System.EventHandler(this.addTemplate_Click);
             // 
@@ -83,8 +83,10 @@
             this.deleteTemplate.Font = new System.Drawing.Font("Gadugi", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteTemplate.Image = ((System.Drawing.Image)(resources.GetObject("deleteTemplate.Image")));
             this.deleteTemplate.Name = "deleteTemplate";
-            this.deleteTemplate.Size = new System.Drawing.Size(174, 22);
+            this.deleteTemplate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.deleteTemplate.Size = new System.Drawing.Size(185, 22);
             this.deleteTemplate.Text = "Delete Temp";
+            this.deleteTemplate.Click += new System.EventHandler(this.deleteTemplate_Click);
             // 
             // close
             // 
@@ -139,9 +141,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.template.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.template.Location = new System.Drawing.Point(-1, 31);
+            this.template.Location = new System.Drawing.Point(3, 31);
             this.template.Name = "template";
-            this.template.Size = new System.Drawing.Size(389, 208);
+            this.template.Size = new System.Drawing.Size(383, 208);
             this.template.TabIndex = 10;
             this.template.Text = "";
             this.template.WordWrap = false;
