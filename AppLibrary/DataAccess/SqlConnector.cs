@@ -132,7 +132,6 @@ namespace AppLibrary.DataAccess
                 
             }
         }
-
         public List<ClientModel> GetAllWithPetVisitsOfClients()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
@@ -154,7 +153,6 @@ namespace AppLibrary.DataAccess
                 return connection.Query<ClientModel, PetModel, VisitModel, ClientModel>("spClients_GetVisits", (c, p, v) => { p.Visits.Add(v); c.Pets.Add(p); return c; }, null, commandType: CommandType.StoredProcedure).ToList();
             }
         }
-
         public TemplateModel CreateTemplate(TemplateModel template)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
@@ -167,7 +165,6 @@ namespace AppLibrary.DataAccess
                 return template;
             }
         }
-
         public TemplateModel UpdateTemplate(TemplateModel template)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
