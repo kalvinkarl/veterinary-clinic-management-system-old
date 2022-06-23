@@ -48,7 +48,7 @@
             this.treatLabel = new System.Windows.Forms.Label();
             this.appOpen = new System.Windows.Forms.Button();
             this.laterButton = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.templatesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.paymentButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tablePanel = new System.Windows.Forms.TableLayoutPanel();
@@ -300,10 +300,10 @@
             this.laterButton.UseVisualStyleBackColor = false;
             this.laterButton.Click += new System.EventHandler(this.laterButton_Click);
             // 
-            // contextMenuStrip1
+            // templatesContextMenu
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.templatesContextMenu.Name = "contextMenuStrip1";
+            this.templatesContextMenu.Size = new System.Drawing.Size(61, 4);
             // 
             // paymentButton
             // 
@@ -387,6 +387,7 @@
             this.complaintDiagnosis.Size = new System.Drawing.Size(677, 156);
             this.complaintDiagnosis.TabIndex = 24;
             this.complaintDiagnosis.Text = "";
+            this.complaintDiagnosis.MouseDown += new System.Windows.Forms.MouseEventHandler(this.complaintDiagnosis_MouseDown);
             // 
             // treatment
             // 
@@ -397,6 +398,7 @@
             this.treatment.Size = new System.Drawing.Size(677, 156);
             this.treatment.TabIndex = 25;
             this.treatment.Text = "";
+            this.treatment.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treatment_MouseDown);
             // 
             // notes
             // 
@@ -407,6 +409,7 @@
             this.notes.Size = new System.Drawing.Size(677, 156);
             this.notes.TabIndex = 26;
             this.notes.Text = "";
+            this.notes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.notes_MouseDown);
             // 
             // treatmentAttach
             // 
@@ -558,7 +561,7 @@
         private System.Windows.Forms.ComboBox weightUnit;
         private System.Windows.Forms.Button appOpen;
         private System.Windows.Forms.Button laterButton;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip templatesContextMenu;
         private System.Windows.Forms.Button paymentButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label weightLabel;

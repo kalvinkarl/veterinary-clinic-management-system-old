@@ -17,6 +17,8 @@ namespace AppUI
         public bool Saved { get; set; }
         private Dictionary<string, int> WeightUnits { get; set; } = new Dictionary<string, int> { ["kg"] = 0, ["hg"] = 1, ["dag"] = 2, ["g"] = 3 };
         private Dictionary<string, int> TempUnits { get; set; } = new Dictionary<string, int> { ["°C"] = 0, ["°F"] = 1 };
+        public List<TemplateModel> Templates { get; set; } = new List<TemplateModel>();
+        private string category { get; set; }
         public VisitModel Visit { get; set; }
         public VisitForm()
         {
@@ -138,6 +140,7 @@ namespace AppUI
         private void appOpenClose_Click(object sender, EventArgs e)
         {
             appGroup.Visible = !appGroup.Visible;
+            appOpen.Visible = !appOpen.Visible;
         }
         private void ampm_Click(object sender, EventArgs e)
         {
@@ -181,6 +184,102 @@ namespace AppUI
                 appDate.Value = DateTime.Now.AddDays(1);
                 tempUnit.SelectedIndex = 0;
                 weightUnit.SelectedIndex = 0;
+            }
+            LoadTemplates();
+        }
+
+
+
+
+
+
+
+
+
+
+
+        //Templates:
+        private int Index(ToolStripItem Menu)
+        {
+            return (Menu).Owner.Items.IndexOf(Menu) - 1;
+        }
+        private void LoadTemplates()
+        {
+            templatesContextMenu.Items.Clear();
+            templatesContextMenu.Items.Add("New Template", null, NewTemplate_Click);
+            Templates = GlobalConfig.Connection.GetTemplatesByCategory(category);
+            foreach (TemplateModel template in Templates)
+            {
+                ToolStripMenuItem MainMenu = (ToolStripMenuItem)templatesContextMenu.Items.Add($"{template.Title}", null, TempMenuItem_Click);
+                MainMenu.DropDownItems.Add("Edit", null, TempEditItem_Click);
+                MainMenu.DropDownItems.Add("Delete", null, TempDeleteItem_Click);
+                templatesContextMenu.Items.Add(MainMenu);
+            }
+        }
+        private void complaintDiagnosis_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                category = "ComplaintDiagnosis";
+                LoadTemplates();
+                templatesContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void treatment_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                category = "Treatments";
+                LoadTemplates();
+                templatesContextMenu.Show(Cursor.Position);
+            }
+        }
+        private void notes_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                category = "VisitNotes";
+                LoadTemplates();
+                templatesContextMenu.Show(Cursor.Position);
+            }
+        }
+
+        private void NewTemplate_Click(object sender, EventArgs e)
+        {
+            TemplateForm templateForm = new TemplateForm();
+            templateForm.Category = category;
+            templateForm.ShowDialog();
+            if (templateForm.Saved)
+            {
+                LoadTemplates();
+            }
+        }
+        private void TempMenuItem_Click(object sender, EventArgs e)
+        {
+            int i = Index((ToolStripItem)sender);
+            if (category == "ComplaintDiagnosis")
+            {
+                complaintDiagnosis.Text += Templates[i].Template;
+                complaintDiagnosis.Select(complaintDiagnosis.Text.Length, 0);
+            }
+            templatesContextMenu.Hide();
+        }
+        private void TempEditItem_Click(object sender, EventArgs e)
+        {
+            int i = Index(((ToolStripItem)sender).OwnerItem);
+            TemplateForm templateForm = new TemplateForm();
+            templateForm.Template = Templates[i];
+            templateForm.ShowDialog();
+            LoadTemplates();
+        }
+        private void TempDeleteItem_Click(object sender, EventArgs e)
+        {
+            int i = Index(((ToolStripItem)sender).OwnerItem);
+            var msg = MessageBox.Show($"Are you sure to delete {Templates[i].Title} template?", $"Delete {Templates[i].Title}", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (msg == DialogResult.OK)
+            {
+                GlobalConfig.Connection.DeleteTemplate(Templates[i]);
+                LoadTemplates();
             }
         }
     }

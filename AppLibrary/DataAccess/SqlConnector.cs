@@ -154,5 +154,46 @@ namespace AppLibrary.DataAccess
                 return connection.Query<ClientModel, PetModel, VisitModel, ClientModel>("spClients_GetVisits", (c, p, v) => { p.Visits.Add(v); c.Pets.Add(p); return c; }, null, commandType: CommandType.StoredProcedure).ToList();
             }
         }
+
+        public TemplateModel CreateTemplate(TemplateModel template)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                DynamicParameters t = new DynamicParameters();
+                t.Add("@Category", template.Category);
+                t.Add("@Title", template.Title);
+                t.Add("@Template", template.Template);
+                connection.Execute("spTemplates_Create", t, commandType: CommandType.StoredProcedure);
+                return template;
+            }
+        }
+
+        public TemplateModel UpdateTemplate(TemplateModel template)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                DynamicParameters t = new DynamicParameters();
+                t.Add("@ID", template.ID);
+                t.Add("@Category", template.Category);
+                t.Add("@Name", template.Title);
+                t.Add("@Details", template.Template);
+                connection.Execute("spTemplates_Update", t, commandType: CommandType.StoredProcedure);
+                return template;
+            }
+        }
+        public void DeleteTemplate(TemplateModel template)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                connection.Execute("spTemplates_DeleteByID", new { template.ID }, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public List<TemplateModel> GetTemplatesByCategory(string category)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.ConString(DatabaseName)))
+            {
+                return connection.Query<TemplateModel>("spTemplates_ByCategory", new { category }, commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
     }
 }

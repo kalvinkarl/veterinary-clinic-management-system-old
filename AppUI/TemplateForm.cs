@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppLibrary;
+using AppLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,9 @@ namespace AppUI
 {
     public partial class TemplateForm : Form
     {
+        public bool Saved { get; set; }
+        public string Category { get; set; }
+        public TemplateModel Template { get; set; }
         public TemplateForm()
         {
             InitializeComponent();
@@ -103,5 +108,102 @@ namespace AppUI
             Drag = false;
         }
         //End Shadow + Mouse Move for Borderless
+
+
+
+        //Start codes:
+        private void TemplateForm_Load(object sender, EventArgs e)
+        {
+            if (Template != null)
+            {
+                tempTitle.Text = Template.Title;
+                title.Text = Template.Title;
+                template.Text = Template.Template;
+            }
+        }
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            close.BackColor = Color.Red;
+            close.ForeColor = Color.White;
+        }
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            close.BackColor = Color.FromArgb(255, 224, 192);
+            close.ForeColor = Color.FromArgb(32, 32, 32);
+        }
+        private void close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private bool keydowncalled = false;
+        private void template_KeyDown(object sender, KeyEventArgs e)
+        {
+            keydowncalled = false;
+            if (e.KeyData == (Keys.Control | Keys.Enter))
+            {
+                keydowncalled = true;
+                SaveTemplate();
+            }
+            if ((e.KeyCode == Keys.Escape) || (e.KeyCode == Keys.Escape))
+                this.Close();
+        }
+        private void template_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (keydowncalled == true)
+                e.Handled = true;
+        }
+        private void title_Leave(object sender, EventArgs e)
+        {
+            tempTitle.Text = title.Text;
+            title.Visible = false;
+        }
+        private void title_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyData == Keys.Enter)
+            {
+                template.Focus();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+        private void tempTitle_DoubleClick(object sender, EventArgs e)
+        {
+            if (title.Visible == false)
+            {
+                title.Visible = true;
+                title.SelectAll();
+                title.Focus();
+            }
+        }
+        private void addTemplate_Click(object sender, EventArgs e)
+        {
+            SaveTemplate();
+        }
+        private void SaveTemplate()
+        {
+            if (title.Text != "Title" && template.Text != "")
+            {
+                Template = new TemplateModel();
+                Template.Category = Category;
+                Template.Title = title.Text;
+                Template.Template = template.Text;
+                if (Template.ID >= 0)
+                {
+                    GlobalConfig.Connection.UpdateTemplate(Template);
+                    MessageBox.Show($"Successfully update template {Template.Title}!");
+                }
+                else
+                {
+                    GlobalConfig.Connection.CreateTemplate(Template);
+                    MessageBox.Show($"Successfully saved template {Template.Title}!");
+                }
+                Saved = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please enter a Title and Details of the template before saving.");
+            }
+        }
     }
 }

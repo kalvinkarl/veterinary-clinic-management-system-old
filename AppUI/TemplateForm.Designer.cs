@@ -75,6 +75,7 @@
             this.addTemplate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.addTemplate.Size = new System.Drawing.Size(174, 22);
             this.addTemplate.Text = "Save Temp";
+            this.addTemplate.Click += new System.EventHandler(this.addTemplate_Click);
             // 
             // deleteTemplate
             // 
@@ -96,6 +97,9 @@
             this.close.TabIndex = 7;
             this.close.Text = "✕";
             this.close.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.close.Click += new System.EventHandler(this.close_Click);
+            this.close.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.close.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             // 
             // title
             // 
@@ -110,6 +114,8 @@
             this.title.Text = "Title";
             this.title.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.title.Visible = false;
+            this.title.KeyDown += new System.Windows.Forms.KeyEventHandler(this.title_KeyDown);
+            this.title.Leave += new System.EventHandler(this.title_Leave);
             // 
             // tempTitle
             // 
@@ -122,6 +128,7 @@
             this.tempTitle.TabIndex = 6;
             this.tempTitle.Text = "Title";
             this.tempTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tempTitle.DoubleClick += new System.EventHandler(this.tempTitle_DoubleClick);
             this.tempTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tempTitle_MouseDown);
             this.tempTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.tempTitle_MouseMove);
             this.tempTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tempTitle_MouseUp);
@@ -138,6 +145,8 @@
             this.template.TabIndex = 10;
             this.template.Text = "";
             this.template.WordWrap = false;
+            this.template.KeyDown += new System.Windows.Forms.KeyEventHandler(this.template_KeyDown);
+            this.template.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.template_KeyPress);
             // 
             // TemplateForm
             // 
@@ -149,13 +158,14 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.close);
             this.Controls.Add(this.template);
-            this.Controls.Add(this.tempTitle);
             this.Controls.Add(this.title);
+            this.Controls.Add(this.tempTitle);
             this.Font = new System.Drawing.Font("Gadugi", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "TemplateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.TemplateForm_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);

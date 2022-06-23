@@ -44,8 +44,6 @@ namespace AppLibrary.DataAccess
         /// <returns>Client model</returns>
         ClientModel UpdateClient(ClientModel client);
 
-
-
         //List<ClientModel> GetAllClients();
         List<PetModel> GetPetsByOwnerID(int OwnerID);
         List<VisitModel> GetVisitsByPetID(int PetID);
@@ -53,6 +51,12 @@ namespace AppLibrary.DataAccess
         List<ClientModel> GetAllWithPetVisitsOfClients();
         List<ClientModel> GetTodayVisitsOfClients(); 
         List<ClientModel> GetVisitsOfClients();
+
+        //Templates
+        TemplateModel CreateTemplate(TemplateModel template);
+        TemplateModel UpdateTemplate(TemplateModel template);
+        void DeleteTemplate(TemplateModel template);
+        List<TemplateModel> GetTemplatesByCategory(string category);
 
     }
 }
