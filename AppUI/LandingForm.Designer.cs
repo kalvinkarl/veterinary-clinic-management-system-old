@@ -108,6 +108,7 @@
             this.developerStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timeStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.timToday = new System.Windows.Forms.Timer(this.components);
+            this.updateMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.searchGroup.SuspendLayout();
             this.landingTabs.SuspendLayout();
@@ -242,7 +243,7 @@
             this.undoMenu.Image = ((System.Drawing.Image)(resources.GetObject("undoMenu.Image")));
             this.undoMenu.Name = "undoMenu";
             this.undoMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoMenu.Size = new System.Drawing.Size(164, 22);
+            this.undoMenu.Size = new System.Drawing.Size(180, 22);
             this.undoMenu.Text = "Undo";
             // 
             // redoMenu
@@ -250,20 +251,20 @@
             this.redoMenu.Image = ((System.Drawing.Image)(resources.GetObject("redoMenu.Image")));
             this.redoMenu.Name = "redoMenu";
             this.redoMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoMenu.Size = new System.Drawing.Size(164, 22);
+            this.redoMenu.Size = new System.Drawing.Size(180, 22);
             this.redoMenu.Text = "Redo";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // cutMenu
             // 
             this.cutMenu.Image = ((System.Drawing.Image)(resources.GetObject("cutMenu.Image")));
             this.cutMenu.Name = "cutMenu";
             this.cutMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutMenu.Size = new System.Drawing.Size(164, 22);
+            this.cutMenu.Size = new System.Drawing.Size(180, 22);
             this.cutMenu.Text = "Cut";
             // 
             // copyMenu
@@ -271,7 +272,7 @@
             this.copyMenu.Image = ((System.Drawing.Image)(resources.GetObject("copyMenu.Image")));
             this.copyMenu.Name = "copyMenu";
             this.copyMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyMenu.Size = new System.Drawing.Size(164, 22);
+            this.copyMenu.Size = new System.Drawing.Size(180, 22);
             this.copyMenu.Text = "Copy";
             // 
             // pasteMenu
@@ -279,7 +280,7 @@
             this.pasteMenu.Image = ((System.Drawing.Image)(resources.GetObject("pasteMenu.Image")));
             this.pasteMenu.Name = "pasteMenu";
             this.pasteMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteMenu.Size = new System.Drawing.Size(164, 22);
+            this.pasteMenu.Size = new System.Drawing.Size(180, 22);
             this.pasteMenu.Text = "Paste";
             // 
             // deleteMenu
@@ -287,20 +288,20 @@
             this.deleteMenu.Image = ((System.Drawing.Image)(resources.GetObject("deleteMenu.Image")));
             this.deleteMenu.Name = "deleteMenu";
             this.deleteMenu.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteMenu.Size = new System.Drawing.Size(164, 22);
+            this.deleteMenu.Size = new System.Drawing.Size(180, 22);
             this.deleteMenu.Text = "Delete";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // selectAllMenu
             // 
             this.selectAllMenu.Image = ((System.Drawing.Image)(resources.GetObject("selectAllMenu.Image")));
             this.selectAllMenu.Name = "selectAllMenu";
             this.selectAllMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllMenu.Size = new System.Drawing.Size(164, 22);
+            this.selectAllMenu.Size = new System.Drawing.Size(180, 22);
             this.selectAllMenu.Text = "Select All";
             // 
             // toolsMenu
@@ -328,21 +329,21 @@
             // defaultToolStripMenuItem
             // 
             this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.defaultToolStripMenuItem.Text = "Default";
             this.defaultToolStripMenuItem.Click += new System.EventHandler(this.defaultToolStripMenuItem_Click);
             // 
             // grayToolStripMenuItem
             // 
             this.grayToolStripMenuItem.Name = "grayToolStripMenuItem";
-            this.grayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.grayToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.grayToolStripMenuItem.Text = "Gray";
             this.grayToolStripMenuItem.Click += new System.EventHandler(this.grayToolStripMenuItem_Click);
             // 
             // darkToolStripMenuItem
             // 
             this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
-            this.darkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.darkToolStripMenuItem.Text = "Dark";
             this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
             // 
@@ -372,7 +373,8 @@
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewHelpMenu,
             this.licencedMenu,
-            this.aboutMenu});
+            this.aboutMenu,
+            this.updateMenu});
             this.helpMenu.Name = "helpMenu";
             this.helpMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.OemQuestion)));
             this.helpMenu.Size = new System.Drawing.Size(44, 19);
@@ -383,21 +385,21 @@
             this.viewHelpMenu.Image = ((System.Drawing.Image)(resources.GetObject("viewHelpMenu.Image")));
             this.viewHelpMenu.Name = "viewHelpMenu";
             this.viewHelpMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.viewHelpMenu.Size = new System.Drawing.Size(173, 22);
+            this.viewHelpMenu.Size = new System.Drawing.Size(180, 22);
             this.viewHelpMenu.Text = "View Help";
             // 
             // licencedMenu
             // 
             this.licencedMenu.Image = ((System.Drawing.Image)(resources.GetObject("licencedMenu.Image")));
             this.licencedMenu.Name = "licencedMenu";
-            this.licencedMenu.Size = new System.Drawing.Size(173, 22);
+            this.licencedMenu.Size = new System.Drawing.Size(180, 22);
             this.licencedMenu.Text = "Licenced";
             // 
             // aboutMenu
             // 
             this.aboutMenu.Image = ((System.Drawing.Image)(resources.GetObject("aboutMenu.Image")));
             this.aboutMenu.Name = "aboutMenu";
-            this.aboutMenu.Size = new System.Drawing.Size(173, 22);
+            this.aboutMenu.Size = new System.Drawing.Size(180, 22);
             this.aboutMenu.Text = "About";
             // 
             // searchGroup
@@ -891,6 +893,13 @@
             this.timToday.Interval = 1000;
             this.timToday.Tick += new System.EventHandler(this.timToday_Tick);
             // 
+            // updateMenu
+            // 
+            this.updateMenu.Image = ((System.Drawing.Image)(resources.GetObject("updateMenu.Image")));
+            this.updateMenu.Name = "updateMenu";
+            this.updateMenu.Size = new System.Drawing.Size(180, 22);
+            this.updateMenu.Text = "Update";
+            // 
             // LandingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -1005,6 +1014,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataPet;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataAppointment;
+        private System.Windows.Forms.ToolStripMenuItem updateMenu;
     }
 }
 
