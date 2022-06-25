@@ -16,7 +16,7 @@ namespace AppUI
     {
         private List<ClientModel> Clients { get; set; } = new List<ClientModel>();
         private List<ClientModel> ClientAppointments { get; set; } = new List<ClientModel>();
-        private int themes { get; set; }
+        private int Themes { get; set; }
         public LandingForm()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace AppUI
                 this.Location = Properties.Settings.Default.Location;
                 this.Size = Properties.Settings.Default.Size;
                 listComboBox.Text = Properties.Settings.Default.ClientListComboBox;
-                themes = Properties.Settings.Default.themes;
+                Themes = Properties.Settings.Default.themes;
             }
         }
         private void SaveSizeRosolution()
@@ -64,12 +64,12 @@ namespace AppUI
                 Properties.Settings.Default.Size = this.RestoreBounds.Size;
             }
             Properties.Settings.Default.ClientListComboBox = listComboBox.Text;
-            Properties.Settings.Default.themes = themes;
+            Properties.Settings.Default.themes = Themes;
             Properties.Settings.Default.Save();
         }
         private int SwitchTheme()
         {
-            if (themes == 1)
+            if (Themes == 1)
             {
                 GlobalConfig.IsDark = true;
                 GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
@@ -108,7 +108,7 @@ namespace AppUI
                 this.Refresh();
                 return 1;
             }
-            else if (themes == 2)
+            else if (Themes == 2)
             {
                 GlobalConfig.IsDark = true;
                 GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
