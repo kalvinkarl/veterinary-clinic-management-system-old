@@ -108,13 +108,6 @@ namespace AppUI
                 this.Refresh();
                 return 1;
             }
-            else if (Themes == 2)
-            {
-                GlobalConfig.IsDark = true;
-                GlobalConfig.UseImmersiveDarkMode(Handle, GlobalConfig.IsDark);
-                this.BackColor = Color.FromArgb(64, 64, 64);
-                return 2;
-            }
             else
             {
                 GlobalConfig.IsDark = false;
