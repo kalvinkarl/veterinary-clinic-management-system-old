@@ -331,19 +331,19 @@ namespace AppUI
 
         private void defaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            themes = 0;
+            Themes = 0;
             SwitchTheme();
         }
 
         private void darkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            themes = 1;
+            Themes = 1;
             SwitchTheme();
         }
 
         private void grayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            themes = 2;
+            Themes = 2;
             SwitchTheme();
         }
     }
